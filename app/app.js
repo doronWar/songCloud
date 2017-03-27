@@ -28,11 +28,11 @@ const Root = () =>  {
   return (
     <div>
       <h1>Song Cloud123</h1>
-      {/*<Greeting*/}
-        {/*name="michael"*/}
-        {/*age="18"*/}
-        {/*fn={alertSomthing} />*/}
-      <FirstPro/>
+      <Greeting
+        name="michael"
+        age="18"
+        fn={alertSomthing} />
+      {/*{FirstPro}*/}
     </div>
   );
 };
