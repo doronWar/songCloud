@@ -1,0 +1,173 @@
+
+
+//basic Css
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+a:link,
+a:visited {
+  outline: none;
+
+}
+
+a:hover,
+a:active {
+  outline: none;
+}
+
+
+// ****************************sign In\up page**************************** //
+
+.sign-in-modal{
+  height:100%;
+  width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 10;
+  background-color: #fff;
+}
+
+.big-logo {
+font-size: 100px;
+  color: #2196F3;
+  position: absolute;
+  top:30px;
+  right: 446px;
+
+}
+.title-sign-in{
+  position: absolute;
+  top:130px;
+  right:412px;
+  font-size: 40px;
+  color:#2196F3;
+  font-weight: 300;
+}
+
+.inser-info-component {
+  position: absolute;
+  top:231px;
+  left:305px;
+}
+
+// ****************************nav bar**************************** //
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 66px;
+}
+
+//to controll the nav-bar divs'
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  background-color: #e3e7ed;
+}
+
+//controlling both divs that contain the nav-bar info
+.nav-parts{
+  display: flex;
+}
+
+.search-song{
+  align-self: center;
+  height:40px;
+}
+
+.nav-link-holder{
+ margin: 0 ;
+  padding: 0;
+list-style: none;
+}
+
+.nav-link{
+  float: left;
+  width: 100px;
+}
+
+.nav-link a{
+  display: inline-block;
+  height: 66px;
+  width: 100%;
+  line-height: 66px;
+
+}
+.position-logo{
+  height: 66px;
+  width:60px;
+  margin-right:50px;
+  padding-top:20px;
+  background-color: aquamarine;
+}
+
+.header div:last-child {
+  width:  300px;
+  justify-content: space-between;
+}
+
+//logo
+.position-logo {
+font-size: 32px;
+  padding-left:7px;
+}
+
+
+
+        //****************************song thumbnail****************************//
+//thumbnail for each song
+.song-thumbnail{
+  width: 100px;
+  height:100px;
+  background-color: beige;
+  margin-right:10px;
+  margin-bottom: 10px;
+}
+
+.one-song{
+  list-style: none;
+}
+.song-title{
+  margin:0;
+}
+
+
+//the UL of songs
+.song-holder{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+//holds the genres
+.genre-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.genre-name{
+  list-style: none;
+}
+
+//navigation for song list
+.navigation-song-btn {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.navigation-song-btn span {
+  margin-right:5px;
+  margin-left:5px;
+}
