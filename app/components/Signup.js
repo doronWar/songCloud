@@ -1,10 +1,14 @@
 /**
  * Created by Doron Warzager on 28/03/2017.
  */
+import Enterpageicon from './Enterpageicon'
+
 export default function Signup() {
   return(
     <div>
-      <h1 style = {{border: '1px solid black',backgroundColor: 'powderblue' , textAlign:"center"}}>sign up component</h1>
+      <div className="sign-in-modal">
+        <Enterpageicon action="Create account" lastLine="Already have an account" linkTitle='Sign in'/>
+      </div>
     </div>
   )
 }

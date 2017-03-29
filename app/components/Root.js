@@ -36,8 +36,8 @@ export default function Root (){
       {/*fn= {data.fn} />*/}
       {/*<FirstPro/>*/}
 
-      <Signup/>
-       <Signin/>
+      {/*<Signup/>*/}
+       {/*<Signin/>*/}
        <Topbar/>
       <main>
       <Explore/>
