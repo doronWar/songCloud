@@ -11,7 +11,8 @@ import Player from './Player'
 import {
   BrowserRouter,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import React from 'react';
 
@@ -50,7 +51,11 @@ constructor(){
               {/*<Signin/>*/}
 
               {/*<main>*/}
-              <Route exact path="/" component={Explore}/>
+              <Route exact path="/" render={()=>{
+              return <Redirect to="/Explore"/>
+              }
+              }/>
+              <Route exact path="/Explore" component={Explore}/>
               <Route exact path="/Playlist" component={Playlist}/>
               {/*</main>*/}
 
