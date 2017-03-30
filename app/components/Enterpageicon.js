@@ -5,15 +5,15 @@
 export default function Enterpageicon(props) {
   return (
     <div>
-      <i className="logo fa fa-mixcloud big-logo" aria-hidden="true"></i>
+      <i className="logo fa fa-mixcloud big-logo" aria-hidden="true"/>
       <h1 className="title-sign-in">Sound Cloud</h1>
       <div className="inser-info-component">
         <h1>{props.action}</h1>
         <div className="unser-register">
-          <label for="email">Email<br/>
+          <label htmlFor="email">Email<br/>
             <input type="text" id="email"/></label>
           <span className="user-name-error">Please enter a valid email</span>
-          <label for="password">password<br/>
+          <label htmlFor="password">password<br/>
             <input type="text" id="password"/></label>
         </div>
 

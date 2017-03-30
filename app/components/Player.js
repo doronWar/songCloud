@@ -4,8 +4,8 @@
 export default function Player() {
   return (
     <div>
-      <footer>
-        <h1 style = {{border: '1px solid black' ,'textAlign':"center" }}>Player component</h1>
+      <footer className="player-holder">
+        {/*<h1 style = {{border: '1px solid black' ,'textAlign':"center" }}>Player component</h1>*/}
         <img src="" alt="Song Thumbnail"/>
         <p>Song name</p>
         <audio controls>

@@ -20,6 +20,7 @@ a:visited {
 }
 
 a:hover,
+a:focus,
 a:active {
   outline: none;
 
@@ -212,14 +213,24 @@ list-style: none;
 }
 
 
+//****************************explore****************************//
+//error loading page
+.error-loading-page{
+  padding-top: 10px;
+  margin-top:100px;
+  margin-bottom:100px;
+  background-color: powderblue;
+  height:150px;
+}
 
         //****************************song thumbnail****************************//
 //thumbnail for each song
 .song-thumbnail{
   width: 220px;
   height:140px;
-  background-color: beige;
-  margin-right:10px;
+  background-color: white;
+  border: 1px solid grey;
+  //margin-right:10px;
   margin-bottom: 10px;
 }
 
@@ -228,6 +239,16 @@ list-style: none;
 }
 .song-title{
   margin:0;
+  font-size: 11px;
+}
+.song-img{
+  width: 200px;
+  height: 85px;
+  margin: 0 auto;
+  //text-align: center;
+  display: block;
+  padding-top: 5px;
+
 }
 
 
@@ -261,4 +282,10 @@ list-style: none;
   margin-right:5px;
   margin-left:5px;
   font-size: 1rem;
+}
+
+
+
+.player-holder{
+  display: flex;
 }
