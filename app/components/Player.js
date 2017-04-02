@@ -5,10 +5,9 @@ export default function Player() {
   return (
     <div>
       <footer className="player-holder">
-        {/*<h1 style = {{border: '1px solid black' ,'textAlign':"center" }}>Player component</h1>*/}
-        <img src="" alt="Song Thumbnail"/>
-        <p>Song name</p>
-        <audio controls>
+        <img src="" alt="Song Thumbnail" className="player-thumbnail"/>
+        <p className="player-song-name">Song name</p>
+        <audio controls className="player-controls" src="http://learn.shayhowe.com.s3-website-us-east-1.amazonaws.com/assets/misc/courses/html-css/adding-media/jazz.ogg">
           <source src="" type="audio/ogg"/>
           <source src="" type="audio/mpeg"/>
         </audio>

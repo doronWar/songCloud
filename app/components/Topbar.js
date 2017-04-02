@@ -26,9 +26,14 @@ export default function Topbar () {
         </ul>
         </div>
 
-        <div className="nav-parts ">
+        <div className="search-n-logout">
 
-          <input type="text" id="search-songs" placeholder="Song name"/>
+          <div className="search-icon-holder">
+
+            <i className="fa fa-search search-icon"/>
+            <input type="text" id="search-songs" placeholder="Song name"/>
+
+          </div>
         <input type="button" id="log-out-button" value="Log out" className="search-song"/>
         </div>
 

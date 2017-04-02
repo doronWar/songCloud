@@ -4,7 +4,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Songthumbnail from './Songthumbnail';
-
+// import Player from './Player'
 
 
 export default class Explore extends React.Component {
@@ -92,6 +92,7 @@ loadSongs(){
 
           </ul>
 
+          <h2 className="genre-titl">Genre: {this.props.match.params.genre}</h2>
           {this.createThumbnail()}
           <div className="song-page-wrapper">
             <div className="navigation-song-btn">
@@ -103,6 +104,7 @@ loadSongs(){
 
             </div>
           </div>
+
         </div>
       )
     }

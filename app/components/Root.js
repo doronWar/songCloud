@@ -30,11 +30,7 @@ export default class Root extends React.Component {
 // export default function  (){
 constructor(){
   super();
-  const data = {
-    name: "michael",
-    age: "19",
-    fn: alertSomthing
-  };
+
 }
 
 
@@ -63,13 +59,6 @@ constructor(){
               <Route path="/explore/:genre" component={Explore}/>
               <Route exact path="/playlist" component={Playlist}/>
 
-
-
-              {/*<Greeting*/}
-              {/*name= {data.name}*/}
-              {/*age= {data.age}*/}
-              {/*fn= {data.fn} />*/}
-              {/*<FirstPro/>*/}
 
             </Switch>
           </main>
