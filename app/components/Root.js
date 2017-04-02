@@ -50,14 +50,19 @@ constructor(){
               {/*<Signup/>*/}
               {/*<Signin/>*/}
 
-              {/*<main>*/}
+
               <Route exact path="/" render={()=>{
-              return <Redirect to="/Explore"/>
+              return <Redirect to="/explore/trance"/>
               }
               }/>
-              <Route exact path="/Explore" component={Explore}/>
-              <Route exact path="/Playlist" component={Playlist}/>
-              {/*</main>*/}
+              <Route exact path="/explore" render={()=>{
+              return <Redirect to="/explore/trance"/>
+              }
+              }/>
+              {/*<Route exact path="/Explore" component={Explore}/>*/}
+              <Route path="/explore/:genre" component={Explore}/>
+              <Route exact path="/playlist" component={Playlist}/>
+
 
 
               {/*<Greeting*/}

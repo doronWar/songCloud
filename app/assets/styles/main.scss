@@ -4,7 +4,10 @@
 html {
   box-sizing: border-box;
   font: 100% 'Roboto', sans-serif;
-
+}
+body{
+  margin: 0;
+  width:100%;
 }
 
 *, *:before, *:after {
@@ -14,7 +17,7 @@ html {
 
 a:link,
 a:visited {
-  outline: none;
+  text-decoration: none;
 
 
 }
@@ -22,7 +25,7 @@ a:visited {
 a:hover,
 a:focus,
 a:active {
-  outline: none;
+  text-decoration: none;
 
 }
 
@@ -131,6 +134,7 @@ font-size: 100px;
   top: 0;
   left: 0;
   height: 66px;
+
 }
 
 //to controll the nav-bar divs'
@@ -212,8 +216,15 @@ list-style: none;
   align-self: center;
 }
 
+.selected{
+  background-color: grey;
+}
 
-//****************************explore****************************//
+.ganere-chosen{
+  background-color: green;
+}
+
+//****************************Erroe page****************************//
 //error loading page
 .error-loading-page{
   padding-top: 10px;
@@ -231,15 +242,16 @@ list-style: none;
   background-color: white;
   border: 1px solid grey;
   //margin-right:10px;
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
 }
 
 .one-song{
   list-style: none;
 }
 .song-title{
-  margin:0;
+  margin:0 0 0 10px;
   font-size: 11px;
+  //margin-left:10px;
 }
 .song-img{
   width: 200px;
@@ -247,12 +259,33 @@ list-style: none;
   margin: 0 auto;
   //text-align: center;
   display: block;
-  padding-top: 5px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom:7px;
+}
 
+.song-time{
+  width:20px;
+  height: 13px;
+  font-size: 10px;
+  display: inline-block;
+  margin:0 0 0 2px;
+}
+.time-logo{
+  font-size: 10px;
+  margin-left:10px;
+}
+
+.add-to-playlist-icon{
+  float: right;
+  font-size: 14px;
 }
 
 
-//the UL of songs
+//****************************explore ****************************//
+
+//the UI of songs
 .song-holder{
   display: flex;
   flex-direction: row;
@@ -266,11 +299,26 @@ list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #DDE4E6;
+  margin: 0;
+  padding-left: 20px;
+  padding-right:20px;
+  height: 40px;
 }
+.explore-component{
+
+  padding-top:77px;
+  line-height: 40px;
+
+}
+
 
 .genre-name{
   list-style: none;
 }
+//.genre-name a {
+//  outline-style: none;
+//}
 
 //navigation for song list
 .navigation-song-btn {

@@ -2,8 +2,10 @@
  * Created by Doron Warzager on 28/03/2017.
  */
 import React from 'react';
-
+import {NavLink} from 'react-router-dom';
 import Songthumbnail from './Songthumbnail';
+
+
 
 export default class Explore extends React.Component {
 constructor() {
@@ -15,16 +17,17 @@ constructor() {
   }
 }
 
+
   componentDidMount(){
   this.loadSongs();
-
 }
 
 loadSongs(){
   this.setState({loadingState: 'loaded'})
   const xhr = new XMLHttpRequest();
-  xhr.open('GET',"https://create-bootcamp-songcloud-server.now.sh/tracks?genre=trance")
+  xhr.open('GET',`https://create-bootcamp-songcloud-server.now.sh/tracks?genre=${this.props.match.params.genre}`)
   xhr.send();
+
   xhr.addEventListener('load', ()=>{
 
     this.setState({songs: JSON.parse(xhr.responseText)})
@@ -32,28 +35,31 @@ loadSongs(){
   })
   xhr.addEventListener('error', ()=>{
     this.setState({loadingState: 'error'})
-
   })
-
 }
 
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.genre === this.props.match.params.genre)
+      return;
+    this.loadSongs();
+  }
+
+
   createThumbnail (){
-    const numberOfSongs = this.state.songs;
-    const listOfSong = [];
-
-    for (let i in numberOfSongs) {
-
-      listOfSong.push(<li key={numberOfSongs[i].id} className="one-song">
-        <Songthumbnail title={numberOfSongs[i].title} img={numberOfSongs[i].artwork_url}/>
-      </li>)
-    }
     return (
       <ul className="song-holder">
-         {listOfSong}
+         {this.state.songs.map((song) => <li key={song.id} className="one-song">
+           <Songthumbnail title={song.title}
+                          img={song.artwork_url}
+                          time={song.duration}/>
+         </li>)}
       </ul>
     )
   }
+
+
+
   render() {
     if (this.state.loadingState === 'error') {
       return (<div className="error-loading-page">
@@ -62,19 +68,30 @@ loadSongs(){
 
       </div>)
     }
+
+
     else if(this.state.loadingState === 'loaded') {
       return (
-        <div>
-          <h1 style={{border: '1px solid black', textAlign: "center"}}>Explore component</h1>
+        <div className="explore-component">
+
+          {/*<h1 style={{border: '1px solid black', textAlign: "center"}}>Explore component</h1>*/}
           <ul className="genre-nav-bar">
-            <li className="genre-name">genre</li>
-            <li className="genre-name">genre</li>
-            <li className="genre-name">genre</li>
-            <li className="genre-name">genre</li>
-            <li className="genre-name">genre</li>
+
+            <li className="genre-name">
+              <NavLink to="/explore/trance" activeClassName="ganere-chosen" className="link">Trance</NavLink>
+            </li>
+
+            <li className="genre-name">
+              <NavLink to="/explore/house" activeClassName="ganere-chosen" className="link">House</NavLink>
+            </li>
+
+            <li className="genre-name">
+              <NavLink to="/explore/dubstep" activeClassName="ganere-chosen" className="link">Dubstep</NavLink>
+            </li>
+
 
           </ul>
-          {/*{this.componenetDidMount()}*/}
+
           {this.createThumbnail()}
           <div className="song-page-wrapper">
             <div className="navigation-song-btn">
