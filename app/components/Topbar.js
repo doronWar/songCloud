@@ -11,7 +11,9 @@ export default function Topbar () {
       <nav className="nav-bar">
 
         <div className="nav-parts">
-          <NavLink to="/" className="logo-content">< i className="logo fa fa-mixcloud position-logo" aria-hidden="true"/>  SougCloud</NavLink>
+          <NavLink to="/" className="logo-content">
+            < i className="logo fa fa-mixcloud position-logo" aria-hidden="true"/>  SougCloud
+          </NavLink>
 
         <ul className="nav-link-holder">
 

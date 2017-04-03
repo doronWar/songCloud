@@ -16,21 +16,22 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 
-const FirstPro = ()=>{
-
-  return (<Greeting
-    name="michael"
-    age="19"
-    fn={alertSomthing}
-  />)};
-
 
 
 export default class Root extends React.Component {
 // export default function  (){
 constructor(){
   super();
+  this.state={
+    playerSong: 'none'
+  }
 
+}
+
+nowPlaying(newSong){
+  this.setState({
+    playerSong: Object.assign({}, newSong)
+  })
 }
 
 
@@ -38,39 +39,52 @@ constructor(){
     return (
       <BrowserRouter>
         <div>
-          <Topbar/>
-          <main>
+          <Route exact path="/signup" component={Signup}/>
+          <Route exact path="/signin" component={Signin}/>
+          <Route path="/" component={()=>{
+            return (
+              <div>
+              <Topbar/>
+                <main>
 
-            <Switch>
+                  <Switch>
+                    <Route exact path="/" render={()=>{
+                      return <Redirect to="/explore/trance"/>
+                    }
+                    }/>
+                    <Route exact path="/explore" render={()=>{
+                      return <Redirect to="/explore/trance"/>
+                    }
+                    }/>
+                    <Route exact path="/Explore" component={Explore}/>
 
-              {/*<Signup/>*/}
-              {/*<Signin/>*/}
+                    <Route path="/explore/:genre" render={(props)=>{
+                      return <Explore playingNow= {this.nowPlaying}
+                                      {...props}/>
+                    }}/>
+                    <Route exact path="/playlist" render={(props)=>{
+                      return <Playlist playingNow= {this.nowPlaying}
+                                       {...props}/>
+
+                    }}/>
 
 
-              <Route exact path="/" render={()=>{
-              return <Redirect to="/explore/trance"/>
-              }
-              }/>
-              <Route exact path="/explore" render={()=>{
-              return <Redirect to="/explore/trance"/>
-              }
-              }/>
-              {/*<Route exact path="/Explore" component={Explore}/>*/}
-              <Route path="/explore/:genre" component={Explore}/>
-              <Route exact path="/playlist" component={Playlist}/>
+                    {/*<Route path="/explore/:genre" component={Explore}/>*/}
+                    {/*<Route exact path="/playlist" component={Playlist}/>*/}
 
 
-            </Switch>
-          </main>
-          <Player/>
+                  </Switch>
+                </main>
+                <Player playingNow= {this.state.playerSong}/>
+              </div>)
+
+          }}/>
+
+
         </div>
       </BrowserRouter>
     );
   };
 }
 
-function alertSomthing() {
-  alert('hello')
-
-}
 

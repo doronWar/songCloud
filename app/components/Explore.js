@@ -8,69 +8,105 @@ import Songthumbnail from './Songthumbnail';
 
 
 export default class Explore extends React.Component {
-constructor() {
-  super();
-  this.state = {
-    songs: [],
-    loadingState:"loaded"
+  constructor() {
+    super();
+    this.state = {
+      songs: [],
+      loadingState: "loaded",
+      clientId: "2t9loNQH90kzJcsFCODdigxfp325aq4z",
+      offset: 0,
+      limit: 15
+
+    }
 
   }
-}
 
 
-  componentDidMount(){
-  this.loadSongs();
-}
-
-loadSongs(){
-  this.setState({loadingState: 'loaded'})
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET',`https://create-bootcamp-songcloud-server.now.sh/tracks?genre=${this.props.match.params.genre}`)
-  xhr.send();
-
-  xhr.addEventListener('load', ()=>{
-
-    this.setState({songs: JSON.parse(xhr.responseText)})
-    console.info(this.state.songs);
-  })
-  xhr.addEventListener('error', ()=>{
-    this.setState({loadingState: 'error'})
-  })
-}
-
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.genre === this.props.match.params.genre)
-      return;
+  componentDidMount() {
     this.loadSongs();
   }
 
+  loadSongs() {
 
-  createThumbnail (){
+    this.setState({loadingState: 'loaded'})
+    const genre = this.props.match.params.genre;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', `https://api.soundcloud.com/tracks?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z&limit=${this.state.limit}&offset=${this.state.offset}&tags=${genre}`);
+
+    xhr.send();
+
+    xhr.addEventListener('load', () => {
+
+      this.setState({songs: JSON.parse(xhr.responseText)})
+      // console.info(this.state.songs);
+      console.info(this.state.offset);
+    })
+    xhr.addEventListener('error', () => {
+      this.setState({loadingState: 'error'})
+    })
+  }
+
+
+  componentDidUpdate(prevProps, prevState) {
+
+    const prevGenre = prevProps.match.params.genre;
+    const targetGenre = this.props.match.params.genre;
+    const currentSongs= this.state.offset
+    const preveSongs = prevState.offset
+
+    if (prevGenre !== targetGenre ) {
+      this.setState({offset:0})
+      this.loadSongs();
+    }
+    if (currentSongs !== preveSongs ) {
+      this.loadSongs();
+    }
+
+  }
+
+
+  createThumbnail() {
     return (
       <ul className="song-holder">
-         {this.state.songs.map((song) => <li key={song.id} className="one-song">
-           <Songthumbnail title={song.title}
-                          img={song.artwork_url}
-                          time={song.duration}/>
-         </li>)}
+        {this.state.songs.map((song) => <li key={song.id} className="one-song">
+          <Songthumbnail title={song.title}
+                         img={song.artwork_url}
+                         time={song.duration}
+                         uri={song.uri}
+                         nowPlaying={this.props.nowPlaying}
+                         song={song}/>
+
+
+
+        </li>)}
       </ul>
     )
   }
 
 
+  changePage(direction) {
+    if (direction === 'next') {
+      this.setState({offset: this.state.offset + this.state.limit});
+    }
+    if (direction === 'priv') {
+      this.setState({offset: this.state.offset - this.state.limit});
+    }
+  }
+
 
   render() {
     if (this.state.loadingState === 'error') {
       return (<div className="error-loading-page">
-        <h1>Loading failed  please try again</h1>
+        <h1>Loading failed please try again</h1>
         <a href="#" onClick={() => this.loadSongs()}>Click Here to Realod</a>
 
       </div>)
     }
 
 
-    else if(this.state.loadingState === 'loaded') {
+    else if (this.state.loadingState === 'loaded') {
+      const isFirstPage = this.state.offset === 0;
       return (
         <div className="explore-component">
 
@@ -96,9 +132,18 @@ loadSongs(){
           {this.createThumbnail()}
           <div className="song-page-wrapper">
             <div className="navigation-song-btn">
-              <button>Next Page</button>
-              <span>  page 1   </span>
-              <button>Privious Page</button>
+
+              <button onClick={ this.changePage.bind(this, 'next')}>
+                Next Page
+              </button>
+
+              <span>  page {this.state.offset/this.state.limit +1}   </span>
+
+              <button onClick={ this.changePage.bind(this, 'priv')}
+                      disabled={isFirstPage}>
+                Previous Page
+              </button>
+
             </div>
             <div >
 
