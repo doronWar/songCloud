@@ -29,9 +29,7 @@ constructor(){
 }
 
 nowPlaying(newSong){
-  this.setState({
-    playerSong: Object.assign({}, newSong)
-  })
+  this.setState({ playerSong: Object.assign({}, newSong)})
 }
 
 
@@ -59,11 +57,12 @@ nowPlaying(newSong){
                     <Route exact path="/Explore" component={Explore}/>
 
                     <Route path="/explore/:genre" render={(props)=>{
-                      return <Explore playingNow= {this.nowPlaying}
+
+                      return <Explore playingNow= {this.nowPlaying.bind(this)}
                                       {...props}/>
                     }}/>
                     <Route exact path="/playlist" render={(props)=>{
-                      return <Playlist playingNow= {this.nowPlaying}
+                      return <Playlist playingNow= {this.nowPlaying.bind(this)}
                                        {...props}/>
 
                     }}/>

@@ -16,7 +16,7 @@ constructor(){
 
 
 songTime(){
-  let ms=this.props.time;
+  let ms=this.props.song.duration;
   const min= Math.floor(ms/60000);
   const sec= ((ms % 60000) / 1000).toFixed(0);
   return min + ':' + sec
@@ -28,13 +28,14 @@ songTime(){
   this.heartIcon.classList.toggle('fa-heart')
   }
 render(){
-    const imgUrl = this.props.img? this.props.img.replace('large','t300x300'): this.props.img;
+    const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large','t300x300'): this.props.song.artwork_url;
+
   return(
-    <div className="song-thumbnail" data-id={this.props.uri + this.clientId}>
+    <div className="song-thumbnail" data-id={this.props.song.uri + this.clientId}>
       <div className="song-img"
            style ={{ 'backgroundImage': `url( ${imgUrl} )` }}
       onClick={()=>this.props.nowPlaying(this.props.song)}/>
-      <p className="song-title">{this.props.title.slice(0, 33)}...</p>
+      <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
 
 
       <i className="fa fa-clock-o time-logo">

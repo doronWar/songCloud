@@ -19,6 +19,7 @@ export default class Explore extends React.Component {
 
     }
 
+
   }
 
 
@@ -52,11 +53,11 @@ export default class Explore extends React.Component {
 
     const prevGenre = prevProps.match.params.genre;
     const targetGenre = this.props.match.params.genre;
-    const currentSongs= this.state.offset
-    const preveSongs = prevState.offset
+    const currentSongs= this.state.offset;
+    const preveSongs = prevState.offset;
 
     if (prevGenre !== targetGenre ) {
-      this.setState({offset:0})
+      this.setState({offset:0});
       this.loadSongs();
     }
     if (currentSongs !== preveSongs ) {
@@ -67,23 +68,23 @@ export default class Explore extends React.Component {
 
 
   createThumbnail() {
+
     return (
       <ul className="song-holder">
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
-          <Songthumbnail title={song.title}
-                         img={song.artwork_url}
-                         time={song.duration}
-                         uri={song.uri}
-                         nowPlaying={this.props.nowPlaying}
+          <Songthumbnail
+                         nowPlaying={this.props.playingNow}
                          song={song}/>
-
-
-
         </li>)}
+
       </ul>
     )
   }
 
+//   title={song.title}
+// img={song.artwork_url}
+// time={song.duration}
+// uri={song.uri}
 
   changePage(direction) {
     if (direction === 'next') {
