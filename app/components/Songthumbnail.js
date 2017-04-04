@@ -1,10 +1,12 @@
 /**
  * Created by Doron Warzager on 29/03/2017.
  */
+import  AddToPlaylist from "./AddToPlaylist";
 import 'font-awesome/css/font-awesome.css';
 import 'normalize.css/normalize.css';
-import * as React from "react";
-1
+import  React from "react";
+
+
 
 export default class Songthumbnail extends React.Component{
 constructor(){
@@ -23,10 +25,11 @@ songTime(){
 }
 
   changeHeartState(){
-  console.info(this.heartIcon);
   this.heartIcon.classList.toggle('fa-heart-o')
   this.heartIcon.classList.toggle('fa-heart')
+    this.addToPlaylist.classList.toggle('menu-toggle-view')
   }
+
 render(){
     const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large','t300x300'): this.props.song.artwork_url;
 
@@ -47,7 +50,10 @@ render(){
          }} onClick={()=>{
         this.changeHeartState();
       }}/>
-
+      <div className="menu-toggle-view" ref={(addToPlaylist)=>{
+        this.addToPlaylist = addToPlaylist}}>
+      <AddToPlaylist/>
+      </div>
 
     </div>
   )

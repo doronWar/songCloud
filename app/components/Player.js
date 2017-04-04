@@ -4,7 +4,6 @@
 export default function Player(song) {
   const songImg= song.playingNow.artwork_url ;
   const songTitle=song.playingNow.title || "song name";
-  console.info(song.playingNow.stream_url);
   const clientId= "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z";
   const songApi= song.playingNow.stream_url + clientId || "" ;
 
@@ -14,7 +13,7 @@ export default function Player(song) {
       <footer className="player-holder">
         <img src={songImg} alt="Song Thumbnail" className="player-thumbnail"/>
         <p className="player-song-name">{songTitle.slice(0,20)}</p>
-        <audio controls className="player-controls" src={songApi}>
+        <audio controls autoPlay className="player-controls" src={songApi}>
           <source src="" type="audio/ogg"/>
           <source src="" type="audio/mpeg"/>
         </audio>

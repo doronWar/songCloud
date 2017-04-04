@@ -17,72 +17,100 @@ import {
 import React from 'react';
 
 
-
 export default class Root extends React.Component {
 // export default function  (){
-constructor(){
-  super();
-  this.state={
-    playerSong: 'none'
+  constructor() {
+    super();
+
+    this.nowPlaying = this.nowPlaying.bind(this);
+    this.addPlaylist = this.addPlaylist.bind(this);
+
+    this.state = {
+      playerSong: 'none',
+      playLists:[{
+        id: '12435',
+        title:'test',
+        songs:[{
+          title: "songe",
+          id:"1524573"
+        }]
+      }]
+    }
+
   }
 
-}
+  nowPlaying(newSong) {
+    this.setState({playerSong: Object.assign({}, newSong)})
+  }
 
-nowPlaying(newSong){
-  this.setState({ playerSong: Object.assign({}, newSong)})
-}
+  addPlaylist(newPlaylist){
+    const playlists = this.state.playLists.map((n)=>n);
+    playlists.push(newPlaylist);
+    this.setState({playLists})
+
+  }
+  addSongToPlaylist(){
+
+  }
 
 
   render() {
+    // return (
+    // <BrowserRouter>
+    //   <div>
+    {/*<Route exact path="/signup" component={Signup}/>*/
+    }
+    {/*<Route exact path="/signin" component={Signin}/>*/
+    }
+    // <Route path="/" component={()=>{
     return (
-      <BrowserRouter>
-        <div>
-          <Route exact path="/signup" component={Signup}/>
-          <Route exact path="/signin" component={Signin}/>
-          <Route path="/" component={()=>{
-            return (
-              <div>
-              <Topbar/>
-                <main>
+      <div>
+        <Topbar/>
+        <main>
 
-                  <Switch>
-                    <Route exact path="/" render={()=>{
-                      return <Redirect to="/explore/trance"/>
-                    }
-                    }/>
-                    <Route exact path="/explore" render={()=>{
-                      return <Redirect to="/explore/trance"/>
-                    }
-                    }/>
-                    <Route exact path="/Explore" component={Explore}/>
+          <Switch>
+            <Route exact path="/" render={() => {
+              return <Redirect to="/explore/trance"/>
+            }
+            }/>
+            <Route exact path="/explore" render={() => {
+              return <Redirect to="/explore/trance"/>
+            }
+            }/>
+            <Route exact path="/Explore" component={Explore}/>
 
-                    <Route path="/explore/:genre" render={(props)=>{
+            <Route path="/explore/:genre" render={(props) => {
 
-                      return <Explore playingNow= {this.nowPlaying.bind(this)}
-                                      {...props}/>
-                    }}/>
-                    <Route exact path="/playlist" render={(props)=>{
-                      return <Playlist playingNow= {this.nowPlaying.bind(this)}
-                                       {...props}/>
-
-                    }}/>
+              return <Explore playingNow={this.nowPlaying}
+                              addPlaylist={this.addPlaylist}
+                              {...props}/>
 
 
-                    {/*<Route path="/explore/:genre" component={Explore}/>*/}
-                    {/*<Route exact path="/playlist" component={Playlist}/>*/}
+            }}/>
+            <Route exact path="/playlist" render={(props) => {
+              return <Playlist playingNow={this.nowPlaying}
+                               playLists={this.state.playLists}
+                               addPlaylist={this.addPlaylist}
+                               {...props}/>
+
+            }}/>
 
 
-                  </Switch>
-                </main>
-                <Player playingNow= {this.state.playerSong}/>
-              </div>)
-
-          }}/>
+            {/*<Route path="/explore/:genre" component={Explore}/>*/}
+            {/*<Route exact path="/playlist" component={Playlist}/>*/}
 
 
-        </div>
-      </BrowserRouter>
-    );
+          </Switch>
+        </main>
+        <Player playingNow={this.state.playerSong}/>
+      </div>)
+
+    // }}/>
+
+
+    // </div>
+    // </BrowserRouter>
+    // );
   };
 }
 

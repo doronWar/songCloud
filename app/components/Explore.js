@@ -12,7 +12,7 @@ export default class Explore extends React.Component {
     super();
     this.state = {
       songs: [],
-      loadingState: "loaded",
+      loadingState: "loading",
       clientId: "2t9loNQH90kzJcsFCODdigxfp325aq4z",
       offset: 0,
       limit: 15
@@ -29,7 +29,7 @@ export default class Explore extends React.Component {
 
   loadSongs() {
 
-    this.setState({loadingState: 'loaded'})
+    this.setState({loadingState: 'loading'})
     const genre = this.props.match.params.genre;
     const xhr = new XMLHttpRequest();
 
@@ -39,9 +39,9 @@ export default class Explore extends React.Component {
 
     xhr.addEventListener('load', () => {
 
-      this.setState({songs: JSON.parse(xhr.responseText)})
+      this.setState({songs: JSON.parse(xhr.responseText), loadingState: 'loaded'})
       // console.info(this.state.songs);
-      console.info(this.state.offset);
+      // console.info('rendered');
     })
     xhr.addEventListener('error', () => {
       this.setState({loadingState: 'error'})
@@ -97,6 +97,13 @@ export default class Explore extends React.Component {
 
 
   render() {
+
+    if (this.state.loadingState === 'loading') {
+    return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
+
+    }
+
+
     if (this.state.loadingState === 'error') {
       return (<div className="error-loading-page">
         <h1>Loading failed please try again</h1>
