@@ -30,6 +30,11 @@ export default class Playlist extends React.Component {
               <span>1</span>
               </p>
               <ul>
+                {element.songs.map((song) => <li key={song.id} className="one-song">
+          <Songthumbnail
+                         nowPlaying={this.props.playingNow}
+                         song={song}/>
+        </li>)}
                 {/*<li key={element.songs.id}>{element.songs}</li>*/}
               </ul>
             </li>
@@ -40,6 +45,15 @@ export default class Playlist extends React.Component {
 
   }
 
+
+listOfPlaylist(){
+
+  return (
+    this.props.playLists.map((playList)=>{
+      return <input type="button" value={playList.title} className="playlist-links"/>
+    })
+  )
+}
 
   render() {
 
@@ -61,6 +75,7 @@ export default class Playlist extends React.Component {
         <aside className="playlist-holder">
           <button className="btn-add-playlist">Add new Playlist</button>
           <span className="seperating-lien"/>
+          {this.listOfPlaylist()}
         </aside>
         <section className="play-list-background">
           <ul className="temp-ul">

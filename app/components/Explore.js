@@ -41,6 +41,7 @@ export default class Explore extends React.Component {
 
       this.setState({songs: JSON.parse(xhr.responseText), loadingState: 'loaded'})
       // console.info(this.state.songs);
+
       // console.info('rendered');
     })
     xhr.addEventListener('error', () => {
@@ -74,8 +75,10 @@ export default class Explore extends React.Component {
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
           <Songthumbnail
                          nowPlaying={this.props.playingNow}
-                         song={song}/>
+                         song={song}
+                         addPlaylist={this.props.addPlaylist}/>
         </li>)}
+
 
       </ul>
     )
@@ -97,7 +100,7 @@ export default class Explore extends React.Component {
 
 
   render() {
-
+      console.log(this.props.addPlaylist);
     if (this.state.loadingState === 'loading') {
     return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
 

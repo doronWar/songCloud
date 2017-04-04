@@ -27,14 +27,8 @@ export default class Root extends React.Component {
 
     this.state = {
       playerSong: 'none',
-      playLists:[{
-        id: '12435',
-        title:'test',
-        songs:[{
-          title: "songe",
-          id:"1524573"
-        }]
-      }]
+      playLists:[
+      ]
     }
 
   }

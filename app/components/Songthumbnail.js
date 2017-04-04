@@ -50,9 +50,10 @@ render(){
          }} onClick={()=>{
         this.changeHeartState();
       }}/>
-      <div className="menu-toggle-view" ref={(addToPlaylist)=>{
-        this.addToPlaylist = addToPlaylist}}>
-      <AddToPlaylist/>
+      <div className="menu-toggle-view" ref={(addSongToPlaylist)=>{
+        this.addSongToPlaylist = addSongToPlaylist}}>
+      <AddToPlaylist addPlaylist={this.props.addPlaylist}
+                      song={this.props.song}/>
       </div>
 
     </div>
