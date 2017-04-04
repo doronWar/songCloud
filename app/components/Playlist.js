@@ -2,6 +2,7 @@
  * Created by Doron Warzager on 28/03/2017.
  */
 import React from 'react';
+import Songthumbnail from './Songthumbnail';
 
 export default class Playlist extends React.Component {
 
@@ -25,18 +26,22 @@ export default class Playlist extends React.Component {
       return (
         this.props.playLists.map((element)=>{
           return(
+            
             <li key={element.id} className="play-list-title">
               <p>{element.title}
               <span>1</span>
               </p>
-              <ul>
-                {element.songs.map((song) => <li key={song.id} className="one-song">
-          <Songthumbnail
-                         nowPlaying={this.props.playingNow}
-                         song={song}/>
-        </li>)}
-                {/*<li key={element.songs.id}>{element.songs}</li>*/}
-              </ul>
+              {/*<ul>*/}
+                {/*{element.songs.map((song) =>{*/}
+                  {/*return( */}
+                    {/*<li key={song.id} className="one-song">*/}
+                    {/*<Songthumbnail*/}
+                      {/*nowPlaying={this.props.playingNow}*/}
+                      {/*song={song}/>*/}
+                  {/*</li>)*/}
+                {/*})}*/}
+                {/*/!*<li key={element.songs.id}>{element.songs}</li>*!/*/}
+              {/*</ul>*/}
             </li>
           )})
       );
@@ -55,10 +60,14 @@ listOfPlaylist(){
   )
 }
 
+
+addNewPlayListBybutton(){
+  this.props.addPlaylist(undefined,'new list')
+}
   render() {
 
-    const playlistsExists = !!this.props.playLists;
-
+    const playlistsExists = this.props.playLists.length !==0
+    
 
 
     // const playlists = this.props.playLists &&
@@ -73,7 +82,7 @@ listOfPlaylist(){
       <div className="plalist-page">
         {/*{console.info(this.props.addPlaylist)}*/}
         <aside className="playlist-holder">
-          <button className="btn-add-playlist">Add new Playlist</button>
+          <button className="btn-add-playlist" onClick={()=>{ this.addNewPlayListBybutton()}}>Add new Playlist</button>
           <span className="seperating-lien"/>
           {this.listOfPlaylist()}
         </aside>

@@ -335,12 +335,21 @@ list-style: none;
 
   background-color: white;
   border: 1px solid grey;
-  width:100px;
+  width:150px;
   height: 100px;
   position: absolute;
   bottom: -100px;
   right: 0;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-to-playlist-menu p{
+  font-size: 12px;
+  display: inline-block;
+  margin:0;
+  //height:10px;
 }
 .menu-toggle-view{
   display: none;

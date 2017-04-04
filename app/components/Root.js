@@ -28,6 +28,7 @@ export default class Root extends React.Component {
     this.state = {
       playerSong: 'none',
       playLists:[
+    
       ]
     }
 
@@ -37,10 +38,24 @@ export default class Root extends React.Component {
     this.setState({playerSong: Object.assign({}, newSong)})
   }
 
-  addPlaylist(newPlaylist){
-    const playlists = this.state.playLists.map((n)=>n);
-    playlists.push(newPlaylist);
-    this.setState({playLists})
+  addPlaylist(song = {id: new Date()}, listTitle = 'temp'){
+
+    const playlists = this.state.playLists.map((playlist)=>playlist);
+    // const id=song.id || 2;
+    // const songToAdd = song || {};
+    const addedPlayList = {
+
+      title: listTitle,
+      id: song.id,
+      songs:[
+        song
+      ]
+    }
+
+    // this.setState({playLists: Object.assign({}, playlists, addedPlayList)})
+    playlists.push(addedPlayList);
+
+    this.setState({playLists: playlists})
 
   }
   addSongToPlaylist(){
@@ -77,6 +92,7 @@ export default class Root extends React.Component {
 
               return <Explore playingNow={this.nowPlaying}
                               addPlaylist={this.addPlaylist}
+                              listOfPlayLists={this.state.playLists}
                               {...props}/>
 
 

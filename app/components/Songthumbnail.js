@@ -27,7 +27,7 @@ songTime(){
   changeHeartState(){
   this.heartIcon.classList.toggle('fa-heart-o')
   this.heartIcon.classList.toggle('fa-heart')
-    this.addToPlaylist.classList.toggle('menu-toggle-view')
+    this.addSongToPlaylist.classList.toggle('menu-toggle-view')
   }
 
 render(){
@@ -53,7 +53,8 @@ render(){
       <div className="menu-toggle-view" ref={(addSongToPlaylist)=>{
         this.addSongToPlaylist = addSongToPlaylist}}>
       <AddToPlaylist addPlaylist={this.props.addPlaylist}
-                      song={this.props.song}/>
+                      song={this.props.song}
+                     listOfPlayLists={this.props.listOfPlayLists}/>
       </div>
 
     </div>

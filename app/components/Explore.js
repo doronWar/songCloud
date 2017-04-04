@@ -76,7 +76,8 @@ export default class Explore extends React.Component {
           <Songthumbnail
                          nowPlaying={this.props.playingNow}
                          song={song}
-                         addPlaylist={this.props.addPlaylist}/>
+                         addPlaylist={this.props.addPlaylist}
+                         listOfPlayLists={this.props.listOfPlayLists}/>
         </li>)}
 
 
@@ -100,7 +101,6 @@ export default class Explore extends React.Component {
 
 
   render() {
-      console.log(this.props.addPlaylist);
     if (this.state.loadingState === 'loading') {
     return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
 
