@@ -21,8 +21,12 @@ dropdownMenuOfPlayLists(){
       {this.props.listOfPlayLists.map((oneList)=>{
         return (
           <div className="one-list-checkbox" key={oneList.id}>
-            <input type="checkbox" id={oneList.id} value={oneList.title}/>
-            <label htmlFor={oneList.id}>{oneList.title}</label>
+            <label htmlFor={oneList.id}>
+            <input type="checkbox"
+            id={oneList.id} value={oneList.title}
+
+            />
+            {oneList.title}</label>
           </div>
         )
       })}
