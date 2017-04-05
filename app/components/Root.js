@@ -15,6 +15,8 @@ import {
   Redirect
 } from 'react-router-dom';
 import React from 'react';
+import uuid from 'uuid';
+// console.info(uuid());
 
 
 export default class Root extends React.Component {
@@ -24,12 +26,14 @@ export default class Root extends React.Component {
 
     this.nowPlaying = this.nowPlaying.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
+    this.changePlayListName = this.changePlayListName.bind(this);
 
     this.state = {
       playerSong: 'none',
       playLists:[
-    
-      ]
+
+      ],
+
     }
 
   }
@@ -38,24 +42,37 @@ export default class Root extends React.Component {
     this.setState({playerSong: Object.assign({}, newSong)})
   }
 
-  addPlaylist(song = {id: new Date()}, listTitle = 'temp'){
+  addPlaylist(song , redirect){
 
     const playlists = this.state.playLists.map((playlist)=>playlist);
-    // const id=song.id || 2;
-    // const songToAdd = song || {};
+
     const addedPlayList = {
 
-      title: listTitle,
-      id: song.id,
-      songs:[
-        song
-      ]
+      title: 'New Playlist ',
+      id: uuid(),
+      songs: song? [song] : []
     }
 
-    // this.setState({playLists: Object.assign({}, playlists, addedPlayList)})
-    playlists.push(addedPlayList);
 
-    this.setState({playLists: playlists})
+    playlists.push(addedPlayList);
+    if(!redirect){
+      this.setState({playLists: playlists})
+    }
+    if(redirect){
+      this.setState({playLists: playlists}, ()=>{this.props.history.push("/playlist")}  )
+
+    }
+
+
+  }
+
+  changePlayListName(name, id){
+
+    const playLists = [...this.state.playLists];
+
+    const onePlayList = playLists.find((aPlayList) => aPlayList.id===id);
+    onePlayList.title = name;
+    this.setState({playLists: playLists})
 
   }
   addSongToPlaylist(){
@@ -101,6 +118,9 @@ export default class Root extends React.Component {
               return <Playlist playingNow={this.nowPlaying}
                                playLists={this.state.playLists}
                                addPlaylist={this.addPlaylist}
+                               changeName = {this.changePlayListName}
+                               listOfPlayLists={this.state.playLists}
+
                                {...props}/>
 
             }}/>
