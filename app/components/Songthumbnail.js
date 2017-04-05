@@ -52,9 +52,11 @@ export default class Songthumbnail extends React.Component {
         <div className="menu-toggle-view" ref={(addSongToPlaylist) => {
           this.addSongToPlaylist = addSongToPlaylist
         }}>
+
           <AddToPlaylist addPlaylist={this.props.addPlaylist}
                          song={this.props.song}
-                         listOfPlayLists={this.props.listOfPlayLists}/>
+                         listOfPlayLists={this.props.listOfPlayLists}
+                         addSongToPlaylist={this.props.addSongToPlaylist}/>
         </div>
 
       </div>

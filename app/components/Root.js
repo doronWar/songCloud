@@ -27,12 +27,14 @@ export default class Root extends React.Component {
     this.nowPlaying = this.nowPlaying.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
     this.changePlayListName = this.changePlayListName.bind(this);
+    this.addSongToPlaylist=this.addSongToPlaylist.bind(this);
 
     this.state = {
       playerSong: 'none',
       playLists:[
 
       ],
+
 
     }
 
@@ -75,8 +77,9 @@ export default class Root extends React.Component {
     this.setState({playLists: playLists})
 
   }
-  addSongToPlaylist(){
-
+  addSongToPlaylist(song){
+    // this.setState({test: false})
+    console.log('i am here');
   }
 
 
@@ -110,6 +113,7 @@ export default class Root extends React.Component {
               return <Explore playingNow={this.nowPlaying}
                               addPlaylist={this.addPlaylist}
                               listOfPlayLists={this.state.playLists}
+                              addSongToPlaylist={this.addSongToPlaylist}
                               {...props}/>
 
 

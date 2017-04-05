@@ -73,11 +73,13 @@ export default class Explore extends React.Component {
     return (
       <ul className="song-holder">
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
+
           <Songthumbnail
                          nowPlaying={this.props.playingNow}
                          song={song}
                          addPlaylist={this.props.addPlaylist}
-                         listOfPlayLists={this.props.listOfPlayLists}/>
+                         listOfPlayLists={this.props.listOfPlayLists}
+                         addSongToPlaylist={this.props.addSongToPlaylist}/>
         </li>)}
 
 
