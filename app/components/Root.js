@@ -6,7 +6,7 @@ import Signin from './Signin'
 import Signup from './Signup'
 import Topbar from './Topbar'
 import Explore from './Explore'
-import Playlist from './Playlist'
+import Playlist from './Playlists'
 import Player from './Player'
 import {
   BrowserRouter,
