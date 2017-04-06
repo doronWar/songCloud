@@ -2,45 +2,54 @@
  * Created by Doron Warzager on 28/03/2017.
  */
 import {NavLink} from 'react-router-dom';
+import React from 'react';
 
 
-export default function Topbar () {
-  return (
-    <div>
-      <header className="header">
-      <nav className="nav-bar">
+export default class Topbar extends React.Component{
+  render() {
 
-        <div className="nav-parts">
-          <NavLink to="/" className="logo-content">
-            < i className="logo fa fa-mixcloud position-logo" aria-hidden="true"/>  SougCloud
-          </NavLink>
+    return (
+      <div>
+        <header className="header">
+          <nav className="nav-bar">
 
-        <ul className="nav-link-holder">
+            <div className="nav-parts">
+              <NavLink to="/" className="logo-content">
+                < i className="logo fa fa-mixcloud position-logo" aria-hidden="true"/> SougCloud
+              </NavLink>
 
-          <li className="nav-link">
-            <NavLink to="/Explore" activeClassName="selected" className="link">Explore</NavLink>
-          </li>
+              <ul className="nav-link-holder">
 
-          <li className="nav-link">
-            <NavLink to="/playlist" activeClassName="selected" className="link">Playlist</NavLink>
-          </li>
+                <li className="nav-link">
+                  <NavLink to="/Explore" activeClassName="selected" className="link">Explore</NavLink>
+                </li>
 
-        </ul>
-        </div>
+                <li className="nav-link">
+                  <NavLink to="/playlist" activeClassName="selected" className="link">Playlist</NavLink>
+                </li>
 
-        <div className="search-n-logout">
+              </ul>
+            </div>
 
-          <div className="search-icon-holder">
+            <div className="search-n-logout">
 
-            <i className="fa fa-search search-icon"/>
-            <input type="text" id="search-songs" placeholder="Song name"/>
+              <div className="search-icon-holder">
 
-          </div>
-        <input type="button" id="log-out-button" value="Log out" className="search-song"/>
-        </div>
+                <i className="fa fa-search search-icon"/>
+                <input type="text" id="search-songs" placeholder="Song name"
+                       value={this.props.searchMusic}
+                       onChange={(e) => {
+                         this.props.searchForMusic(e.target.value)
+                       }}
+                onBlur={()=>this.props.FindSearchTerm()}/>
 
-      </nav>
-      </header>
-    </div>
-  )
+              </div>
+              <input type="button" id="log-out-button" value="Log out" className="search-song"/>
+            </div>
+
+          </nav>
+        </header>
+      </div>
+    )
+  }
 }

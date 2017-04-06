@@ -30,6 +30,8 @@ export default class Root extends React.Component {
     this.addNRemoveSongToPlaylist=this.addNRemoveSongToPlaylist.bind(this);
     this.findSong = this.findSong.bind(this);
     this.resetNewListId= this.resetNewListId.bind(this);
+    this.searchForMusic = this.searchForMusic.bind(this)
+    this.FindSearchTerm = this.FindSearchTerm.bind(this)
 
     this.state = {
       playerSong: 'none',
@@ -37,11 +39,19 @@ export default class Root extends React.Component {
 
       ],
       newListId:"",
+      searchMusic:"",
 
     }
 
   }
 
+  searchForMusic(searchTerm){
+  this.setState({searchMusic:searchTerm})
+  }
+
+  FindSearchTerm(){
+    this.props.history.push(`/explore/${this.state.searchMusic}`)
+  }
 
   nowPlaying(newSong) {
     this.setState({playerSong: Object.assign({}, newSong)})
@@ -119,7 +129,9 @@ export default class Root extends React.Component {
     // <Route path="/" component={()=>{
     return (
       <div>
-        <Topbar/>
+        <Topbar searchForMusic={this.searchForMusic}
+                searchMusic={this.state.searchMusic}
+                FindSearchTerm={this.FindSearchTerm}/>
         <main>
 
           <Switch>
