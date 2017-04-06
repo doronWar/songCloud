@@ -79,7 +79,8 @@ export default class Explore extends React.Component {
                          song={song}
                          addPlaylist={this.props.addPlaylist}
                          listOfPlayLists={this.props.listOfPlayLists}
-                         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
+                         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+                         findSong={this.props.findSong}/>
         </li>)}
 
 

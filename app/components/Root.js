@@ -28,6 +28,7 @@ export default class Root extends React.Component {
     this.addPlaylist = this.addPlaylist.bind(this);
     this.changePlayListName = this.changePlayListName.bind(this);
     this.addNRemoveSongToPlaylist=this.addNRemoveSongToPlaylist.bind(this);
+    this.findSong = this.findSong.bind(this);
 
     this.state = {
       playerSong: 'none',
@@ -79,28 +80,32 @@ export default class Root extends React.Component {
   }
 
   //need id to find the right list and copy it and add the song...
-  addNRemoveSongToPlaylist(song, toAdd){
+  addNRemoveSongToPlaylist(song, toAdd, listId){
+    const playlists = [...this.state.playLists];
+    const onePlayList= playlists.find((playList)=> playList.id=== listId)
     if(toAdd){
-      const playlists = this.state.playLists.map((playlist)=>playlist);
-
-      const addedPlayList = {
-
-        title: 'New Playlist ',
-        id: uuid(),
-        songs: song? [song] : []
-      }
-
-      playlists.push(addedPlayList);
-
+        onePlayList.songs.push(song);
         this.setState({playLists: playlists})
-
-      console.info(song);
-      //add song
     }
     else{
-      //remove song
+      const indexOfSong= onePlayList.songs.indexOf((oneSong)=>{
+        return oneSong.id===song.id;
+      })
+      onePlayList.songs.splice(indexOfSong,1);
+      this.setState({playLists: playlists})
     }
 
+  }
+
+  findSong(playList, song){
+    const savedPlayList= this.state.playLists.find((thePlayList)=> thePlayList.id===playList.id);
+    return savedPlayList.songs.find((savedSong)=>{
+      return savedSong.id===song.id });
+    // return playListToCheck;
+    // const playListsNames = playLists.filter((onePlayList)=>{
+    //   return onePlayList.find((savedSong)=>savedSong.id===song.id)
+    // })
+    // return playListsNames
   }
 
 
@@ -135,6 +140,7 @@ export default class Root extends React.Component {
                               addPlaylist={this.addPlaylist}
                               listOfPlayLists={this.state.playLists}
                               addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
+                              findSong={this.findSong}
                               {...props}/>
 
 

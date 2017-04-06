@@ -12,10 +12,19 @@ export default class AddToPlatylistInputController extends React.Component{
     }
   }
 
-  changeInputState(){
+  changeInputState(listId){
     this.setState({isChosen: !this.state.isChosen},()=>{
-      this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen)
+      this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen, listId)
     })
+  }
+
+  componentDidMount(){
+    this.props.findSong(this.props.oneList, this.props.song);
+    const doesExists = this.props.findSong(this.props.oneList, this.props.song);
+    if(!doesExists){
+      this.setState({isChosen: !this.state.isChosen})
+    }
+
   }
 
 
@@ -27,7 +36,7 @@ export default class AddToPlatylistInputController extends React.Component{
                 <input type="checkbox"
                        id={oneList.id} value={oneList.title} checked={this.state.isChosen}
                        onChange={()=>{
-                         this.changeInputState();
+                         this.changeInputState(oneList.id);
 
                        }}
                 />

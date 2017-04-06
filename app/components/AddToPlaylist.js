@@ -34,7 +34,8 @@ creatNewPlyList()
         listOfPlayLists={this.props.listOfPlayLists}
         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
         oneList={oneList}
-        song={this.props.song}/>
+        song={this.props.song}
+        findSong={this.props.findSong}/>
 
        </div>
 
