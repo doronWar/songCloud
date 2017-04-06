@@ -11,7 +11,8 @@ export default class Songthumbnail extends React.Component {
   constructor() {
     super();
     this.state = {
-      clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z"
+      clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z",
+      showDropDownMenu:false,
     }
   }
 
@@ -23,17 +24,33 @@ export default class Songthumbnail extends React.Component {
     return min + ':' + sec
   }
 
+
+
   changeHeartState() {
+  if(!this.props.dropDownMenuState) {                 //checking if any other menu is open
+    this.props.setDropDownMenuId(this.props.song.id); //changing menu state in expre & saving this songs ID
     this.heartIcon.classList.toggle('fa-heart-o');
     this.heartIcon.classList.toggle('fa-heart');
-    this.addSongToPlaylist.classList.toggle('menu-toggle-view');
+    this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
+    // this.addSongToPlaylist.classList.toggle('menu-toggle-view');
   }
+  else if(this.props.dropDownMenuId===this.props.song.id){    // when reentering and having a menu open
+                                                          // checking if this menu's Id is the saved one.
+    this.props.setDropDownMenuId(this.props.song.id);     //changing through here the drop menu state back to false.
+    this.heartIcon.classList.toggle('fa-heart-o');
+    this.heartIcon.classList.toggle('fa-heart');
+    this.setState({showDropDownMenu: !this.state.showDropDownMenu})
+  }
+  }
+
 
   render() {
     const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large', 't300x300') : this.props.song.artwork_url;
 
     return (
-      <div className="song-thumbnail" data-id={this.props.song.uri + this.clientId}>
+      <div className="song-thumbnail"
+           data-id={this.props.song.uri + this.clientId}
+           >
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
              onClick={() => this.props.nowPlaying(this.props.song)}/>
@@ -49,15 +66,17 @@ export default class Songthumbnail extends React.Component {
            }} onClick={() => {
           this.changeHeartState();
         }}/>
-        <div className="menu-toggle-view" ref={(addSongToPlaylist) => {
-          this.addSongToPlaylist = addSongToPlaylist
-        }}>
+        <div >
 
+          { this.state.showDropDownMenu &&
           <AddToPlaylist addPlaylist={this.props.addPlaylist}
                          song={this.props.song}
                          listOfPlayLists={this.props.listOfPlayLists}
                          addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
-                         findSong={this.props.findSong}/>
+                         findSong={this.props.findSong}
+                         dropDownMenuClose={this.props.closeDropDownMenu}
+                         dropDownMenuState={this.props.oneDropMenuOpen}/>}
+
         </div>
 
       </div>

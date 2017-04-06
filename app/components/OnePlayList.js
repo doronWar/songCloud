@@ -21,7 +21,21 @@ togglePlaylistTitle(){
   }
 
 
-render(){
+  //gaing focuse on inpute when it appears
+  componentDidUpdate(){
+    this.inputState.focus()
+  }
+
+  //if component was just created (compering ID ) then give it focus!
+  componentDidMount(){
+     if(this.props.newList===this.props.element.id){
+      this.togglePlaylistTitle();
+      this.props.resetNewListId();      //reset saved id in Root
+
+    }
+  }
+
+  render(){
 
  const titleState= this.state.isNameHidden? "hiden": ""
       const inputeState= this.state.isInputeHidden? "ply-input-title hiden" : "ply-input-title"
@@ -36,9 +50,13 @@ render(){
               </p>
 
               <input className={inputeState} type="text" tabIndex="0" value={element.title}
-
+                      ref={(inputState)=>{this.inputState=inputState}}
                      onChange={(e)=>{this.props.changeName(e.target.value, element.id)}}
-                     onBlur={()=>{this.togglePlaylistTitle()}}
+                     onBlur={()=>{
+                       
+                       this.togglePlaylistTitle();
+
+                       }}
               />
               <span>{element.songs.length}</span>
               <button className="del-btn">Delete</button>

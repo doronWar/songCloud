@@ -29,17 +29,19 @@ export default class Root extends React.Component {
     this.changePlayListName = this.changePlayListName.bind(this);
     this.addNRemoveSongToPlaylist=this.addNRemoveSongToPlaylist.bind(this);
     this.findSong = this.findSong.bind(this);
+    this.resetNewListId= this.resetNewListId.bind(this);
 
     this.state = {
       playerSong: 'none',
       playLists:[
 
       ],
-
+      newListId:"",
 
     }
 
   }
+
 
   nowPlaying(newSong) {
     this.setState({playerSong: Object.assign({}, newSong)})
@@ -59,14 +61,16 @@ export default class Root extends React.Component {
 
     playlists.push(addedPlayList);
     if(!redirect){
-      this.setState({playLists: playlists})
+      this.setState({playLists: playlists, newListId:addedPlayList.id})
     }
     if(redirect){
-      this.setState({playLists: playlists}, ()=>{this.props.history.push("/playlist")}  )
+      this.setState({playLists: playlists, newListId:addedPlayList.id}, ()=>{this.props.history.push("/playlist")}  )
 
     }
+  }
 
-
+  resetNewListId(){
+    this.setState({newListId: ""});
   }
 
   changePlayListName(name, id){
@@ -79,7 +83,7 @@ export default class Root extends React.Component {
 
   }
 
-  //need id to find the right list and copy it and add the song...
+
   addNRemoveSongToPlaylist(song, toAdd, listId){
     const playlists = [...this.state.playLists];
     const onePlayList= playlists.find((playList)=> playList.id=== listId)
@@ -101,11 +105,6 @@ export default class Root extends React.Component {
     const savedPlayList= this.state.playLists.find((thePlayList)=> thePlayList.id===playList.id);
     return savedPlayList.songs.find((savedSong)=>{
       return savedSong.id===song.id });
-    // return playListToCheck;
-    // const playListsNames = playLists.filter((onePlayList)=>{
-    //   return onePlayList.find((savedSong)=>savedSong.id===song.id)
-    // })
-    // return playListsNames
   }
 
 
@@ -141,6 +140,7 @@ export default class Root extends React.Component {
                               listOfPlayLists={this.state.playLists}
                               addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
                               findSong={this.findSong}
+                              newListId={this.state.newListId}
                               {...props}/>
 
 
@@ -151,7 +151,8 @@ export default class Root extends React.Component {
                                addPlaylist={this.addPlaylist}
                                changeName = {this.changePlayListName}
                                listOfPlayLists={this.state.playLists}
-
+                               newListId={this.state.newListId}
+                               resetNewListId={this.resetNewListId}
                                {...props}/>
 
             }}/>

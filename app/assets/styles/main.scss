@@ -632,9 +632,16 @@ list-style: none;
 
 .playlist-song-holder{
   margin-top: 26px;
-  width:784px;
-  margin:0 auto;
+  width:100%;
+  //width:784px;
+  //margin:0 auto;
+  margin-left: 50px;
   padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 160px;
+
 }
 
 .playlist-links{

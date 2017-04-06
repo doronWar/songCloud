@@ -15,13 +15,29 @@ export default class Explore extends React.Component {
       loadingState: "loading",
       clientId: "2t9loNQH90kzJcsFCODdigxfp325aq4z",
       offset: 0,
-      limit: 15
+      limit: 15,
+      oneDropMenuOpen:false,
+      dropDownMenuId:'',
 
     }
-
+    this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
+    this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
 
   }
 
+  //                                  opening only one menu at a time
+  closeDropDownMenu(songId){
+    if(songId===this.state.dropDownMenuId) {
+      this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
+    }
+  }
+
+  setDropDownMenuId(menuId){
+    this.setState({dropDownMenuId:menuId},()=>{this.closeDropDownMenu(menuId)});
+  }
+
+
+  //                                  opening songs
 
   componentDidMount() {
     this.loadSongs();
@@ -80,7 +96,11 @@ export default class Explore extends React.Component {
                          addPlaylist={this.props.addPlaylist}
                          listOfPlayLists={this.props.listOfPlayLists}
                          addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
-                         findSong={this.props.findSong}/>
+                         findSong={this.props.findSong}
+                          dropDownMenuClose={this.closeDropDownMenu}
+                          dropDownMenuState={this.state.oneDropMenuOpen}
+                         setDropDownMenuId={this.setDropDownMenuId}
+                         dropDownMenuId={this.state.dropDownMenuId}/>
         </li>)}
 
 
