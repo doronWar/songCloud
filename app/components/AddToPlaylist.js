@@ -3,47 +3,59 @@
  */
 
 import React from 'react';
+import AddToPlatylistInputController from './AddToPlatylistInputController';
 
 
 export default class AddToPlaylist extends React.Component {
 
-creatNewPlyList(){
+  // constructor(){
+  //   super();
+  //   this.state={
+  //     isChosen:false,
+  //   }
+// }
+
+creatNewPlyList()
+{
   this.props.addPlaylist(this.props.song, 'redirect');
 }
 
+// changeInputState(){
+//   this.setState({isChosen: !this.state.isChosen})
+// }
+  dropdownMenuOfPlayLists(){
 
-dropdownMenuOfPlayLists(){
-
-  // listOfPlayLists={this.props.playLists}
   return(
-    <div>
+    this.props.listOfPlayLists.map((oneList)=>{
+      return (
+       <div key={oneList.id}>
 
-      {this.props.listOfPlayLists.map((oneList)=>{
-        return (
-          <div className="one-list-checkbox" key={oneList.id}>
-            <label htmlFor={oneList.id}>
-            <input type="checkbox"
-            id={oneList.id} value={oneList.title}
+        <AddToPlatylistInputController
+        listOfPlayLists={this.props.listOfPlayLists}
+        addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+        oneList={oneList}
+        song={this.props.song}/>
 
-            />
-            {oneList.title}</label>
-          </div>
-        )
-      })}
-    </div>
+       </div>
+
+      )
+    })
   )
 
-}
+  }
+
 
 render(){
 
   return (
     <div className="add-to-playlist-menu">
       <p>Add to playlist</p>
-      <input className="create-list-btn-explore"  type="button" value="Create playlist +" onClick={()=>this.creatNewPlyList()}/>
-        <div className="seporater-line"/>
+      <input className="create-list-btn-explore" type="button" value="Create playlist +"
+             onClick={() => this.creatNewPlyList()}/>
+      <div className="seporater-line"/>
       <div className="playlist-checkbox-holder">
-      {this.dropdownMenuOfPlayLists()}
+
+        {this.dropdownMenuOfPlayLists()}
       </div>
       {/*<label htmlFor="playlist-name">temp</label>*/}
       {/*<input type="radio" id="playlist-name" value="list name"/>*/}

@@ -35,7 +35,7 @@ render(){
               >{element.title}
               </p>
 
-              <input className={inputeState} type="text" tabIndex="0"value={element.title}
+              <input className={inputeState} type="text" tabIndex="0" value={element.title}
 
                      onChange={(e)=>{this.props.changeName(e.target.value, element.id)}}
                      onBlur={()=>{this.togglePlaylistTitle()}}

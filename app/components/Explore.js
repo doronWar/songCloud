@@ -79,7 +79,7 @@ export default class Explore extends React.Component {
                          song={song}
                          addPlaylist={this.props.addPlaylist}
                          listOfPlayLists={this.props.listOfPlayLists}
-                         addSongToPlaylist={this.props.addSongToPlaylist}/>
+                         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
         </li>)}
 
 

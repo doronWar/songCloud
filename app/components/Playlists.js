@@ -10,39 +10,14 @@ export default class Playlist extends React.Component {
 
   constructor() {
     super();
-    // this.togglePlaylistTitle= this.togglePlaylistTitle.bind(this);
-    // this.creatUIPlyalist = this.creatUIPlyalist.bind(this);
+
     this.state={
-      // isNameHidden:false,
-      // isInputeHidden:true,
+
     }
 
 
 
   }
-
-  // togglePlaylistTitle(){
-  //   this.setState({isNameHidden: !this.state.isNameHidden})
-  //   this.setState({isInputeHidden: !this.state.isInputeHidden})
-
-
-  //   // this.setState({isNameHidden: this.state.isInputeHidden})
-  //   // this.setState({isInputeHidden: this.state.isNameHidden})
-  //   // this.playListTitle.classList.toggle('hide-title')
-  //   // this.inpuListTitle.classList.toggle('hide-title')
-
-
-  // }
-
-// <p ref={(element)=>{this.playListTitle = element}}
-// onClick={()=>{this.togglePlaylistTitle()}}
-// >{element.title}</p>
-//
-// <input className="hide-title ply-input-title" type="text" tabIndex="0"value={element.title}
-// ref={(element)=>{this.inpuListTitle = element}}
-// onChange={(e)=>{this.props.changeName(e.target.value, element.id)}}
-// onBlur={()=>{this.togglePlaylistTitle()}}
-// />
 
 
   creatUIPlyalist(playlistsExists) {

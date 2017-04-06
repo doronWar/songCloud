@@ -56,7 +56,7 @@ export default class Songthumbnail extends React.Component {
           <AddToPlaylist addPlaylist={this.props.addPlaylist}
                          song={this.props.song}
                          listOfPlayLists={this.props.listOfPlayLists}
-                         addSongToPlaylist={this.props.addSongToPlaylist}/>
+                         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
         </div>
 
       </div>

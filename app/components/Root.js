@@ -27,7 +27,7 @@ export default class Root extends React.Component {
     this.nowPlaying = this.nowPlaying.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
     this.changePlayListName = this.changePlayListName.bind(this);
-    this.addSongToPlaylist=this.addSongToPlaylist.bind(this);
+    this.addNRemoveSongToPlaylist=this.addNRemoveSongToPlaylist.bind(this);
 
     this.state = {
       playerSong: 'none',
@@ -77,9 +77,30 @@ export default class Root extends React.Component {
     this.setState({playLists: playLists})
 
   }
-  addSongToPlaylist(song){
-    // this.setState({test: false})
-    console.log('i am here');
+
+  //need id to find the right list and copy it and add the song...
+  addNRemoveSongToPlaylist(song, toAdd){
+    if(toAdd){
+      const playlists = this.state.playLists.map((playlist)=>playlist);
+
+      const addedPlayList = {
+
+        title: 'New Playlist ',
+        id: uuid(),
+        songs: song? [song] : []
+      }
+
+      playlists.push(addedPlayList);
+
+        this.setState({playLists: playlists})
+
+      console.info(song);
+      //add song
+    }
+    else{
+      //remove song
+    }
+
   }
 
 
@@ -113,7 +134,7 @@ export default class Root extends React.Component {
               return <Explore playingNow={this.nowPlaying}
                               addPlaylist={this.addPlaylist}
                               listOfPlayLists={this.state.playLists}
-                              addSongToPlaylist={this.addSongToPlaylist}
+                              addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
                               {...props}/>
 
 
