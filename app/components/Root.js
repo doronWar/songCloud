@@ -32,6 +32,7 @@ export default class Root extends React.Component {
     this.resetNewListId= this.resetNewListId.bind(this);
     this.searchForMusic = this.searchForMusic.bind(this)
     this.FindSearchTerm = this.FindSearchTerm.bind(this)
+     this.goToSignIn = this.goToSignIn.bind(this);
 
     this.state = {
       playerSong: 'none',
@@ -116,7 +117,10 @@ export default class Root extends React.Component {
     return savedPlayList.songs.find((savedSong)=>{
       return savedSong.id===song.id });
   }
+  goToSignIn() {
 
+    this.props.history.push("/signin");
+  }
 
   render() {
     // return (
@@ -132,7 +136,7 @@ export default class Root extends React.Component {
         <Topbar searchForMusic={this.searchForMusic}
                 searchMusic={this.state.searchMusic}
                 FindSearchTerm={this.FindSearchTerm}
-                goToSignIn={this.props.goToSignIn}/>
+                goToSignIn={this.goToSignIn}/>
         <main>
 
           <Switch>

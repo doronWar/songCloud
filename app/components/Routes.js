@@ -20,7 +20,7 @@ export default class Routes extends React.Component {
 
   constructor() {
     super();
-    this.goToSignIn = this.goToSignIn.bind(this);
+    // this.goToSignIn = this.goToSignIn.bind(this);
     this.goToSignOut = this.goToSignOut.bind(this);
   }
 
