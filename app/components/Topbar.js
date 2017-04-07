@@ -3,6 +3,7 @@
  */
 import {NavLink} from 'react-router-dom';
 import React from 'react';
+import Routes from './Routes';
 
 
 export default class Topbar extends React.Component{
@@ -44,7 +45,8 @@ export default class Topbar extends React.Component{
                 onBlur={()=>this.props.FindSearchTerm()}/>
 
               </div>
-              <input type="button" id="log-out-button" value="Log out" className="search-song"/>
+              <input type="button" id="log-out-button" value="Log out" className="search-song"
+              onClick={()=>{this.props.goToSignIn()}}/>
             </div>
 
           </nav>

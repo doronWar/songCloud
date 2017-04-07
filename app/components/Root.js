@@ -131,7 +131,8 @@ export default class Root extends React.Component {
       <div>
         <Topbar searchForMusic={this.searchForMusic}
                 searchMusic={this.state.searchMusic}
-                FindSearchTerm={this.FindSearchTerm}/>
+                FindSearchTerm={this.FindSearchTerm}
+                goToSignIn={this.props.goToSignIn}/>
         <main>
 
           <Switch>
