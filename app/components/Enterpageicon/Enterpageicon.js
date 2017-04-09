@@ -1,10 +1,10 @@
-/**
- * Created by Doron Warzager on 29/03/2017.
- */
+
+import './Enterpageicon.scss'
+
 
 export default function Enterpageicon(props) {
   return (
-    <div>
+    <div className="sign-in-modal">
       <i className="logo fa fa-mixcloud big-logo" aria-hidden="true"/>
       <h1 className="title-sign-in">Sound Cloud</h1>
       <div className="inser-info-component">

@@ -1,0 +1,79 @@
+@import 'assets/styles/colors';
+
+
+
+.plalist-page{
+  display: flex;
+}
+
+.playlist-holder{
+  width:200px;
+  height:100vw;
+  padding-top:77px;
+  //border: 1px solid #D8D8D8;
+
+  display: inline-block;
+  margin: 0;
+}
+
+.btn-add-playlist{
+  color: #fff ;
+  background-color: $mainBlue;
+  height: 40px;
+  width: 180px;
+  margin-top:25px;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+//transparent
+
+.btn-add-playlist p{
+  line-height: 40px;
+  margin:0 auto;
+}
+
+.seperating-lien{
+  border: 1px solid #D8D8D8;
+  width: 180px;
+  height: 1px;
+  margin-top: 25px;
+  display: block;
+  margin-left: 10px;
+}
+
+.empty-playlist-msg{
+  position: absolute;
+  top:40%;
+  left:40%;
+}
+
+.temp-ul{
+  margin-top:77px;
+  padding-left: 0;
+}
+
+.play-list-background{
+  //background-color: grey;
+  //height:500px;
+  width: 80vw;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  border-left: 2px solid #D8D8D8;
+  //border: 1px solid #D8D8D8;
+}
+
+.playlist-links{
+  border: 1px solid transparent;
+  background-color: white;
+  color:#000;
+  width: 90%;
+  height: 50px;
+  font-size: 15px;
+  margin-left: 20px;
+  text-align: left;
+
+
+}

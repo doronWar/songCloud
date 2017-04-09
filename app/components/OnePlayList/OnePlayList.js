@@ -1,9 +1,7 @@
-/**
- * Created by Doron Warzager on 05/04/2017.
- */
 
+import './OnePlayList.scss'
 import React from 'react';
-import Songthumbnail from './Songthumbnail';
+import Songthumbnail from '../Songthumbnail/Songthumbnail';
 
 
 export default class OnePlaylist extends React.Component {
@@ -53,7 +51,7 @@ togglePlaylistTitle(){
                       ref={(inputState)=>{this.inputState=inputState}}
                      onChange={(e)=>{this.props.changeName(e.target.value, element.id)}}
                      onBlur={()=>{
-                       
+
                        this.togglePlaylistTitle();
 
                        }}

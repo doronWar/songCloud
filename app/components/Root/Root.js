@@ -1,13 +1,13 @@
 /**
  * Created by Doron Warzager on 28/03/2017.
  */
-import Greeting from './Greeting'
-import Signin from './Signin'
-import Signup from './Signup'
-import Topbar from './Topbar'
-import Explore from './Explore'
-import Playlist from './Playlists'
-import Player from './Player'
+import Greeting from '../Greeting/Greeting'
+import Signin from '../Signin/Signin'
+import Signup from '../Signup/Signup'
+import Topbar from '../Topbar/Topbar'
+import Explore from '../Explore/Explore'
+import Playlist from '../Playlists/Playlists'
+import Player from '../Player/Player'
 import {
   BrowserRouter,
   Route,
@@ -27,30 +27,28 @@ export default class Root extends React.Component {
     this.nowPlaying = this.nowPlaying.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
     this.changePlayListName = this.changePlayListName.bind(this);
-    this.addNRemoveSongToPlaylist=this.addNRemoveSongToPlaylist.bind(this);
+    this.addNRemoveSongToPlaylist = this.addNRemoveSongToPlaylist.bind(this);
     this.findSong = this.findSong.bind(this);
-    this.resetNewListId= this.resetNewListId.bind(this);
-    this.searchForMusic = this.searchForMusic.bind(this)
-    this.FindSearchTerm = this.FindSearchTerm.bind(this)
-     this.goToSignIn = this.goToSignIn.bind(this);
+    this.resetNewListId = this.resetNewListId.bind(this);
+    this.searchForMusic = this.searchForMusic.bind(this);
+    this.FindSearchTerm = this.FindSearchTerm.bind(this);
+    this.goToSignIn = this.goToSignIn.bind(this);
 
     this.state = {
       playerSong: 'none',
-      playLists:[
-
-      ],
-      newListId:"",
-      searchMusic:"",
+      playLists: [],
+      newListId: "",
+      searchMusic: "",
 
     }
 
   }
 
-  searchForMusic(searchTerm){
-  this.setState({searchMusic:searchTerm})
+  searchForMusic(searchTerm) {
+    this.setState({searchMusic: searchTerm})
   }
 
-  FindSearchTerm(){
+  FindSearchTerm() {
     this.props.history.push(`/explore/${this.state.searchMusic}`)
   }
 
@@ -58,65 +56,71 @@ export default class Root extends React.Component {
     this.setState({playerSong: Object.assign({}, newSong)})
   }
 
-  addPlaylist(song , redirect){
+  addPlaylist(song, redirect) {
 
-    const playlists = this.state.playLists.map((playlist)=>playlist);
+    const playlists = this.state.playLists.map((playlist) => playlist);
 
     const addedPlayList = {
 
       title: 'New Playlist ',
       id: uuid(),
-      songs: song? [song] : []
+      songs: song ? [song] : []
     }
 
 
     playlists.push(addedPlayList);
-    if(!redirect){
-      this.setState({playLists: playlists, newListId:addedPlayList.id})
+    if (!redirect) {
+      this.setState({playLists: playlists, newListId: addedPlayList.id})
     }
-    if(redirect){
-      this.setState({playLists: playlists, newListId:addedPlayList.id}, ()=>{this.props.history.push("/playlist")}  )
+    if (redirect) {
+      this.setState({playLists: playlists, newListId: addedPlayList.id}, () => {
+        this.props.history.push("/playlist")
+      })
 
     }
   }
 
-  resetNewListId(){
+  resetNewListId() {
     this.setState({newListId: ""});
   }
 
-  changePlayListName(name, id){
+  changePlayListName(name, id) {
 
     const playLists = [...this.state.playLists];
 
-    const onePlayList = playLists.find((aPlayList) => aPlayList.id===id);
+    const onePlayList = playLists.find((aPlayList) => aPlayList.id === id);
     onePlayList.title = name;
     this.setState({playLists: playLists})
 
   }
 
 
-  addNRemoveSongToPlaylist(song, toAdd, listId){
+  addNRemoveSongToPlaylist(song, toAdd, listId) {
     const playlists = [...this.state.playLists];
-    const onePlayList= playlists.find((playList)=> playList.id=== listId)
-    if(toAdd){
-        onePlayList.songs.push(song);
-        this.setState({playLists: playlists})
+    const onePlayList = playlists.find((playList) => playList.id === listId);
+
+    if (toAdd) {
+      onePlayList.songs.push(song);
+      this.setState({playLists: playlists})
     }
-    else{
-      const indexOfSong= onePlayList.songs.indexOf((oneSong)=>{
-        return oneSong.id===song.id;
-      })
-      onePlayList.songs.splice(indexOfSong,1);
+    else {
+      const indexOfSong = onePlayList.songs.indexOf((oneSong) => {
+        return oneSong.id === song.id;
+      });
+
+      onePlayList.songs.splice(indexOfSong, 1);
       this.setState({playLists: playlists})
     }
 
   }
 
-  findSong(playList, song){
-    const savedPlayList= this.state.playLists.find((thePlayList)=> thePlayList.id===playList.id);
-    return savedPlayList.songs.find((savedSong)=>{
-      return savedSong.id===song.id });
+  findSong(playList, song) {
+    const savedPlayList = this.state.playLists.find((thePlayList) => thePlayList.id === playList.id);
+    return savedPlayList.songs.find((savedSong) => {
+      return savedSong.id === song.id
+    });
   }
+
   goToSignIn() {
 
     this.props.history.push("/signin");
@@ -166,7 +170,7 @@ export default class Root extends React.Component {
               return <Playlist playingNow={this.nowPlaying}
                                playLists={this.state.playLists}
                                addPlaylist={this.addPlaylist}
-                               changeName = {this.changePlayListName}
+                               changeName={this.changePlayListName}
                                listOfPlayLists={this.state.playLists}
                                newListId={this.state.newListId}
                                resetNewListId={this.resetNewListId}

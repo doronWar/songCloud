@@ -2,10 +2,10 @@
  * Created by Doron Warzager on 04/04/2017.
  */
 
-import Explore from './Explore'
-import Signin from './Signin'
-import Signup from './Signup'
-import Root from './Root'
+import Explore from '../Explore/Explore'
+import Signin from '../Signin/Signin'
+import Signup from '../Signup/Signup'
+import Root from '../Root/Root'
 
 import React from 'react';
 import {

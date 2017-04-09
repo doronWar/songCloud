@@ -1,6 +1,5 @@
-/**
- * Created by Doron Warzager on 28/03/2017.
- */
+
+import './Player.scss'
 export default function Player(song) {
   const songImg= song.playingNow.artwork_url ;
   const songTitle=song.playingNow.title || "song name";

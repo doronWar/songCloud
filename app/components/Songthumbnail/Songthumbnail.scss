@@ -1,0 +1,99 @@
+@import 'assets/styles/colors';
+
+
+//thumbnail for each song
+.song-thumbnail{
+  width: 220px;
+  height:140px;
+  background-color: white;
+  border: 1px solid grey;
+  position: relative;
+  //z-index: 0;
+  //margin-right:10px;
+
+  //margin-right:75px;
+}
+
+//the li that holds the thumbnail
+.one-song{
+  list-style: none;
+  margin-right:75px;
+  margin-bottom: 30px;
+}
+
+.song-img{
+  width: 200px;
+  height: 85px;
+  margin: 0 auto;
+  //text-align: center;
+  display: block;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // margin-bottom:7px;
+}
+.song-title{
+  margin:0 0 0 10px;
+  font-size: 11px;
+
+  height: 10px;
+  line-height: 20px;
+
+}
+
+
+.song-time{
+  width:20px;
+  height: 13px;
+  font-size: 10px;
+  display: inline-block;
+  margin:0 0 0 2px;
+  //float: left;
+}
+.time-logo{
+  font-size: 10px;
+  margin-left:10px;
+  //float: left;
+}
+
+.add-to-playlist-icon{
+  float: right;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-right: 2px;
+}
+
+.fa-heart{
+  color: blue;
+}
+
+.add-to-playlist-menu{
+
+  background-color: white;
+  border: 1px solid grey;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.37);
+  width:130px;
+  height: 110px;
+  position: absolute;
+  bottom: -100px;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-to-playlist-menu p{
+  font-size: 11px;
+  display: inline-block;
+  margin:0;
+  margin-left: 10px;
+  line-height:20px;
+  //height:10px;
+}
+.menu-toggle-view{
+  display: none;
+  //z-index: 10;
+}
+
+
+///////////////////////////////////////////////////////////

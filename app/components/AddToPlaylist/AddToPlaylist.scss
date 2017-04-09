@@ -1,0 +1,43 @@
+@import 'assets/styles/colors';
+
+
+.create-list-btn-explore{
+  font-size: 11px;
+  border: 1px solid white;
+  background-color: #fff;
+  color: $mainBlue;
+  margin-top: 0;
+  display: inline-block;
+  text-align: left;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.seporater-line{
+  height:1px;
+  background-color: #E0E0E0;
+  width:100%;
+}
+
+.playlist-checkbox-holder{
+  width: 119px;
+  height:72px;
+  overflow: auto;
+  //float: right;
+  margin:0 auto;
+}
+
+.one-list-checkbox{
+  font-size: 9px;
+  color:#4A4A4A;
+  height:20px;
+}
+
+.one-list-checkbox input:checked{
+  color: blue;
+  //display: none;
+}
+
+.one-list-checkbox label{
+  margin-left: 5px;
+}

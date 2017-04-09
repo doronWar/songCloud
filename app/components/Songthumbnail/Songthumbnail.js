@@ -1,7 +1,8 @@
 /**
  * Created by Doron Warzager on 29/03/2017.
  */
-import  AddToPlaylist from "./AddToPlaylist";
+import './Songthumbnail.scss'
+import  AddToPlaylist from "../AddToPlaylist/AddToPlaylist";
 import 'font-awesome/css/font-awesome.css';
 import 'normalize.css/normalize.css';
 import  React from "react";

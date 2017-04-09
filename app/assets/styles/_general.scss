@@ -1,0 +1,56 @@
+
+
+
+
+//basic Css
+html {
+  box-sizing: border-box;
+  font: 100% 'Roboto', sans-serif;
+}
+body{
+  margin: 0;
+  // width:100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+a:link,
+a:visited {
+  text-decoration: none;
+
+
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: initial;
+
+}
+
+
+//****************************Erroe page****************************//
+//error loading page
+.error-loading-page{
+  padding-top: 10px;
+  margin-top:100px;
+  margin-bottom:100px;
+  background-color: $mainBlue;
+  height:150px;
+}
+
+
+//****************************helper ****************************//
+
+.hide-title{
+  display: none;
+}
+
+//helper
+.hiden{
+  display: none;
+}

@@ -1,9 +1,10 @@
 /**
  * Created by Doron Warzager on 28/03/2017.
  */
+import './Explore.scss'
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import Songthumbnail from './Songthumbnail';
+import Songthumbnail from '../Songthumbnail/Songthumbnail';
 // import Player from './Player'
 
 

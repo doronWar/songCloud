@@ -1,9 +1,10 @@
 /**
  * Created by Doron Warzager on 28/03/2017.
  */
+import './Topbar.scss'
 import {NavLink} from 'react-router-dom';
 import React from 'react';
-import Routes from './Routes';
+import Routes from '../Routes/Routes';
 
 
 export default class Topbar extends React.Component{

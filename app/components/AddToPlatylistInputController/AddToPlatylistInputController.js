@@ -22,7 +22,7 @@ export default class AddToPlatylistInputController extends React.Component{
     this.setState({isChosen: !this.state.isChosen})
   }
   componentDidMount(){
-    
+
     this.props.findSong(this.props.oneList, this.props.song);
     const doesExists = this.props.findSong(this.props.oneList, this.props.song);
     if(doesExists){

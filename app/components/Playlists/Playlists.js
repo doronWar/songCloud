@@ -1,10 +1,11 @@
 /**
  * Created by Doron Warzager on 28/03/2017.
  */
+import './Playlists.scss'
 import React from 'react';
 import uuid from 'uuid';
-import Songthumbnail from './Songthumbnail';
-import OnePlaylist from './OnePlaylist'
+import Songthumbnail from '../Songthumbnail/Songthumbnail';
+import OnePlaylist from '../OnePlayList/OnePlayList'
 
 export default class Playlist extends React.Component {
 
@@ -88,7 +89,7 @@ export default class Playlist extends React.Component {
       <div className="plalist-page">
 
         <aside className="playlist-holder">
-          <button className="btn-add-playlist" onClick={() => {
+          <button className="btn-add-playlist btn-effect" onClick={() => {
             this.addNewPlayListBybutton()
           }}>Add new Playlist
           </button>

@@ -1,0 +1,97 @@
+@import 'assets/styles/colors';
+
+.sign-in-modal{
+  height:100%;
+  width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 10;
+  background-color: #fff;
+}
+
+
+.big-logo {
+  font-size: 100px;
+  color: $mainBlue;
+  position: absolute;
+  left: 43.8%;
+  top: 5%;
+
+
+  //top:30px;
+  //right: 446px;
+
+}
+.title-sign-in{
+  position: absolute;
+  top: 14.7%;
+  left: 40.5%;
+
+  //top:130px;
+  //right:412px;
+  font-size: 40px;
+  color:$mainBlue;
+  font-weight: 300;
+}
+
+.inser-info-component {
+  position: absolute;
+  top:28.5%;
+  left:32.8%;
+  //top:231px;
+  //left:305px;
+}
+
+.unser-register{
+
+}
+.inser-info-component input,
+.inser-info-component label{
+  display: block;
+  font-size: 1rem;
+}
+.inser-info-component input{
+  //margin-bottom:20px;
+  margin-top:5px;
+}
+.inser-info-component label input{
+  width:40.6vw;
+  border:1px solid transparent;
+}
+.inser-info-component label:first-child input{
+  border-bottom: 1px solid $redError;
+}
+.inser-info-component label:last-child input{
+  border-bottom: 1px solid $mainBlue;
+}
+.user-name-error{
+  display: block;
+  height:30px;
+  color:$redError;
+  font-size: .7rem;
+}
+
+.btn-sign-in{
+  font-size: 13px;
+  background-color: $mainBlue;
+  color: white;
+  width:87px;
+  height:30px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  position: absolute;
+  top:65%;
+  left: 44.5%;
+}
+.btn-sign-in ~ p{
+  position: absolute;
+  top:71%;
+  left: 32.8%;
+  font-size: 14px;
+}
+.btn-sign-in ~ p a{
+  margin-left:20px;
+  color: $mainBlue;
+  font-size: 14px;
+}

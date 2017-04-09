@@ -1,0 +1,71 @@
+@import 'assets/styles/colors';
+
+//the UI of songs
+.song-holder{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom:100px;
+
+}
+
+//holds the genres
+.genre-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: $mainGrey;
+  margin: 0;
+  padding-left: 20px;
+  padding-right:20px;
+  height: 40px;
+}
+
+
+.genre-name{
+  list-style: none;
+  margin-left: 55px;
+  //margin-left: 10px;
+}
+
+.ganere-chosen{
+  font-weight: 600;
+  //background-color:#cdd6d8;
+  display: inline-block;
+  height:40px;
+}
+
+.genre-titl{
+  margin-left:40px;
+}
+
+.explore-component{
+  padding-top:77px;
+  line-height: 40px;
+}
+
+
+//navigation for song list
+.navigation-song-btn {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  //margin-top:51px;
+  margin-bottom:100px;
+}
+
+.navigation-song-btn span {
+  margin: 0 95.5px 0 95.5px;
+  font-size: 1rem;
+}
+
+
+.loading-logo{
+  position: absolute;
+  top:40%;
+  left: 40%;
+  font-size: 48px;
+  color: $mainBlue;
+}
