@@ -17,27 +17,27 @@ export default class Explore extends React.Component {
       clientId: "2t9loNQH90kzJcsFCODdigxfp325aq4z",
       offset: 0,
       limit: 15,
-      oneDropMenuOpen: false,
-      dropDownMenuId: '',
+      // oneDropMenuOpen: false,
+      // dropDownMenuId: '',
 
     }
-    this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
-    this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
+    // this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
+    // this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
 
   }
 
   //                                  opening only one menu at a time
-  closeDropDownMenu(songId) {
-    if (songId === this.state.dropDownMenuId) {
-      this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
-    }
-  }
-
-  setDropDownMenuId(menuId) {
-    this.setState({dropDownMenuId: menuId}, () => {
-      this.closeDropDownMenu(menuId)
-    });
-  }
+  // closeDropDownMenu(songId) {
+  //   if (songId === this.state.dropDownMenuId) {
+  //     this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
+  //   }
+  // }
+  //
+  // setDropDownMenuId(menuId) {
+  //   this.setState({dropDownMenuId: menuId}, () => {
+  //     this.closeDropDownMenu(menuId)
+  //   });
+  // }
 
 
   //                                  opening songs
@@ -100,10 +100,12 @@ export default class Explore extends React.Component {
             listOfPlayLists={this.props.listOfPlayLists}
             addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
             findSong={this.props.findSong}
-            dropDownMenuClose={this.closeDropDownMenu}
-            dropDownMenuState={this.state.oneDropMenuOpen}
-            setDropDownMenuId={this.setDropDownMenuId}
-            dropDownMenuId={this.state.dropDownMenuId}/>
+
+            dropDownMenuClose={this.props.closeDropDownMenu}
+            setDropDownMenuId={this.props.setDropDownMenuId}
+            dropDownMenuState={this.props.oneDropMenuOpen}
+            dropDownMenuId={this.props.dropDownMenuId}
+            parent="explore"/>
         </li>)}
 
 
@@ -162,6 +164,22 @@ export default class Explore extends React.Component {
               <NavLink to="/explore/dubstep" activeClassName="ganere-chosen" className="link">Dubstep</NavLink>
             </li>
 
+            <li className="genre-name">
+              <NavLink to="/explore/hip hop" activeClassName="ganere-chosen" className="link">Hip Hop</NavLink>
+            </li>
+
+            <li className="genre-name">
+              <NavLink to="/explore/rock" activeClassName="ganere-chosen" className="link">Rock</NavLink>
+            </li>
+
+            <li className="genre-name">
+              <NavLink to="/explore/pop" activeClassName="ganere-chosen" className="link">Pop</NavLink>
+            </li>
+
+            <li className="genre-name">
+              <NavLink to="/explore/reggae" activeClassName="ganere-chosen" className="link">Reggae</NavLink>
+            </li>
+
 
           </ul>
 
@@ -170,15 +188,15 @@ export default class Explore extends React.Component {
           <div className="song-page-wrapper">
             <div className="navigation-song-btn">
 
-              <button onClick={ this.changePage.bind(this, 'next')}>
+              <button className="nav-btn" onClick={ this.changePage.bind(this, 'next')}>
                 Next Page
               </button>
 
               <span>  page {this.state.offset / this.state.limit + 1}   </span>
 
-              <button onClick={ this.changePage.bind(this, 'priv')}
+              <button className="nav-btn" onClick={ this.changePage.bind(this, 'priv')}
                       disabled={isFirstPage}>
-                Previous Page
+                Prev
               </button>
 
             </div>

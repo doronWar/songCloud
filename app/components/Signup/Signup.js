@@ -7,7 +7,11 @@ export default function Signup() {
   return(
     <div>
       <div>
-        <Enterpageicon action="Create account" lastLine="Already have an account" linkTitle='Sign in'/>
+        <Enterpageicon
+          action="Create account"
+          lastLine="Already have an account"
+          linkTitle='Sign in'
+          redirectTo='SignIn'/>
       </div>
     </div>
   )

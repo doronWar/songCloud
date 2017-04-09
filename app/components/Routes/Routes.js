@@ -14,6 +14,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
+// import { Navigation } from 'react-router'
 
 
 export default class Routes extends React.Component {
@@ -21,17 +22,26 @@ export default class Routes extends React.Component {
   constructor() {
     super();
     // this.goToSignIn = this.goToSignIn.bind(this);
-    this.goToSignOut = this.goToSignOut.bind(this);
+    // this.goToSignOut = this.goToSignOut.bind(this);
+    this.logIn = this.logIn.bind(this)
   }
 
-  goToSignIn() {
 
-    this.props.history.push("/signin");
-  }
 
-  goToSignOut() {
-    this.props.history.push("/signout");
+  logIn(){
+    console.info('what now?');
+    {/*<Redirect from='/SignIn' to='/explore' />*/}
+    // this.transitionTo('/explore')
   }
+  //
+  // goToSignIn() {
+  //
+  //   this.props.history.push("/signin");
+  // }
+  //
+  // goToSignOut() {
+  //   this.props.history.push("/signout");
+  // }
 
   render() {
     return (
@@ -40,7 +50,8 @@ export default class Routes extends React.Component {
 
           <Route exact path="/signup" component={Signup}/>
           <Route exact path="/signin" component={(props) => {
-            return <Signin goToSignOut={this.goToSignOut}
+            return <Signin logIn={this.logIn}
+                            goToSignOut={this.goToSignOut}
                            {...props}/>
           }}/>
           <Route path="/" component={(props) => {

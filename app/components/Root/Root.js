@@ -34,15 +34,40 @@ export default class Root extends React.Component {
     this.FindSearchTerm = this.FindSearchTerm.bind(this);
     this.goToSignIn = this.goToSignIn.bind(this);
 
+
+    this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
+    this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
+
     this.state = {
       playerSong: 'none',
       playLists: [],
       newListId: "",
       searchMusic: "",
+      oneDropMenuOpen: false,
+      dropDownMenuId: '',
 
     }
 
   }
+
+
+
+//                                  opening only one menu at a time
+  closeDropDownMenu(songId) {
+    if (songId === this.state.dropDownMenuId) {
+      this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
+    }
+  }
+
+  setDropDownMenuId(menuId) {
+    this.setState({dropDownMenuId: menuId}, () => {
+      this.closeDropDownMenu(menuId)
+    });
+  }
+
+
+
+
 
   searchForMusic(searchTerm) {
     this.setState({searchMusic: searchTerm})
@@ -79,6 +104,7 @@ export default class Root extends React.Component {
 
     }
   }
+
 
   resetNewListId() {
     this.setState({newListId: ""});
@@ -126,6 +152,8 @@ export default class Root extends React.Component {
     this.props.history.push("/signin");
   }
 
+
+
   render() {
     // return (
     // <BrowserRouter>
@@ -162,6 +190,10 @@ export default class Root extends React.Component {
                               addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
                               findSong={this.findSong}
                               newListId={this.state.newListId}
+                              oneDropMenuOpen ={this.state.oneDropMenuOpen}
+                              dropDownMenuId={this.state.dropDownMenuId}
+                              closeDropDownMenu={this.closeDropDownMenu}
+                              setDropDownMenuId={this.setDropDownMenuId}
                               {...props}/>
 
 
@@ -174,6 +206,12 @@ export default class Root extends React.Component {
                                listOfPlayLists={this.state.playLists}
                                newListId={this.state.newListId}
                                resetNewListId={this.resetNewListId}
+                               oneDropMenuOpen ={this.state.oneDropMenuOpen}
+                               dropDownMenuId={this.state.dropDownMenuId}
+                               closeDropDownMenu={this.closeDropDownMenu}
+                               setDropDownMenuId={this.setDropDownMenuId}
+                               findSong={this.findSong}
+                               addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
                                {...props}/>
 
             }}/>

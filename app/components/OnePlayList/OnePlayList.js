@@ -72,7 +72,16 @@ export default class OnePlaylist extends React.Component {
                 <Songthumbnail
                   nowPlaying={this.props.nowPlaying}
                   listOfPlayLists={this.props.listOfPlayLists}
-                  song={song}/>
+                  song={song}
+
+                  dropDownMenuClose={this.props.closeDropDownMenu}
+                  setDropDownMenuId={this.props.setDropDownMenuId}
+                  dropDownMenuState={this.props.oneDropMenuOpen}
+                  dropDownMenuId={this.props.dropDownMenuId}
+                  findSong={this.props.findSong}
+                  addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
+
+
               </li>)
           })}
         </ul>

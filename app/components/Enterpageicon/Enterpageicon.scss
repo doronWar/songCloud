@@ -25,8 +25,7 @@
   @include positionTopLeft(absolute, 28.5%, 32.8%);
 }
 
-.unser-register{
-}
+
 
 .inser-info-component input,
 .inser-info-component label {
@@ -34,27 +33,20 @@
   font-size: toRem(16);
 
   & input {
-    margin-top: 5px;
+    //margin-top: 5px;
 
-    & label input {
-      width: 40.6vw;
-      border: 1px solid transparent;
-    }
-    & label:first-child input {
-      border-bottom: 1px solid $redError;
-    }
-    & label:last-child input {
-      border-bottom: 1px solid $mainBlue;
-    }
+    //& label input {
+    //  width: 40.6vw;
+    //  border: 1px solid transparent;
+    //}
+    //& label:first-child input {
+    //  border-bottom: 1px solid $redError;
+    //}
+    //& label:last-child input {
+    //  border-bottom: 1px solid $mainBlue;
+    //}
 
   }
-}
-
-.user-name-error{
-  display: block;
-  height:30px;
-  color:$redError;
-  font-size: .7rem;
 }
 
 .btn-sign-in{
@@ -78,4 +70,36 @@
   }
 
 
+}
+
+//effects:
+
+.unser-register{
+  position: relative;
+  & input{
+    //position: relative;
+    //height: 0;
+  }
+  & .labels{
+    //margin-b: 20px;
+  }
+}
+
+.login-inputes{
+  border: 1px solid transparent;
+  border-bottom: 1px solid $mainBlue;
+  width: 40.6vw;
+  margin-top: 5px;
+
+  &:focus{
+    outline: none;
+  }
+}
+
+
+.user-name-error{
+  display: block;
+  height:30px;
+  color:$redError;
+  font-size: .7rem;
 }

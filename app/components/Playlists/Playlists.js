@@ -14,6 +14,7 @@ export default class Playlist extends React.Component {
 
     this.state = {
       newList: '',
+      effect:"btn-add-playlist btn-eff",
     }
 
 
@@ -55,7 +56,14 @@ export default class Playlist extends React.Component {
                            newList={this.props.newListId}
                            resetNewListId={this.props.resetNewListId}
 
-              />
+                           dropDownMenuClose={this.props.closeDropDownMenu}
+                           setDropDownMenuId={this.props.setDropDownMenuId}
+                           dropDownMenuState={this.props.oneDropMenuOpen}
+                           dropDownMenuId={this.props.dropDownMenuId}
+                           findSong={this.props.findSong}
+                           addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
+
+
             </div>
           )
         })
@@ -89,7 +97,7 @@ export default class Playlist extends React.Component {
       <div className="plalist-page">
 
         <aside className="playlist-holder">
-          <button className="btn-add-playlist btn-effect" onClick={() => {
+          <button className="btn-add-playlist btn-eff" onClick={() => {
             this.addNewPlayListBybutton()
           }}>Add new Playlist
           </button>

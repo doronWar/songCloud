@@ -5,6 +5,37 @@
 @import 'helpers';
 
 
+.btn-eff{
+  position: relative;
+  overflow: hidden;
+
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-eff:after {
+  content: "";
+  background: $darkBlue;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -40px;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.btn-eff:active:after{
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
 
 // ****************************sign In\up page**************************** //
 

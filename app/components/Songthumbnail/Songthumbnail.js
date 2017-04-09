@@ -75,7 +75,8 @@ export default class Songthumbnail extends React.Component {
                          addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
                          findSong={this.props.findSong}
                          dropDownMenuClose={this.props.closeDropDownMenu}
-                         dropDownMenuState={this.props.oneDropMenuOpen}/>}
+                         dropDownMenuState={this.props.oneDropMenuOpen}
+                        parent={this.props.parent}/>}
 
         </div>
 

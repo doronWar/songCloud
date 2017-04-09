@@ -1,5 +1,6 @@
 @import 'assets/styles/colors';
 
+
 // ****************************nav bar**************************** //
 
 .header {
@@ -43,6 +44,9 @@
   line-height: 56px;
   padding-top: 10px;
   //margin-right:40px;
+  &:hover{
+    color: white;
+}
 }
 
 
@@ -51,43 +55,45 @@
   margin: 0 ;
   padding: 0;
   list-style: none;
-}
 
-.nav-link{
-  float: left;
-  width: 71px;
-  height:77px;
-  color: white;
-  //padding-right: 20px;
-}
+  .nav-link{
+    float: left;
+    width: 71px;
+    height:77px;
+    color: white;
+    //padding-right: 20px;
+  }
 
-.nav-link a{
-  display: inline-block;
-  padding-left: 10px;
-  width: 100%;
-  line-height: 77px;
-  //line-height: 66px;
+  .nav-link a{
+    display: inline-block;
+    padding-left: 10px;
+    width: 100%;
+    line-height: 77px;
+    color: white;
+    //line-height: 66px;
 
-}
+  }
 
 
-.selected{
-  background-color:$darkBlue;
-  width:100%;
+  .selected{
+    background-color:$darkBlue;
+    width:100%;
+
+  }
 
 }
 
 
 
 .header div:last-child {
-  width:  355px;
+  width:  455px;
   justify-content: space-between;
   padding-top: 25px;
 }
 
 #search-songs{
   display: inline-block;
-  width: 234px;
+  width: 334px;
   height:25px;
   align-self: center;
   border-radius: 15px;

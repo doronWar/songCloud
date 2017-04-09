@@ -47,8 +47,8 @@ export default class AddToPlaylist extends React.Component {
     return (
       <div className="add-to-playlist-menu">
         <p>Add to playlist</p>
-        <input className="create-list-btn-explore" type="button" value="Create playlist +"
-               onClick={() => this.creatNewPlyList()}/>
+        {this.props.parent && <input className="create-list-btn-explore" type="button" value="Create playlist +"
+                                     onClick={() => this.creatNewPlyList()}/>}
         <div className="seporater-line"/>
         <div className="playlist-checkbox-holder">
 

@@ -77,3 +77,96 @@
 
 
 }
+
+
+
+
+
+//.btn-eff {
+//  border: none;
+//  cursor: pointer;
+//  color: blue;
+//  padding: 15px 40px;
+//  border-radius: 2px;
+//  //font-size: 22px;
+//  /*   box-shadow: 2px 2px 4px rgba(0, 0, 0, .4); */
+//  background: white;
+//}
+
+
+
+
+/* Ripple magic */
+.btn-eff{
+  position: relative;
+  overflow: hidden;
+
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-eff:after {
+  content: "";
+  background: $darkBlue;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -40px;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.btn-eff:active:after{
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+//.btn-eff:after {
+  //content: '';
+  //position: absolute;
+  //top: 50%;
+  //left: 50%;
+  //width: 5px;
+  //height: 5px;
+  //background: $darkBlue;
+  //opacity: 0;
+  //border-radius: 100%;
+  //transform: scale(1, 1) translate(-50%);
+  //transform-origin: 50% 50%;
+
+  //border: 1px solid red;
+//}
+
+
+
+//
+//@keyframes ripple {
+//  0% {
+//    transform: scale(0, 0);
+//    opacity: 1;
+//  }
+//  20% {
+//    transform: scale(25, 25);
+//    opacity: 1;
+//  }
+//  100% {
+//    opacity: 0;
+//    transform: scale(40, 40);
+//  }
+//}
+
+
+
+//.btn-eff:active:after{
+
+  //animation: ripple .6s ease-out;
+//}
+
+
