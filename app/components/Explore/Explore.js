@@ -17,8 +17,8 @@ export default class Explore extends React.Component {
       clientId: "2t9loNQH90kzJcsFCODdigxfp325aq4z",
       offset: 0,
       limit: 15,
-      oneDropMenuOpen:false,
-      dropDownMenuId:'',
+      oneDropMenuOpen: false,
+      dropDownMenuId: '',
 
     }
     this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
@@ -27,14 +27,16 @@ export default class Explore extends React.Component {
   }
 
   //                                  opening only one menu at a time
-  closeDropDownMenu(songId){
-    if(songId===this.state.dropDownMenuId) {
+  closeDropDownMenu(songId) {
+    if (songId === this.state.dropDownMenuId) {
       this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
     }
   }
 
-  setDropDownMenuId(menuId){
-    this.setState({dropDownMenuId:menuId},()=>{this.closeDropDownMenu(menuId)});
+  setDropDownMenuId(menuId) {
+    this.setState({dropDownMenuId: menuId}, () => {
+      this.closeDropDownMenu(menuId)
+    });
   }
 
 
@@ -71,14 +73,14 @@ export default class Explore extends React.Component {
 
     const prevGenre = prevProps.match.params.genre;
     const targetGenre = this.props.match.params.genre;
-    const currentSongs= this.state.offset;
+    const currentSongs = this.state.offset;
     const preveSongs = prevState.offset;
 
-    if (prevGenre !== targetGenre ) {
-      this.setState({offset:0});
+    if (prevGenre !== targetGenre) {
+      this.setState({offset: 0});
       this.loadSongs();
     }
-    if (currentSongs !== preveSongs ) {
+    if (currentSongs !== preveSongs) {
       this.loadSongs();
     }
 
@@ -92,16 +94,16 @@ export default class Explore extends React.Component {
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail
-                         nowPlaying={this.props.playingNow}
-                         song={song}
-                         addPlaylist={this.props.addPlaylist}
-                         listOfPlayLists={this.props.listOfPlayLists}
-                         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
-                         findSong={this.props.findSong}
-                          dropDownMenuClose={this.closeDropDownMenu}
-                          dropDownMenuState={this.state.oneDropMenuOpen}
-                         setDropDownMenuId={this.setDropDownMenuId}
-                         dropDownMenuId={this.state.dropDownMenuId}/>
+            nowPlaying={this.props.playingNow}
+            song={song}
+            addPlaylist={this.props.addPlaylist}
+            listOfPlayLists={this.props.listOfPlayLists}
+            addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+            findSong={this.props.findSong}
+            dropDownMenuClose={this.closeDropDownMenu}
+            dropDownMenuState={this.state.oneDropMenuOpen}
+            setDropDownMenuId={this.setDropDownMenuId}
+            dropDownMenuId={this.state.dropDownMenuId}/>
         </li>)}
 
 
@@ -126,7 +128,7 @@ export default class Explore extends React.Component {
 
   render() {
     if (this.state.loadingState === 'loading') {
-    return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
+      return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
 
     }
 
@@ -172,7 +174,7 @@ export default class Explore extends React.Component {
                 Next Page
               </button>
 
-              <span>  page {this.state.offset/this.state.limit +1}   </span>
+              <span>  page {this.state.offset / this.state.limit + 1}   </span>
 
               <button onClick={ this.changePage.bind(this, 'priv')}
                       disabled={isFirstPage}>

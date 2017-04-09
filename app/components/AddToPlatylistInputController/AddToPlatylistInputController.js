@@ -4,52 +4,53 @@
 import React from "react";
 
 
-export default class AddToPlatylistInputController extends React.Component{
-  constructor(){
+export default class AddToPlatylistInputController extends React.Component {
+  constructor() {
     super();
-    this.state={
-      isChosen:false,
+    this.state = {
+      isChosen: false,
     }
   }
 
-  changeInputState(listId){
-    this.setState({isChosen: !this.state.isChosen},()=>{
+  changeInputState(listId) {
+    this.setState({isChosen: !this.state.isChosen}, () => {
       this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen, listId)
     })
   }
 
-  changeInputByLabelState(listId){
+  changeInputByLabelState(listId) {
     this.setState({isChosen: !this.state.isChosen})
   }
-  componentDidMount(){
+
+  componentDidMount() {
 
     this.props.findSong(this.props.oneList, this.props.song);
     const doesExists = this.props.findSong(this.props.oneList, this.props.song);
-    if(doesExists){
+    if (doesExists) {
       this.setState({isChosen: !this.state.isChosen})
     }
 
   }
 
 
-  render(){
+  render() {
     const oneList = this.props.oneList;
     return (
-            <div className="one-list-checkbox"> {/* had here a key - key={oneList.id}*/}
-              <label htmlFor={oneList.id}  >
-                <input type="checkbox"
-                       id={oneList.id} value={oneList.title}
-                       checked={this.state.isChosen}
-                       onChange={()=>{
-                         console.info('oops');
-                         this.changeInputState(oneList.id);
+      <div className="one-list-checkbox"> {/* had here a key - key={oneList.id}*/}
+        <label htmlFor={oneList.id}>
+          <input type="checkbox"
+                 id={oneList.id} value={oneList.title}
+                 checked={this.state.isChosen}
+                 onChange={() => {
+                   console.info('oops');
+                   this.changeInputState(oneList.id);
 
-                       }}
-                />
+                 }}
+          />
 
-                {oneList.title}</label>
-            </div>
-          )
-        }
+          {oneList.title}</label>
+      </div>
+    )
+  }
 
 }

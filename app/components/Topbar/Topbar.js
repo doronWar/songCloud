@@ -7,7 +7,7 @@ import React from 'react';
 import Routes from '../Routes/Routes';
 
 
-export default class Topbar extends React.Component{
+export default class Topbar extends React.Component {
   render() {
 
     return (
@@ -43,11 +43,13 @@ export default class Topbar extends React.Component{
                        onChange={(e) => {
                          this.props.searchForMusic(e.target.value)
                        }}
-                onBlur={()=>this.props.FindSearchTerm()}/>
+                       onBlur={() => this.props.FindSearchTerm()}/>
 
               </div>
               <input type="button" id="log-out-button" value="Log out" className="search-song"
-              onClick={()=>{this.props.goToSignIn()}}/>
+                     onClick={() => {
+                       this.props.goToSignIn()
+                     }}/>
             </div>
 
           </nav>

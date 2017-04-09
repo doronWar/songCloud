@@ -1,0 +1,23 @@
+@function toRem($value){
+  @return ($value/16)+rem
+}
+
+@mixin positionTopLeft($type, $top, $left){
+  position:$type;
+  top:$top;
+  left:$left;
+}
+
+@mixin widthHight($width, $height){
+  width:$width ;
+  height: $height;
+}
+
+.hide-title{
+  display: none;
+}
+
+//helper
+.hiden{
+  display: none;
+}

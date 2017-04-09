@@ -13,7 +13,7 @@ export default class Songthumbnail extends React.Component {
     super();
     this.state = {
       clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z",
-      showDropDownMenu:false,
+      showDropDownMenu: false,
     }
   }
 
@@ -26,22 +26,21 @@ export default class Songthumbnail extends React.Component {
   }
 
 
-
   changeHeartState() {
-  if(!this.props.dropDownMenuState) {                 //checking if any other menu is open
-    this.props.setDropDownMenuId(this.props.song.id); //changing menu state in expre & saving this songs ID
-    this.heartIcon.classList.toggle('fa-heart-o');
-    this.heartIcon.classList.toggle('fa-heart');
-    this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
-    // this.addSongToPlaylist.classList.toggle('menu-toggle-view');
-  }
-  else if(this.props.dropDownMenuId===this.props.song.id){    // when reentering and having a menu open
-                                                          // checking if this menu's Id is the saved one.
-    this.props.setDropDownMenuId(this.props.song.id);     //changing through here the drop menu state back to false.
-    this.heartIcon.classList.toggle('fa-heart-o');
-    this.heartIcon.classList.toggle('fa-heart');
-    this.setState({showDropDownMenu: !this.state.showDropDownMenu})
-  }
+    if (!this.props.dropDownMenuState) {                 //checking if any other menu is open
+      this.props.setDropDownMenuId(this.props.song.id); //changing menu state in expre & saving this songs ID
+      this.heartIcon.classList.toggle('fa-heart-o');
+      this.heartIcon.classList.toggle('fa-heart');
+      this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
+      // this.addSongToPlaylist.classList.toggle('menu-toggle-view');
+    }
+    else if (this.props.dropDownMenuId === this.props.song.id) {    // when reentering and having a menu open
+      // checking if this menu's Id is the saved one.
+      this.props.setDropDownMenuId(this.props.song.id);     //changing through here the drop menu state back to false.
+      this.heartIcon.classList.toggle('fa-heart-o');
+      this.heartIcon.classList.toggle('fa-heart');
+      this.setState({showDropDownMenu: !this.state.showDropDownMenu})
+    }
   }
 
 
@@ -51,7 +50,7 @@ export default class Songthumbnail extends React.Component {
     return (
       <div className="song-thumbnail"
            data-id={this.props.song.uri + this.clientId}
-           >
+      >
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
              onClick={() => this.props.nowPlaying(this.props.song)}/>

@@ -13,7 +13,7 @@ export default class Playlist extends React.Component {
     super();
 
     this.state = {
-      newList:'',
+      newList: '',
     }
 
 
