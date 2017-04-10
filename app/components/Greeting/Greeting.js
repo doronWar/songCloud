@@ -23,7 +23,6 @@ export default class Greeting extends React.Component {
   }
 
 
-
   // syncronizingKills() {
   //   const newState = [...this.state];
   //   newState.people = this.state.people.map((value) => {
@@ -35,16 +34,16 @@ export default class Greeting extends React.Component {
   letsCount() {
 
     // let newState =  [...this.state.people]
-    const counter =this.state.counter + 1;
+    const counter = this.state.counter + 1;
 
-    const newPeople = this.state.people.map((value)=>{
-      return Object.assign( {},value, {kills: counter})
+    const newPeople = this.state.people.map((value) => {
+      return Object.assign({}, value, {kills: counter})
       // const tempPerson = Object.assign( {},value)
       // tempPerson.kills = counter;
       // return tempPerson;
     });
 
-    this.setState({ counter, people : newPeople})
+    this.setState({counter, people: newPeople})
 
   }
 
@@ -53,8 +52,8 @@ export default class Greeting extends React.Component {
   }
 
   creaeList() {
-    const list = this.state.people.map((value,index)=>{
-      return <li key={value.name + String(index)}>{value.name  + ' kills: ' + value.kills}</li>
+    const list = this.state.people.map((value, index) => {
+      return <li key={value.name + String(index)}>{value.name + ' kills: ' + value.kills}</li>
     })
     return (
       <ul>

@@ -37,8 +37,8 @@ export default class AddToPlatylistInputController extends React.Component {
     const oneList = this.props.oneList;
     return (
       <div className="one-list-checkbox"> {/* had here a key - key={oneList.id}*/}
-        <label htmlFor={oneList.id}>
-          <input type="checkbox"
+        <label htmlFor={oneList.id} className="for-global-flag">
+          <input type="checkbox" className="for-global-flag"
                  id={oneList.id} value={oneList.title}
                  checked={this.state.isChosen}
                  onChange={() => {

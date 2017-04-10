@@ -1,27 +1,25 @@
 @import 'assets/styles/colors';
 
-
-
-.plalist-page{
+.plalist-page {
   display: flex;
 }
 
-.playlist-holder{
-  width:200px;
-  height:100vw;
-  padding-top:77px;
+.playlist-holder {
+  width: 200px;
+  height: 100vw;
+  padding-top: 77px;
   //border: 1px solid #D8D8D8;
 
   display: inline-block;
   margin: 0;
 }
 
-.btn-add-playlist{
-  color: #fff ;
+.btn-add-playlist {
+  color: #fff;
   background-color: $mainBlue;
   height: 40px;
   width: 180px;
-  margin-top:25px;
+  margin-top: 25px;
   margin-left: 10px;
   border-radius: 5px;
   font-size: 12px;
@@ -30,12 +28,12 @@
 
 //transparent
 
-.btn-add-playlist p{
+.btn-add-playlist p {
   line-height: 40px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
-.seperating-lien{
+.seperating-lien {
   border: 1px solid #D8D8D8;
   width: 180px;
   height: 1px;
@@ -44,18 +42,18 @@
   margin-left: 10px;
 }
 
-.empty-playlist-msg{
+.empty-playlist-msg {
   position: absolute;
-  top:40%;
-  left:40%;
+  top: 40%;
+  left: 40%;
 }
 
-.temp-ul{
-  margin-top:77px;
+.temp-ul {
+  margin-top: 77px;
   padding-left: 0;
 }
 
-.play-list-background{
+.play-list-background {
   //background-color: grey;
   //height:500px;
   width: 80vw;
@@ -65,22 +63,17 @@
   //border: 1px solid #D8D8D8;
 }
 
-.playlist-links{
+.playlist-links {
   border: 1px solid transparent;
   background-color: white;
-  color:#000;
+  color: #000;
   width: 90%;
   height: 50px;
   font-size: 15px;
   margin-left: 20px;
   text-align: left;
 
-
 }
-
-
-
-
 
 //.btn-eff {
 //  border: none;
@@ -93,11 +86,8 @@
 //  background: white;
 //}
 
-
-
-
 /* Ripple magic */
-.btn-eff{
+.btn-eff {
   position: relative;
   overflow: hidden;
 
@@ -121,7 +111,7 @@
   transition: all 0.8s
 }
 
-.btn-eff:active:after{
+.btn-eff:active:after {
   padding: 0;
   margin: 0;
   opacity: 1;
@@ -129,22 +119,20 @@
 }
 
 //.btn-eff:after {
-  //content: '';
-  //position: absolute;
-  //top: 50%;
-  //left: 50%;
-  //width: 5px;
-  //height: 5px;
-  //background: $darkBlue;
-  //opacity: 0;
-  //border-radius: 100%;
-  //transform: scale(1, 1) translate(-50%);
-  //transform-origin: 50% 50%;
+//content: '';
+//position: absolute;
+//top: 50%;
+//left: 50%;
+//width: 5px;
+//height: 5px;
+//background: $darkBlue;
+//opacity: 0;
+//border-radius: 100%;
+//transform: scale(1, 1) translate(-50%);
+//transform-origin: 50% 50%;
 
-  //border: 1px solid red;
+//border: 1px solid red;
 //}
-
-
 
 //
 //@keyframes ripple {
@@ -162,11 +150,9 @@
 //  }
 //}
 
-
-
 //.btn-eff:active:after{
 
-  //animation: ripple .6s ease-out;
+//animation: ripple .6s ease-out;
 //}
 
 

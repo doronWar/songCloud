@@ -11,6 +11,7 @@ import  React from "react";
 export default class Songthumbnail extends React.Component {
   constructor() {
     super();
+    this.closingDropFownMenu = this.closingDropFownMenu.bind(this)
     this.state = {
       clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z",
       showDropDownMenu: false,
@@ -26,8 +27,12 @@ export default class Songthumbnail extends React.Component {
   }
 
 
+  //dealing with toggle dropDown menu
+
   changeHeartState() {
+
     if (!this.props.dropDownMenuState) {                 //checking if any other menu is open
+      this.props.toggleDropDownMenu();
       this.props.setDropDownMenuId(this.props.song.id); //changing menu state in expre & saving this songs ID
       this.heartIcon.classList.toggle('fa-heart-o');
       this.heartIcon.classList.toggle('fa-heart');
@@ -43,6 +48,27 @@ export default class Songthumbnail extends React.Component {
     }
   }
 
+
+  //dealing with toggle dropDown menu - globaly!
+  componentDidUpdate() {
+    if (!this.props.showDropMenu && this.state.showDropDownMenu) {
+      this.closingDropFownMenu()
+    }
+
+  }
+
+  closingDropFownMenu() {
+    console.info('before if');
+
+    console.info('after if');
+    this.heartIcon.classList.toggle('fa-heart-o');  //for emptying the heart
+    this.heartIcon.classList.toggle('fa-heart');
+    this.props.setDropDownMenuId(this.props.song.id);   ////changing through here the drop menu state back to false.
+    this.setState({showDropDownMenu: !this.state.showDropDownMenu}) //closing local flage of dropDown menu.
+
+    // this.changeHeartState()
+
+  }
 
   render() {
     const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large', 't300x300') : this.props.song.artwork_url;
@@ -66,9 +92,9 @@ export default class Songthumbnail extends React.Component {
            }} onClick={() => {
           this.changeHeartState();
         }}/>
-        <div >
+        <div className="for-global-flag">
 
-          { this.state.showDropDownMenu &&
+          { (this.props.showDropMenu && this.state.showDropDownMenu) &&
           <AddToPlaylist addPlaylist={this.props.addPlaylist}
                          song={this.props.song}
                          listOfPlayLists={this.props.listOfPlayLists}
@@ -76,7 +102,8 @@ export default class Songthumbnail extends React.Component {
                          findSong={this.props.findSong}
                          dropDownMenuClose={this.props.closeDropDownMenu}
                          dropDownMenuState={this.props.oneDropMenuOpen}
-                        parent={this.props.parent}/>}
+                         parent={this.props.parent}
+                         closingDropFownMenu={this.closingDropFownMenu}/>}
 
         </div>
 

@@ -27,12 +27,13 @@ export default class Routes extends React.Component {
   }
 
 
-
-  logIn(){
+  logIn() {
     console.info('what now?');
-    {/*<Redirect from='/SignIn' to='/explore' />*/}
+    {/*<Redirect from='/SignIn' to='/explore' />*/
+    }
     // this.transitionTo('/explore')
   }
+
   //
   // goToSignIn() {
   //
@@ -51,7 +52,7 @@ export default class Routes extends React.Component {
           <Route exact path="/signup" component={Signup}/>
           <Route exact path="/signin" component={(props) => {
             return <Signin logIn={this.logIn}
-                            goToSignOut={this.goToSignOut}
+                           goToSignOut={this.goToSignOut}
                            {...props}/>
           }}/>
           <Route path="/" component={(props) => {

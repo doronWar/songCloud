@@ -1,9 +1,9 @@
 @import 'assets/styles/colors';
 @import 'assets/styles/helpers';
 
-.sign-in-modal{
-  height:100%;
-  width:100%;
+.sign-in-modal {
+  height: 100%;
+  width: 100%;
   @include positionTopLeft(absolute, 0, 0);
   //position: absolute;
   //top:0;
@@ -11,7 +11,6 @@
   z-index: 10;
   background-color: #fff;
 }
-
 
 .big-logo {
   font-size: toRem(100);
@@ -21,12 +20,12 @@
   //left: 43.8%;
   //top: 5%;
 
-
   //top:30px;
   //right: 446px;
 
 }
-.title-sign-in{
+
+.title-sign-in {
   @include positionTopLeft(absolute, 14.7%, 40.5%);
   //position: absolute;
   //top: 14.7%;
@@ -35,7 +34,7 @@
   //top:130px;
   //right:412px;
   font-size: toRem(40);
-  color:$mainBlue;
+  color: $mainBlue;
   font-weight: 300;
 }
 
@@ -48,47 +47,47 @@
   //left:305px;
 }
 
-.unser-register{
+.unser-register {
 
 }
+
 .inser-info-component input,
-.inser-info-component label{
+.inser-info-component label {
   display: block;
   font-size: toRem(16);
 }
-.inser-info-component input{
-  //margin-bottom:20px;
-  margin-top:5px;
 
-  .inser-info-component label input{
-    width:40.6vw;
-    border:1px solid transparent;
+.inser-info-component input {
+  //margin-bottom:20px;
+  margin-top: 5px;
+
+  .inser-info-component label input {
+    width: 40.6vw;
+    border: 1px solid transparent;
   }
-  .inser-info-component label:first-child input{
+  .inser-info-component label:first-child input {
     border-bottom: 1px solid $redError;
   }
-  .inser-info-component label:last-child input{
+  .inser-info-component label:last-child input {
     border-bottom: 1px solid $mainBlue;
   }
 
-
-
 }
 
-.user-name-error{
+.user-name-error {
   display: block;
-  height:30px;
-  color:$redError;
+  height: 30px;
+  color: $redError;
   font-size: .7rem;
 }
 
-.btn-sign-in{
+.btn-sign-in {
   @include positionTopLeft(absolute, 65%, 44.5%);
   font-size: toRem(13);
   background-color: $mainBlue;
   color: white;
-  width:87px;
-  height:30px;
+  width: 87px;
+  height: 30px;
   border-radius: 5px;
   border: 1px solid transparent;
 
@@ -96,19 +95,17 @@
   //top:65%;
   //left: 44.5%;
 
-
-  & ~ p{
+  & ~ p {
     @include positionTopLeft(absolute, 71%, 32.8%);
     //position: absolute;
     //top:71%;
     //left: 32.8%;
     font-size: toRem(14);
   }
-  & ~ p a{
-    margin-left:20px;
+  & ~ p a {
+    margin-left: 20px;
     color: $mainBlue;
-    font-size:toRem(14);
+    font-size: toRem(14);
   }
-
 
 }

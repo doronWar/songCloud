@@ -4,7 +4,7 @@
 import Enterpageicon from '../Enterpageicon/Enterpageicon'
 
 export default function Signup() {
-  return(
+  return (
     <div>
       <div>
         <Enterpageicon

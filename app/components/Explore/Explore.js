@@ -90,7 +90,8 @@ export default class Explore extends React.Component {
   createThumbnail() {
 
     return (
-      <ul className="song-holder">
+      <ul className="song-holder"
+          onClick={(e) => this.props.closeAllDropDownMenues(e)}>
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail
@@ -105,6 +106,8 @@ export default class Explore extends React.Component {
             setDropDownMenuId={this.props.setDropDownMenuId}
             dropDownMenuState={this.props.oneDropMenuOpen}
             dropDownMenuId={this.props.dropDownMenuId}
+            showDropMenu={this.props.showDropMenu}
+            toggleDropDownMenu={this.props.toggleDropDownMenu}
             parent="explore"/>
         </li>)}
 

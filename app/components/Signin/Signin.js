@@ -4,7 +4,7 @@
 import Enterpageicon from '../Enterpageicon/Enterpageicon'
 
 export default function Signin(props) {
-  return(
+  return (
     <div >
       <Enterpageicon action="Sing in"
                      lastLine="Don't have an account yet?"

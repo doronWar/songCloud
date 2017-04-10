@@ -1,8 +1,8 @@
 @import 'assets/styles/colors';
 @import 'assets/styles/helpers';
 
-.sign-in-modal{
-  @include widthHight(100%,100%);
+.sign-in-modal {
+  @include widthHight(100%, 100%);
   @include positionTopLeft(absolute, 0, 0);
   z-index: 10;
   background-color: #fff;
@@ -14,18 +14,16 @@
   @include positionTopLeft(absolute, 5%, 43.8%);
 }
 
-.title-sign-in{
+.title-sign-in {
   @include positionTopLeft(absolute, 14.7%, 40.5%);
   font-size: toRem(40);
-  color:$mainBlue;
+  color: $mainBlue;
   font-weight: 300;
 }
 
 .inser-info-component {
   @include positionTopLeft(absolute, 28.5%, 32.8%);
 }
-
-
 
 .inser-info-component input,
 .inser-info-component label {
@@ -49,57 +47,95 @@
   }
 }
 
-.btn-sign-in{
+.btn-sign-in {
   @include positionTopLeft(absolute, 65%, 44.5%);
   font-size: toRem(13);
-  @include widthHight(87px,30px);
+  @include widthHight(87px, 30px);
   background-color: $mainBlue;
   color: white;
   border-radius: 5px;
   border: 1px solid transparent;
 
-
-  & ~ p{
+  & ~ p {
     @include positionTopLeft(absolute, 71%, 32.8%);
     font-size: toRem(14);
   }
-  & ~ p a{
-    margin-left:20px;
+  & ~ p a {
+    margin-left: 20px;
     color: $mainBlue;
-    font-size:toRem(14);
+    font-size: toRem(14);
   }
-
 
 }
 
-//effects:
-
-.unser-register{
-  position: relative;
-  & input{
-    //position: relative;
-    //height: 0;
-  }
-  & .labels{
-    //margin-b: 20px;
-  }
-}
-
-.login-inputes{
+.login-inputes {
   border: 1px solid transparent;
   border-bottom: 1px solid $mainBlue;
   width: 40.6vw;
   margin-top: 5px;
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
+//effects:
 
-.user-name-error{
+.unser-register { //div holder of the inpute fileds
+  margin-top: 40px;
+
+  //animating label to move up
+  & input { //the tag it self
+    position: relative;
+  }
+
+  & .labels { //className for all labels
+    position: relative;
+    z-index: 10;
+    top: -20px;
+    transition: .3s ease-in-out;
+  }
+
+  & input:focus + .labels,
+  & input:hover + .labels {
+    transform: translate(0, -20px);
+  }
+  //aminating line to grow under:
+  & .animated-underline { //a span for the line animation
+    position: relative;
+    top: -21px;
+    z-index: 27;
+    background: $darkBlue;
+    display: block;
+    width: 0;
+    height: 2px;
+
+  }
+
+  & input:focus + .labels + .animated-underline {
+    animation: lineEffect .3s forwards;
+  }
+
+}
+
+@keyframes lineEffect {
+  0% {
+    width: 10px;
+
+  }
+  25% {
+    width: 20.6vw;
+
+  }
+  100% {
+    width: 40.6vw;
+
+  }
+}
+
+.user-name-error {
   display: block;
-  height:30px;
-  color:$redError;
+  height: 30px;
+  color: $redError;
   font-size: .7rem;
 }

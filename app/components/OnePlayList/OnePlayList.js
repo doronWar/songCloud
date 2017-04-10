@@ -62,7 +62,12 @@ export default class OnePlaylist extends React.Component {
                  }}
           />
           <span>{element.songs.length}</span>
-          <button className="del-btn">Delete</button>
+          <button className="del-btn btn-eff"
+                  onClick={() => {
+                    this.props.removePlayList(element.id)
+                  }}
+          >Delete
+          </button>
         </li>
         <ul className="playlist-song-holder">
           {element.songs.map((song) => {
@@ -79,7 +84,10 @@ export default class OnePlaylist extends React.Component {
                   dropDownMenuState={this.props.oneDropMenuOpen}
                   dropDownMenuId={this.props.dropDownMenuId}
                   findSong={this.props.findSong}
-                  addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
+                  addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+                  showDropMenu={this.props.showDropMenu}
+                  toggleDropDownMenu={this.props.toggleDropDownMenu}
+                  closeAllDropDownMenues={this.props.closeAllDropDownMenues}/>
 
 
               </li>)
