@@ -5,6 +5,8 @@ import './Topbar.scss'
 import {NavLink} from 'react-router-dom';
 import React from 'react';
 import Routes from '../Routes/Routes';
+import store from './../../store'
+
 
 
 export default class Topbar extends React.Component {
@@ -39,11 +41,16 @@ export default class Topbar extends React.Component {
 
                 <i className="fa fa-search search-icon"/>
                 <input type="text" id="search-songs" placeholder="Song name"
-                       value={this.props.searchMusic}
+                       value={store.getState().searchForMusic}
                        onChange={(e) => {
-                         this.props.searchForMusic(e.target.value)
+                         store.dispatch({
+                           type:'TERM_FOR_SEARCH',
+                           value: e.target.value,
+                         });
+
                        }}
-                       onBlur={() => this.props.FindSearchTerm()}/>
+                       onBlur={() => {
+                         this.props.FindSearchTerm()}}/>
 
               </div>
               <input type="button" id="log-out-button" value="Log out" className="search-song"
@@ -58,3 +65,6 @@ export default class Topbar extends React.Component {
     )
   }
 }
+
+
+//erased from on change of inpute:  {/*this.props.searchForMusic(e.target.value)*/}

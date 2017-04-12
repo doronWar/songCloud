@@ -95,11 +95,11 @@ export default class Explore extends React.Component {
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail
-
+            redirect={this.props.redirect}
             song={song}
-            addPlaylist={this.props.addPlaylist}
-            listOfPlayLists={this.props.listOfPlayLists}
-            addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+  //          addPlaylist={this.props.addPlaylist}
+  //          listOfPlayLists={this.props.listOfPlayLists}
+   //         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
             findSong={this.props.findSong}
 
             dropDownMenuClose={this.props.closeDropDownMenu}

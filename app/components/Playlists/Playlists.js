@@ -7,6 +7,9 @@ import uuid from 'uuid';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 import OnePlaylist from '../OnePlayList/OnePlayList'
 
+import  store from "../../store";
+
+
 export default class Playlist extends React.Component {
 
   constructor() {
@@ -44,20 +47,21 @@ export default class Playlist extends React.Component {
       const titleState = this.state.isNameHidden ? "hiden" : ""
       const inputeState = this.state.isInputeHidden ? "ply-input-title hiden" : "ply-input-title"
       return (
-        this.props.playLists.map((element, i) => {
+        store.getState().playLists.map((element, i) => {
           return (
             <div key={element.id}>
               <OnePlaylist playlistsExists={playlistsExists}
-                           playLists={this.props.playLists}
-                           changeName={this.props.changeName}
+  //                         {/*playLists={this.props.playLists}*/}
+     //                      changeName={this.props.changeName}
                            nowPlaying={this.props.playingNow}
-                           listOfPlayLists={this.props.listOfPlayLists}
+    //                       {/*listOfPlayLists={this.props.listOfPlayLists}*/}
                            element={element}
-                           newList={this.props.newListId}
-                           resetNewListId={this.props.resetNewListId}
-                           removePlayList={this.props.removePlayList}
+      ////                     {/*newList={store.getState().newListId}*/}
+    //                       resetNewListId={this.props.resetNewListId}
+       //                    removePlayList={this.props.removePlayList}
                            showDropMenu={this.props.showDropMenu}
                            toggleDropDownMenu={this.props.toggleDropDownMenu}
+                           redirect={this.props.redirect}
 
 
                            dropDownMenuClose={this.props.closeDropDownMenu}
@@ -65,7 +69,8 @@ export default class Playlist extends React.Component {
                            dropDownMenuState={this.props.oneDropMenuOpen}
                            dropDownMenuId={this.props.dropDownMenuId}
                            findSong={this.props.findSong}
-                           addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}/>
+              //             addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+              />
 
 
             </div>
@@ -81,7 +86,8 @@ export default class Playlist extends React.Component {
   listOfPlaylist() {
 
     return (
-      this.props.playLists.map((playList) => {
+
+      store.getState().playLists.map((playList) => {
         return <input key={uuid()} type="button" value={playList.title} className="playlist-links"/>
       })
     )
@@ -93,9 +99,18 @@ export default class Playlist extends React.Component {
 
   }
 
+
+  // componentDidUpdate(){
+  //
+  //   store.subscribe(()=>{
+  //     this.forceUpdate();
+  //   });
+  //
+  // }
+
   render() {
 
-    const playlistsExists = this.props.playLists.length !== 0
+    const playlistsExists = store.getState().playLists.length !== 0
 
     return (
       <div className="plalist-page"
@@ -103,7 +118,18 @@ export default class Playlist extends React.Component {
 
         <aside className="playlist-holder">
           <button className="btn-add-playlist btn-eff" onClick={() => {
-            this.addNewPlayListBybutton()
+            const newId = uuid();
+            store.dispatch({
+              type:'ADD_PLAYLIST',
+              newId: newId,
+            });
+            store.dispatch({
+              type:'NEW_LIST_ID',
+              newListId: newId,
+
+            });
+
+            {/*this.addNewPlayListBybutton()*/}
           }}>Add new Playlist
           </button>
           <span className="seperating-lien"/>

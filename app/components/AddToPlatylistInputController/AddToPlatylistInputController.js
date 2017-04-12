@@ -2,7 +2,7 @@
  * Created by Doron Warzager on 06/04/2017.
  */
 import React from "react";
-
+import  store from "../../store";
 
 export default class AddToPlatylistInputController extends React.Component {
   constructor() {
@@ -14,7 +14,13 @@ export default class AddToPlatylistInputController extends React.Component {
 
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
-      this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen, listId)
+      store.dispatch({
+        type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
+        listId:listId,
+        song:this.props.song,
+        toAdd:this.state.isChosen,
+      })
+      // this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen, listId)
     })
   }
 

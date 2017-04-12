@@ -2,6 +2,7 @@ import './AddToPlaylist.scss'
 import React from 'react';
 import AddToPlatylistInputController from '../AddToPlatylistInputController/AddToPlatylistInputController';
 
+import  store from "../../store";
 
 export default class AddToPlaylist extends React.Component {
 
@@ -11,10 +12,10 @@ export default class AddToPlaylist extends React.Component {
   //     isChosen:false,
   //   }
 // }
-
-  creatNewPlyList() {
-    this.props.addPlaylist(this.props.song, 'redirect');
-  }
+//
+//   creatNewPlyList() {
+//     this.props.addPlaylist(this.props.song, 'redirect');
+//   }
 
 // changeInputState(){
 //   this.setState({isChosen: !this.state.isChosen})
@@ -22,16 +23,17 @@ export default class AddToPlaylist extends React.Component {
   dropdownMenuOfPlayLists() {
 
     return (
-      this.props.listOfPlayLists.map((oneList) => {
+      store.getState().playLists.map((oneList) => {
         return (
           <div key={oneList.id}>
 
             <AddToPlatylistInputController
-              listOfPlayLists={this.props.listOfPlayLists}
-              addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
+//              {/*listOfPlayLists={this.props.listOfPlayLists}*/}
+  //            addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
               oneList={oneList}
               song={this.props.song}
-              findSong={this.props.findSong}/>
+              findSong={this.props.findSong}
+            />
 
           </div>
 
@@ -50,7 +52,14 @@ export default class AddToPlaylist extends React.Component {
         {this.props.parent && <input className="create-list-btn-explore" type="button" value="Create playlist +"
                                      onClick={() => {
                                        this.props.closingDropFownMenu()  //making sure dropDown menu is restarted
-                                       this.creatNewPlyList()
+                                      store.dispatch({
+                                      type:'ADD_PLAYLIST',
+                                        song: this.props.song,
+                                        newId:this.props.song.id,
+                                     });              //,()=>{this.props.redirect()}
+
+                                       this.props.redirect();
+                                       {/*this.creatNewPlyList()*/}
                                      }}/>}
         <div className="seporater-line"/>
         <div className="playlist-checkbox-holder">

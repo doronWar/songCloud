@@ -13,3 +13,5 @@ export default function currentTrackReducer(currentTrack = null, action) {
 // export default function curentSongReduce() {
 //   return null;
 // }
+
+//store.getState().searchForMusic
