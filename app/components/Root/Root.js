@@ -16,6 +16,8 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 import uuid from 'uuid';
+
+import store from './../../store'
 // console.info(uuid());
 
 
@@ -24,7 +26,7 @@ export default class Root extends React.Component {
   constructor() {
     super();
 
-    this.nowPlaying = this.nowPlaying.bind(this);
+    // this.nowPlaying = this.nowPlaying.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
     this.changePlayListName = this.changePlayListName.bind(this);
     this.addNRemoveSongToPlaylist = this.addNRemoveSongToPlaylist.bind(this);
@@ -40,6 +42,8 @@ export default class Root extends React.Component {
     this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
     this.closeAllDropDownMenues= this.closeAllDropDownMenues.bind(this);
     this.toggleDropDownMenu = this.toggleDropDownMenu.bind(this);
+
+
 
     this.state = {
       playerSong: 'none',
@@ -75,8 +79,8 @@ export default class Root extends React.Component {
 
     this.setState({showDropMenu:true})
   }
-  
-  
+
+
 //                                  opening only one menu at a time
   closeDropDownMenu(songId) {
     if (songId === this.state.dropDownMenuId) {
@@ -99,9 +103,7 @@ export default class Root extends React.Component {
     this.props.history.push(`/explore/${this.state.searchMusic}`)
   }
 
-  nowPlaying(newSong) {
-    this.setState({playerSong: Object.assign({}, newSong)})
-  }
+
 
   addPlaylist(song, redirect) {
 
@@ -184,6 +186,13 @@ export default class Root extends React.Component {
     this.props.history.push("/signin");
   }
 
+  componentDidMount(){
+
+    store.subscribe(()=>{
+      this.forceUpdate();
+    });
+
+  }
 
   render() {
     // return (
@@ -215,7 +224,7 @@ export default class Root extends React.Component {
 
             <Route path="/explore/:genre" render={(props) => {
 
-              return <Explore playingNow={this.nowPlaying}
+              return <Explore
                               addPlaylist={this.addPlaylist}
                               listOfPlayLists={this.state.playLists}
                               addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
@@ -261,7 +270,7 @@ export default class Root extends React.Component {
 
           </Switch>
         </main>
-        <Player playingNow={this.state.playerSong}/>
+        <Player/>
       </div>)
 
     // }}/>
@@ -272,5 +281,11 @@ export default class Root extends React.Component {
     // );
   };
 }
+//from player: playingNow={this.state.playerSong}
+
+//from explore: playingNow={this.nowPlaying}
 
 
+// nowPlaying(newSong) {
+//   this.setState({playerSong: Object.assign({}, newSong)})
+// }

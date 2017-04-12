@@ -7,6 +7,13 @@ import 'font-awesome/css/font-awesome.css';
 import 'normalize.css/normalize.css';
 import  React from "react";
 
+import  store from "../../store";
+
+
+
+
+
+
 
 export default class Songthumbnail extends React.Component {
   constructor() {
@@ -79,7 +86,14 @@ export default class Songthumbnail extends React.Component {
       >
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
-             onClick={() => this.props.nowPlaying(this.props.song)}/>
+             onClick={() => {
+               {/*this.props.nowPlaying(this.props.song);*/}
+               store.dispatch({
+                 type:'CURENT_SONG',
+                 song: this.props.song,
+               });
+
+             }}/>
         <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
 
 

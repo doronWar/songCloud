@@ -1,14 +1,20 @@
 import './Player.scss'
+import  store from "../../store";
+
+
 export default function Player(props) {
-  const songImg = props.playingNow.artwork_url;
-  const songTitle = props.playingNow.title || "song name";
+
+  const theSong= store.getState().curentSong || "none"
+  const songImg = theSong.artwork_url;
+  const songTitle = theSong.title || "song name";
   const clientId = "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z";
-  const songApi = props.playingNow.stream_url + clientId || "";
+  const songApi = theSong.stream_url + clientId || "";
 
-
+    // console.info(store.getState().curentSong);
+    //store.getState().curentSong()
   return (
     <div>
-      {props.playingNow !== "none" && <footer className="player-holder">
+      {store.getState().curentSong !== null && <footer className="player-holder">
         <img src={songImg} alt="Song Thumbnail" className="player-thumbnail"/>
         <p className="player-song-name">{songTitle.slice(0, 20)}</p>
         <audio controls autoPlay className="player-controls" src={songApi}>

@@ -95,7 +95,7 @@ export default class Explore extends React.Component {
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail
-            nowPlaying={this.props.playingNow}
+
             song={song}
             addPlaylist={this.props.addPlaylist}
             listOfPlayLists={this.props.listOfPlayLists}
@@ -111,10 +111,13 @@ export default class Explore extends React.Component {
             parent="explore"/>
         </li>)}
 
-
       </ul>
     )
   }
+
+
+//things that awhere sent and son't need to be sent anymore
+  // nowPlaying={this.props.playingNow}
 
 //   title={song.title}
 // img={song.artwork_url}
