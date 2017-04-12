@@ -8,6 +8,12 @@
   left:$left;
 }
 
+@mixin positionTopRight($type, $top, $right){
+  position:$type;
+  top:$top;
+  right:$right;
+}
+
 @mixin widthHight($width, $height){
   width:$width ;
   height: $height;

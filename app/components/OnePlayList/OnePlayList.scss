@@ -12,42 +12,51 @@
   //margin-top:20px;
   box-shadow: 0 0 2px 0;
   position: relative;
+
+  & p {
+    line-height: 64px;
+    font-size: 22px;
+    margin-left: 20px;
+  }
+
+
+  & .del-btn { // can also be .play-list-title p ~ .del-btn if i only want to see it it p
+    display: none;
+    color: red;
+    border: 1px solid transparent;
+    background-color: white;
+    @include positionTopRight(absolute, 0, 0)
+    //position: absolute;
+    //top: 0;
+    //right: 0;
+
+  }
+
+
+  &:hover .del-btn { // can also be .play-list-title p:hover ~ .del-btn if i only want to see it it p
+    display: inline-block;
+    @include widthHight(87px,37px);
+    //width: 87px;
+    //height: 37px;
+    //background: grey;
+
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+
+  & .btn-eff:after {
+    background: whitesmoke;
+  }
+
 }
 
-.play-list-title p {
-  line-height: 64px;
-  font-size: 22px;
-  margin-left: 20px;
-}
 
-.play-list-title .del-btn { // can also be .play-list-title p ~ .del-btn if i only want to see it it p
-  display: none;
-  color: red;
-  border: 1px solid transparent;
-  background-color: white;
-  position: absolute;
-  top: 0;
-  right: 0;
 
-}
 
-.play-list-title:hover .del-btn { // can also be .play-list-title p:hover ~ .del-btn if i only want to see it it p
-  display: inline-block;
-  width: 87px;
-  height: 37px;
-  //background: grey;
-
-  margin-right: 20px;
-  margin-top: 15px;
-}
-
-.btn-eff:after {
-  background: whitesmoke;
-}
 
 .ply-input-title {
   line-height: 60px;
-  font-size: 22px;
+  font-size: toRem(22);
   margin-left: 20px;
   //margin-top: 10px;
   //border: 1px solid transparent;
@@ -59,17 +68,19 @@
 
   border-radius: 50px;
   //display: inline-block;
-  width: 18px;
-  height: 18px;
+  @include widthHight(18px,18px);
+  //width: 18px;
+  //height: 18px;
   color: #FFFFFF;
   background-color: $mainBlue;
-  font-size: 12px;
+  font-size: toRem(12);
   padding-left: 6px;
   padding-top: 2px;
   //padding-right:4px;
-  position: absolute;
-  top: 0;
-  left: 36%;
+  @include positionTopLeft(absolute, 0, 36%);
+  //position: absolute;
+  //top: 0;
+  //left: 36%;
   //vertical-align: super
   //margin-bottom:4px;
 }

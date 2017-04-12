@@ -21,19 +21,33 @@
   margin: 0;
   padding: 0 20px 0 20px;
   height: 40px;
+
 }
 
 .genre-name {
   list-style: none;
   margin-left: 55px;
   //margin-left: 10px;
+  & .link{
+    color: #000000;
+    //border: 1px solid red;
+  }
 }
+
+//.genre-name  .link{
+
+  //color: #000000;
+  //border: 1px solid red;
+//}
+
+
 
 .ganere-chosen {
   font-weight: 600;
   //background-color:#cdd6d8;
   display: inline-block;
   height: 40px;
+
 }
 
 .genre-titl {
@@ -56,12 +70,13 @@
 
 .navigation-song-btn span {
   margin: 0 95.5px 0 95.5px;
-  font-size: 1rem;
+  font-size: toRem(16);
 }
 
 .nav-btn {
-  width: 87px;
-  height: 30px;
+  @include widthHight(87px,30px);
+  //width: 87px;
+  //height: 30px;
   background-color: #2196F3;
   color: white;
   border: 1px solid transparent;

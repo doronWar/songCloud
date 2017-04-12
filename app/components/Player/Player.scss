@@ -1,6 +1,8 @@
 @import 'assets/styles/colors';
+@import 'assets/styles/helpers';
 
 .player-holder {
+  //@include positionTopLeft(fixed, -90px,0);
   position: fixed;
   bottom: -90px;
   left: 0;
