@@ -102,10 +102,10 @@ export default class Explore extends React.Component {
    //         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
             findSong={this.props.findSong}
 
-            dropDownMenuClose={this.props.closeDropDownMenu}
-            setDropDownMenuId={this.props.setDropDownMenuId}
-            dropDownMenuState={this.props.oneDropMenuOpen}
-            dropDownMenuId={this.props.dropDownMenuId}
+ //           dropDownMenuClose={this.props.closeDropDownMenu}
+ //           setDropDownMenuId={this.props.setDropDownMenuId}
+   //         dropDownMenuState={this.props.oneDropMenuOpen}
+  //          dropDownMenuId={this.props.dropDownMenuId}
             showDropMenu={this.props.showDropMenu}
             toggleDropDownMenu={this.props.toggleDropDownMenu}
             parent="explore"/>

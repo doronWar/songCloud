@@ -38,8 +38,8 @@ export default class Root extends React.Component {
     // this.removePlayList = this.removePlayList.bind(this)
 
 
-    this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
-    this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
+  //  this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
+  //  this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
     this.closeAllDropDownMenues= this.closeAllDropDownMenues.bind(this);
     this.toggleDropDownMenu = this.toggleDropDownMenu.bind(this);
 
@@ -50,8 +50,8 @@ export default class Root extends React.Component {
       playLists: [],
  //     newListId: "",
       // searchMusic: "",
-      oneDropMenuOpen: false,
-      dropDownMenuId: '',
+ //      oneDropMenuOpen: false,
+//       dropDownMenuId: '',
       showDropMenu: false,
 
     }
@@ -82,17 +82,17 @@ export default class Root extends React.Component {
 
 
 //                                  opening only one menu at a time
-  closeDropDownMenu(songId) {
-    if (songId === store.getState().dropDownMenuId) {
-      this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
-    }
-  }
-
-  setDropDownMenuId(menuId) {
-    this.setState({dropDownMenuId: menuId}, () => {
-      this.closeDropDownMenu(menuId)
-    });
-  }
+//   closeDropDownMenu(songId) {
+//     if (songId === store.getState().dropDownMenuId) {
+//       this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
+//     }
+//   }
+//
+//   setDropDownMenuId(menuId) {
+//     this.setState({dropDownMenuId: menuId}, () => {
+//       this.closeDropDownMenu(menuId)
+//     });
+//   }
 
 
 
@@ -164,14 +164,14 @@ export default class Root extends React.Component {
 
               return <Explore
                               redirect={this.redirect}
-                              listOfPlayLists={this.state.playLists}
-                              addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
+    //                          listOfPlayLists={this.state.playLists}
+      //                        addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
                               findSong={this.findSong}
-                              newListId={this.state.newListId}
+        //                      newListId={this.state.newListId}
                               oneDropMenuOpen={this.state.oneDropMenuOpen}
-                              dropDownMenuId={this.state.dropDownMenuId}
-                              closeDropDownMenu={this.closeDropDownMenu}
-                              setDropDownMenuId={this.setDropDownMenuId}
+          //                    dropDownMenuId={this.state.dropDownMenuId}
+   //                           closeDropDownMenu={this.closeDropDownMenu}
+            //                  setDropDownMenuId={this.setDropDownMenuId}
                               closeAllDropDownMenues={this.closeAllDropDownMenues}
                               showDropMenu={this.state.showDropMenu}
                               toggleDropDownMenu={this.toggleDropDownMenu}
@@ -189,9 +189,9 @@ export default class Root extends React.Component {
    //                            resetNewListId={this.resetNewListId}
                                redirect={this.redirect}
                                oneDropMenuOpen={this.state.oneDropMenuOpen}
-                               dropDownMenuId={this.state.dropDownMenuId}
-                               closeDropDownMenu={this.closeDropDownMenu}
-                               setDropDownMenuId={this.setDropDownMenuId}
+     //                          dropDownMenuId={this.state.dropDownMenuId}
+       //                        closeDropDownMenu={this.closeDropDownMenu}
+    //                           setDropDownMenuId={this.setDropDownMenuId}
                                findSong={this.findSong}
  //                              addNRemoveSongToPlaylist={this.addNRemoveSongToPlaylist}
       //                         {/*removePlayList={this.removePlayList}*/}

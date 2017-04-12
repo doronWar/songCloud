@@ -57,6 +57,10 @@ export default class AddToPlaylist extends React.Component {
                                         song: this.props.song,
                                         newId:this.props.song.id,
                                      });              //,()=>{this.props.redirect()}
+                                       store.dispatch({
+                                         type:'SET_DROPDOWN_MENU',
+                                         menuId:this.props.song.id,
+                                       });
 
                                        this.props.redirect();
                                        {/*this.creatNewPlyList()*/}

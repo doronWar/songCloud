@@ -65,9 +65,9 @@ export default class Playlist extends React.Component {
 
 
                            dropDownMenuClose={this.props.closeDropDownMenu}
-                           setDropDownMenuId={this.props.setDropDownMenuId}
-                           dropDownMenuState={this.props.oneDropMenuOpen}
-                           dropDownMenuId={this.props.dropDownMenuId}
+     //                      setDropDownMenuId={this.props.setDropDownMenuId}
+     //                      dropDownMenuState={this.props.oneDropMenuOpen}
+      //                     dropDownMenuId={this.props.dropDownMenuId}
                            findSong={this.props.findSong}
               //             addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
               />
@@ -93,11 +93,11 @@ export default class Playlist extends React.Component {
     )
   }
 
-
-  addNewPlayListBybutton() {
-    this.props.addPlaylist()
-
-  }
+  //
+  // addNewPlayListBybutton() {
+  //   this.props.addPlaylist()
+  //
+  // }
 
 
   // componentDidUpdate(){

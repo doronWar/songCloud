@@ -94,10 +94,10 @@ export default class OnePlaylist extends React.Component {
    //               {/*listOfPlayLists={this.props.listOfPlayLists}*/}
                   song={song}
                   redirect={this.props.redirect}
-                  dropDownMenuClose={this.props.closeDropDownMenu}
-                  setDropDownMenuId={this.props.setDropDownMenuId}
-                  dropDownMenuState={this.props.oneDropMenuOpen}
-                  dropDownMenuId={this.props.dropDownMenuId}
+//                  dropDownMenuClose={this.props.closeDropDownMenu}
+//                  setDropDownMenuId={this.props.setDropDownMenuId}
+  //                dropDownMenuState={this.props.oneDropMenuOpen}
+  //                dropDownMenuId={this.props.dropDownMenuId}
                   findSong={this.props.findSong}
   //                addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
                   showDropMenu={this.props.showDropMenu}

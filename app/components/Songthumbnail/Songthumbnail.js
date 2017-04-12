@@ -37,6 +37,7 @@ export default class Songthumbnail extends React.Component {
   //dealing with toggle dropDown menu
 
   changeHeartState() {
+
     if (!store.getState().oneDropDownMenuOpen) {                 //checking if any other menu is open
 
       store.dispatch({
@@ -141,8 +142,8 @@ export default class Songthumbnail extends React.Component {
 //                         {/*listOfPlayLists={this.props.listOfPlayLists}*/}
   //                       addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
                          findSong={this.props.findSong}
-                         dropDownMenuClose={this.props.closeDropDownMenu}
-                         dropDownMenuState={this.props.oneDropMenuOpen}
+  //                       dropDownMenuClose={this.props.closeDropDownMenu}
+   //                      dropDownMenuState={this.props.oneDropMenuOpen}
                          parent={this.props.parent}
                          closingDropFownMenu={this.closingDropFownMenu}/>}
 
