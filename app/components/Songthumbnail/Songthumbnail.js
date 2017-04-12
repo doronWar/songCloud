@@ -10,11 +10,6 @@ import  React from "react";
 import  store from "../../store";
 
 
-
-
-
-
-
 export default class Songthumbnail extends React.Component {
   constructor() {
     super();
@@ -41,12 +36,12 @@ export default class Songthumbnail extends React.Component {
     if (!store.getState().oneDropDownMenuOpen) {                 //checking if any other menu is open
 
       store.dispatch({
-        type:'SET_DROPDOWN_MENU',
-        menuId:this.props.song.id,
+        type: 'SET_DROPDOWN_MENU',
+        menuId: this.props.song.id,
       });
       store.dispatch({
-        type:'CHECK_FOR_OPEN_MENU',
-        menuId:this.props.song.id,
+        type: 'CHECK_FOR_OPEN_MENU',
+        menuId: this.props.song.id,
       });
 
 
@@ -61,14 +56,14 @@ export default class Songthumbnail extends React.Component {
     else if (store.getState().dropDownMenuId === this.props.song.id) {    // when reentering and having a menu open
       // checking if this menu's Id is the saved one.
       store.dispatch({
-        type:'SET_DROPDOWN_MENU',
-        menuId:this.props.song.id,
+        type: 'SET_DROPDOWN_MENU',
+        menuId: this.props.song.id,
       });
       store.dispatch({
-        type:'CHECK_FOR_OPEN_MENU',
-        menuId:this.props.song.id,
+        type: 'CHECK_FOR_OPEN_MENU',
+        menuId: this.props.song.id,
       });
-   //   this.props.setDropDownMenuId(this.props.song.id);     //changing through here the drop menu state back to false.
+      //   this.props.setDropDownMenuId(this.props.song.id);     //changing through here the drop menu state back to false.
       this.heartIcon.classList.toggle('fa-heart-o');
       this.heartIcon.classList.toggle('fa-heart');
       this.setState({showDropDownMenu: !this.state.showDropDownMenu})
@@ -91,17 +86,16 @@ export default class Songthumbnail extends React.Component {
     this.heartIcon.classList.toggle('fa-heart');
 
     store.dispatch({
-      type:'SET_DROPDOWN_MENU',
-      menuId:this.props.song.id,
+      type: 'SET_DROPDOWN_MENU',
+      menuId: this.props.song.id,
     });
     store.dispatch({
-      type:'CHECK_FOR_OPEN_MENU',
-      menuId:this.props.song.id,
+      type: 'CHECK_FOR_OPEN_MENU',
+      menuId: this.props.song.id,
     });
     //this.props.setDropDownMenuId(this.props.song.id);   ////changing through here the drop menu state back to false.
     this.setState({showDropDownMenu: !this.state.showDropDownMenu}) //closing local flage of dropDown menu.
 
-    // this.changeHeartState()
 
   }
 
@@ -115,9 +109,10 @@ export default class Songthumbnail extends React.Component {
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
              onClick={() => {
-               {/*this.props.nowPlaying(this.props.song);*/}
+               {/*this.props.nowPlaying(this.props.song);*/
+               }
                store.dispatch({
-                 type:'CURENT_SONG',
+                 type: 'CURENT_SONG',
                  song: this.props.song,
                });
 
@@ -139,11 +134,7 @@ export default class Songthumbnail extends React.Component {
           { (this.props.showDropMenu && this.state.showDropDownMenu) &&
           <AddToPlaylist redirect={this.props.redirect}
                          song={this.props.song}
-//                         {/*listOfPlayLists={this.props.listOfPlayLists}*/}
-  //                       addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
                          findSong={this.props.findSong}
-  //                       dropDownMenuClose={this.props.closeDropDownMenu}
-   //                      dropDownMenuState={this.props.oneDropMenuOpen}
                          parent={this.props.parent}
                          closingDropFownMenu={this.closingDropFownMenu}/>}
 

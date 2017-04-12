@@ -51,25 +51,15 @@ export default class Playlist extends React.Component {
           return (
             <div key={element.id}>
               <OnePlaylist playlistsExists={playlistsExists}
-  //                         {/*playLists={this.props.playLists}*/}
-     //                      changeName={this.props.changeName}
                            nowPlaying={this.props.playingNow}
-    //                       {/*listOfPlayLists={this.props.listOfPlayLists}*/}
                            element={element}
-      ////                     {/*newList={store.getState().newListId}*/}
-    //                       resetNewListId={this.props.resetNewListId}
-       //                    removePlayList={this.props.removePlayList}
                            showDropMenu={this.props.showDropMenu}
                            toggleDropDownMenu={this.props.toggleDropDownMenu}
                            redirect={this.props.redirect}
 
 
                            dropDownMenuClose={this.props.closeDropDownMenu}
-     //                      setDropDownMenuId={this.props.setDropDownMenuId}
-     //                      dropDownMenuState={this.props.oneDropMenuOpen}
-      //                     dropDownMenuId={this.props.dropDownMenuId}
                            findSong={this.props.findSong}
-              //             addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
               />
 
 
@@ -93,20 +83,6 @@ export default class Playlist extends React.Component {
     )
   }
 
-  //
-  // addNewPlayListBybutton() {
-  //   this.props.addPlaylist()
-  //
-  // }
-
-
-  // componentDidUpdate(){
-  //
-  //   store.subscribe(()=>{
-  //     this.forceUpdate();
-  //   });
-  //
-  // }
 
   render() {
 
@@ -120,16 +96,17 @@ export default class Playlist extends React.Component {
           <button className="btn-add-playlist btn-eff" onClick={() => {
             const newId = uuid();
             store.dispatch({
-              type:'ADD_PLAYLIST',
+              type: 'ADD_PLAYLIST',
               newId: newId,
             });
             store.dispatch({
-              type:'NEW_LIST_ID',
+              type: 'NEW_LIST_ID',
               newListId: newId,
 
             });
 
-            {/*this.addNewPlayListBybutton()*/}
+            {/*this.addNewPlayListBybutton()*/
+            }
           }}>Add new Playlist
           </button>
           <span className="seperating-lien"/>
@@ -137,11 +114,6 @@ export default class Playlist extends React.Component {
         </aside>
         <section className="play-list-background">
           <ul className="temp-ul">
-            {/*<OnePlaylist playlistsExists={playlistsExists}
-             playLists={this.props.playLists}
-             changeName= {this.props.changeName}
-             nowPlaying={this.props.playingNow}
-             listOfPlayLists={this.props.listOfPlayLists}/>*/}
             {this.creatUIPlyalist(playlistsExists)}
           </ul>
         </section>

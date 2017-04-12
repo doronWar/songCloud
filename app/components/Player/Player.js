@@ -10,8 +10,6 @@ export default function Player(props) {
   const clientId = "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z";
   const songApi = theSong.stream_url + clientId || "";
 
-    // console.info(store.getState().curentSong);
-    //store.getState().curentSong()
   return (
     <div>
       {store.getState().curentSong !== null && <footer className="player-holder">

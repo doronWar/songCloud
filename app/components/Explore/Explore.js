@@ -17,27 +17,9 @@ export default class Explore extends React.Component {
       clientId: "2t9loNQH90kzJcsFCODdigxfp325aq4z",
       offset: 0,
       limit: 15,
-      // oneDropMenuOpen: false,
-      // dropDownMenuId: '',
-
     }
-    // this.closeDropDownMenu = this.closeDropDownMenu.bind(this);
-    // this.setDropDownMenuId = this.setDropDownMenuId.bind(this);
 
   }
-
-  //                                  opening only one menu at a time
-  // closeDropDownMenu(songId) {
-  //   if (songId === this.state.dropDownMenuId) {
-  //     this.setState({oneDropMenuOpen: !this.state.oneDropMenuOpen})
-  //   }
-  // }
-  //
-  // setDropDownMenuId(menuId) {
-  //   this.setState({dropDownMenuId: menuId}, () => {
-  //     this.closeDropDownMenu(menuId)
-  //   });
-  // }
 
 
   //                                  opening songs
@@ -97,15 +79,8 @@ export default class Explore extends React.Component {
           <Songthumbnail
             redirect={this.props.redirect}
             song={song}
-  //          addPlaylist={this.props.addPlaylist}
-  //          listOfPlayLists={this.props.listOfPlayLists}
-   //         addNRemoveSongToPlaylist={this.props.addNRemoveSongToPlaylist}
-            findSong={this.props.findSong}
 
- //           dropDownMenuClose={this.props.closeDropDownMenu}
- //           setDropDownMenuId={this.props.setDropDownMenuId}
-   //         dropDownMenuState={this.props.oneDropMenuOpen}
-  //          dropDownMenuId={this.props.dropDownMenuId}
+            findSong={this.props.findSong}
             showDropMenu={this.props.showDropMenu}
             toggleDropDownMenu={this.props.toggleDropDownMenu}
             parent="explore"/>
@@ -115,14 +90,6 @@ export default class Explore extends React.Component {
     )
   }
 
-
-//things that awhere sent and son't need to be sent anymore
-  // nowPlaying={this.props.playingNow}
-
-//   title={song.title}
-// img={song.artwork_url}
-// time={song.duration}
-// uri={song.uri}
 
   changePage(direction) {
     if (direction === 'next') {
