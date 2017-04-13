@@ -10,7 +10,8 @@ export default function Signin(props) {
                      lastLine="Don't have an account yet?"
                      linkTitle='Create Account'
                      redirectTo='SignUp'
-                     logIn={props.logIn}/>
+                     logIn={props.logIn}
+                     {...props}/>
     </div>
   )
 }

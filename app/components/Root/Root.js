@@ -31,12 +31,12 @@ export default class Root extends React.Component {
     this.goToSignIn = this.goToSignIn.bind(this);
 
     this.closeAllDropDownMenues = this.closeAllDropDownMenues.bind(this);
-    this.toggleDropDownMenu = this.toggleDropDownMenu.bind(this);
+  //  this.toggleDropDownMenu = this.toggleDropDownMenu.bind(this);
 
-
+    this.closingTheDrompDownMenu = this.closingTheDrompDownMenu.bind(this);
     this.state = {
-      playLists: [],
-      showDropMenu: false,
+      // playLists: [],
+  //    showDropMenu: false,
 
     }
 
@@ -54,15 +54,25 @@ export default class Root extends React.Component {
       e.target.className !== "one-list-checkbox" &&
       e.target.className !== "for-global-flag") {
 
-      this.setState({showDropMenu: false})
+      this.closingTheDrompDownMenu()
+      // this.setState({showDropMenu: false})
     }
   }
 
-  toggleDropDownMenu() {
-    console.info(this.state.showDropMenu);
-
-    this.setState({showDropMenu: true})
+  closingTheDrompDownMenu(){
+    store.dispatch({
+      type:'AUTO_CLOSE',
+      state: false,
+    })
+    // this.setState({showDropMenu: false})
   }
+  // toggleDropDownMenu() {
+  //   store.dispatch({
+  //     type:'AUTO_CLOSE',
+  //     state: true,
+  //   })
+  //   // this.setState({showDropMenu: true})
+  // }
 
 
   FindSearchTerm() {
@@ -90,9 +100,9 @@ export default class Root extends React.Component {
 
   componentDidMount() {
 
-    store.subscribe(() => {
-      this.forceUpdate();
-    });
+    // store.subscribe(() => {
+    //   this.forceUpdate();
+    // });
 
   }
 
@@ -132,6 +142,7 @@ export default class Root extends React.Component {
                 closeAllDropDownMenues={this.closeAllDropDownMenues}
                 showDropMenu={this.state.showDropMenu}
                 toggleDropDownMenu={this.toggleDropDownMenu}
+ //               autoClose={this.closingTheDrompDownMenu}
                 {...props}/>
 
 

@@ -6,7 +6,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 // import Player from './Player'
-
+import  store from "../../store";
 
 export default class Explore extends React.Component {
   constructor() {
@@ -53,6 +53,8 @@ export default class Explore extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
 
+
+
     const prevGenre = prevProps.match.params.genre;
     const targetGenre = this.props.match.params.genre;
     const currentSongs = this.state.offset;
@@ -73,7 +75,14 @@ export default class Explore extends React.Component {
 
     return (
       <ul className="song-holder"
-          onClick={(e) => this.props.closeAllDropDownMenues(e)}>
+          onClick={(e) => {
+            {/*store.dispatch({*/}
+              {/*type:'AUTO_CLOSE',*/}
+              {/*e:e,*/}
+              {/*state: false,*/}
+            {/*})*/}
+            this.props.closeAllDropDownMenues(e)
+          }}>
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail

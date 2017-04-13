@@ -1,5 +1,5 @@
 
-import { createStore, combineReducers } from 'Redux'
+import { createStore, combineReducers } from 'redux'
 import curentSong from './reducers/curentSongReduce'
 import searchForMusic from './reducers/searchForMusicReduce'
 import playLists from './reducers/playListsReduce'

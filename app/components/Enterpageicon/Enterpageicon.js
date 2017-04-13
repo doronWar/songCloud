@@ -2,6 +2,7 @@ import './Enterpageicon.scss'
 import {Link} from 'react-router-dom'
 
 export default function Enterpageicon(props) {
+  console.info(props);
   return (
     <div className="sign-in-modal">
       <i className="logo fa fa-mixcloud big-logo" aria-hidden="true"/>
