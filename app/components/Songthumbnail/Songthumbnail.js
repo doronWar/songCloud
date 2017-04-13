@@ -8,7 +8,7 @@ import 'normalize.css/normalize.css';
 import  React from "react";
 
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 class Songthumbnail extends React.Component {
   constructor() {
@@ -29,10 +29,9 @@ class Songthumbnail extends React.Component {
   }
 
 
-
   changeHeartState() {
 
-    if(!this.props.isDropDowmMenuOpen) {
+    if (!this.props.isDropDowmMenuOpen) {
 
       this.props.trueFlageForDropDownMenu();
 
@@ -40,7 +39,7 @@ class Songthumbnail extends React.Component {
       this.heartIcon.classList.toggle('fa-heart');
       this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
     }
-    else{
+    else {
       this.props.falseFlageForDropDownMenu();
 
     }
@@ -52,7 +51,6 @@ class Songthumbnail extends React.Component {
     if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
-
   }
 
   closingDropFownMenu() {
@@ -122,13 +120,13 @@ function mapDispatchToProps(dispatch) {
     },
     trueFlageForDropDownMenu(){
       dispatch({
-        type:'AUTO_CLOSE',
+        type: 'AUTO_CLOSE',
         state: true,
       })
     },
     falseFlageForDropDownMenu(){
       dispatch({
-        type:'AUTO_CLOSE',
+        type: 'AUTO_CLOSE',
         state: false,
       })
     }
@@ -136,17 +134,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-
 function mapStateToProps(stateData) {
-  return{
+  return {
     isDropDowmMenuOpen: stateData.oneDropDownMenuOpen
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Songthumbnail);
 //duration + gy(ganre)
-
-
 
 
 //in the explore
