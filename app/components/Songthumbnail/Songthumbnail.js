@@ -7,7 +7,7 @@ import 'font-awesome/css/font-awesome.css';
 import 'normalize.css/normalize.css';
 import  React from "react";
 
-import  store from "../../store";
+
 import { connect } from 'react-redux';
 
 class Songthumbnail extends React.Component {
@@ -31,43 +31,25 @@ class Songthumbnail extends React.Component {
 
 
   changeHeartState() {
-    // store.dispatch({        //this closes all menus
-    //   type: 'CHECK_FOR_OPEN_MENU',
-    //   menuId: this.props.song.id,
-    // });
 
-  //if it's false - don't open
+    if(!this.props.isDropDowmMenuOpen) {
 
-    if(!store.getState().oneDropDownMenuOpen) {
-      // store.dispatch({
-      //   type:'AUTO_CLOSE',
-      //   state: true,
-      // })
+      this.props.trueFlageForDropDownMenu();
 
-      store.dispatch({
-        type:'AUTO_CLOSE',
-        state: true,
-      })
-      // this.props.toggleDropDownMenu();
       this.heartIcon.classList.toggle('fa-heart-o');
       this.heartIcon.classList.toggle('fa-heart');
       this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
     }
     else{
+      this.props.falseFlageForDropDownMenu();
 
-      store.dispatch({
-        type:'AUTO_CLOSE',
-        state: false,
-      })
     }
   }
 
 
   //dealing with toggle dropDown menu - globaly!
   componentDidUpdate() {
-
-
-    if (!store.getState().oneDropDownMenuOpen && this.state.showDropDownMenu) {
+    if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
 
@@ -78,16 +60,12 @@ class Songthumbnail extends React.Component {
     this.heartIcon.classList.toggle('fa-heart-o');  //for emptying the heart
     this.heartIcon.classList.toggle('fa-heart');
 
-    store.dispatch({
-      type: 'SET_DROPDOWN_MENU',
-      menuId: this.props.song.id,
-    });
     // store.dispatch({
-    //   type: 'CHECK_FOR_OPEN_MENU',
+    //   type: 'SET_DROPDOWN_MENU',
     //   menuId: this.props.song.id,
     // });
-    //this.props.setDropDownMenuId(this.props.song.id);   ////changing through here the drop menu state back to false.
-    this.setState({showDropDownMenu: !this.state.showDropDownMenu}) //closing local flage of dropDown menu.
+
+    this.setState({showDropDownMenu: !this.state.showDropDownMenu}) //closing
 
 
   }
@@ -102,12 +80,7 @@ class Songthumbnail extends React.Component {
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
              onClick={() => {
-               curentSong(this.props.song);
-   //            store.dispatch({
-     //            type: 'CURENT_SONG',
-       //          song: this.props.song,
-         //      });
-
+               this.props.curentSong(this.props.song);
              }}/>
         <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
 
@@ -123,7 +96,7 @@ class Songthumbnail extends React.Component {
         }}/>
         <div className="for-global-flag">
 
-          { (store.getState().oneDropDownMenuOpen && this.state.showDropDownMenu) &&
+          { (this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) &&
           <AddToPlaylist redirect={this.props.redirect}
                          song={this.props.song}
                          findSong={this.props.findSong}
@@ -146,12 +119,31 @@ function mapDispatchToProps(dispatch) {
         type: 'CURENT_SONG',
         song: song,
       });
+    },
+    trueFlageForDropDownMenu(){
+      dispatch({
+        type:'AUTO_CLOSE',
+        state: true,
+      })
+    },
+    falseFlageForDropDownMenu(){
+      dispatch({
+        type:'AUTO_CLOSE',
+        state: false,
+      })
     }
   }
 }
 
 
-export default connect(null, mapDispatchToProps)(Songthumbnail);
+
+function mapStateToProps(stateData) {
+  return{
+    isDropDowmMenuOpen: stateData.oneDropDownMenuOpen
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Songthumbnail);
 //duration + gy(ganre)
 
 
