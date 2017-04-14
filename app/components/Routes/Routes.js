@@ -48,13 +48,11 @@ export default class Routes extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-
           <Route exact path="/signup" component={Signup}/>
-          <Route exact path="/signin" component={(props) => {
-            return <Signin logIn={this.logIn}
-                           goToSignOut={this.goToSignOut}
-                           {...props}/>
-          }}/>
+          <Route exact path="/signin" component={Signin}/>
+
+
+
           <Route path="/" component={(props) => {
             return <Root goToSignIn={this.goToSignIn}
                          {...props}/>

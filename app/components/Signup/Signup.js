@@ -3,7 +3,7 @@
  */
 import Enterpageicon from '../Enterpageicon/Enterpageicon'
 
-export default function Signup() {
+export default function Signup(props) {
   return (
     <div>
       <div>
@@ -11,7 +11,8 @@ export default function Signup() {
           action="Create account"
           lastLine="Already have an account"
           linkTitle='Sign in'
-          redirectTo='SignIn'/>
+          redirectTo='SignIn'
+          {...props}/>
       </div>
     </div>
   )

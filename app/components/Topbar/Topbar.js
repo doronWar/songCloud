@@ -6,10 +6,10 @@ import {NavLink} from 'react-router-dom';
 import React from 'react';
 import Routes from '../Routes/Routes';
 import store from './../../store'
+import { connect } from 'react-redux'
 
 
-
-export default class Topbar extends React.Component {
+class Topbar extends React.Component {
   render() {
 
     return (
@@ -41,12 +41,10 @@ export default class Topbar extends React.Component {
 
                 <i className="fa fa-search search-icon"/>
                 <input type="text" id="search-songs" placeholder="Song name"
-                       value={store.getState().searchForMusic}
+                       value={this.props.inputValue}
                        onChange={(e) => {
-                         store.dispatch({
-                           type:'TERM_FOR_SEARCH',
-                           value: e.target.value,
-                         });
+                         this.props.changeInputValu(e.target.value)
+
 
                        }}
                        onBlur={() => {
@@ -66,5 +64,25 @@ export default class Topbar extends React.Component {
   }
 }
 
+function mapStateToProps (stateData){
+  return{
+    inputValue: stateData.searchForMusic,
+  }
+}
+
+
+function mapDispatchToProps (dispatch) {
+  return {
+    changeInputValu(value){
+      dispatch({
+        type: 'TERM_FOR_SEARCH',
+        value: value,
+      })
+    }
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Topbar);
 
 //erased from on change of inpute:  {/*this.props.searchForMusic(e.target.value)*/}
