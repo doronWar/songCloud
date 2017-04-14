@@ -6,6 +6,7 @@ import playLists from './reducers/playListsReduce'
 import newListId from './reducers/newListIdReduce'
 import dropDownMenuId from './reducers/setDropDownMenuIdReduce'
 import oneDropDownMenuOpen from './reducers/oneDropDownMenuOpenReduce'
+import doesSongExist from './reducers/doesSongExistReduce'
 
 
 const reducer = combineReducers({
@@ -15,6 +16,7 @@ const reducer = combineReducers({
   newListId,
   dropDownMenuId,
   oneDropDownMenuOpen,
+  doesSongExist,
 });
 
 

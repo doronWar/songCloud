@@ -3,8 +3,9 @@ import React from 'react';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 
 import  store from "../../store";
+import { connect } from 'react-redux'
 
-export default class OnePlaylist extends React.Component {
+class OnePlaylist extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -27,14 +28,20 @@ export default class OnePlaylist extends React.Component {
   //if component was just created (compering ID ) then give it focus!
   componentDidMount() {
 
-    if (store.getState().newListId === this.props.element.id) {
+    if (this.props.newId === this.props.element.id) {
       this.togglePlaylistTitle();
-      store.dispatch({
-        type:'RESET_LIST_ID'
-      })
+      this.props.resetId();
+      // store.dispatch({
+      //   type:'RESET_LIST_ID'
+      // })
 
 
     }
+  }
+
+  listCurentName(id){
+    const playlist= this.props.playlists.find((onePlaylits)=>onePlaylits.id===id);
+    return playlist.title
   }
 
   render() {
@@ -54,16 +61,17 @@ export default class OnePlaylist extends React.Component {
           >{element.title}
           </p>
 
-          <input className={inputeState} type="text" tabIndex="0" value={element.title}
+          <input className={inputeState} type="text" tabIndex="0" value={this.listCurentName(element.id)}
                  ref={(inputState) => {
                    this.inputState = inputState
                  }}
                  onChange={(e) => {
-                   store.dispatch({
-                     type:'CHANGE_NAME',
-                     name:e.target.value,
-                     id:element.id,
-                   })
+                   this.props.changeName(e.target.value,element.id);
+//                   store.dispatch({
+//                     type:'CHANGE_NAME',
+//                     name:e.target.value,
+//                     id:element.id,
+//                   })
                  }}
                  onBlur={() => {
 
@@ -110,4 +118,28 @@ export default class OnePlaylist extends React.Component {
 
 }
 
+function mapStateToProps(dataState) {
+  return{
+    newId: dataState.newListId,
+    playlists: dataState.playLists,
+  }
+}
 
+function mapDispatchToProps(dispatch) {
+  return{
+    resetId(){
+      dispatch({
+        type:'RESET_LIST_ID'
+      })
+    },
+    changeName(title,id){
+      dispatch({
+        type:'CHANGE_NAME',
+        name:title,
+        id:id,
+      })
+    },
+  }
+}
+
+export default  connect(mapStateToProps, mapDispatchToProps)(OnePlaylist);

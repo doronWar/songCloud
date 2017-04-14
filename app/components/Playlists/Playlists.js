@@ -8,9 +8,9 @@ import Songthumbnail from '../Songthumbnail/Songthumbnail';
 import OnePlaylist from '../OnePlayList/OnePlayList'
 
 import  store from "../../store";
+import { connect } from 'react-redux'
 
-
-export default class Playlist extends React.Component {
+class Playlist extends React.Component {
 
   constructor() {
     super();
@@ -44,10 +44,10 @@ export default class Playlist extends React.Component {
     }
     if (playlistsExists) {
 
-      const titleState = this.state.isNameHidden ? "hiden" : ""
-      const inputeState = this.state.isInputeHidden ? "ply-input-title hiden" : "ply-input-title"
+  //    const titleState = this.state.isNameHidden ? "hiden" : ""
+  //    const inputeState = this.state.isInputeHidden ? "ply-input-title hiden" : "ply-input-title"
       return (
-        store.getState().playLists.map((element, i) => {
+        this.props.playlist.map((element, i) => {
           return (
             <div key={element.id}>
               <OnePlaylist playlistsExists={playlistsExists}
@@ -77,7 +77,7 @@ export default class Playlist extends React.Component {
 
     return (
 
-      store.getState().playLists.map((playList) => {
+      this.props.playlist.map((playList) => {
         return <input key={uuid()} type="button" value={playList.title} className="playlist-links"/>
       })
     )
@@ -86,27 +86,30 @@ export default class Playlist extends React.Component {
 
   render() {
 
-    const playlistsExists = store.getState().playLists.length !== 0
+    const playlistsExists = this.props.playlist.length !== 0
 
     return (
       <div className="plalist-page"
-           onClick={(e) => this.props.closeAllDropDownMenues(e)}>
+           onClick={(e) => this.props.closeAllMenues(e)}>
 
         <aside className="playlist-holder">
           <button className="btn-add-playlist btn-eff" onClick={() => {
             const newId = uuid();
-            store.dispatch({
-              type: 'ADD_PLAYLIST',
-              newId: newId,
-            });
-            store.dispatch({
-              type: 'NEW_LIST_ID',
-              newListId: newId,
+            this.props.addPlayList(newId);
+            this.props.saveListId(newId);
 
-            });
+//            store.dispatch({
+//              type: 'ADD_PLAYLIST',
+//              newId: newId,
+//            });
+//           store.dispatch({
+//              type: 'NEW_LIST_ID',
+//              newListId: newId,
 
-            {/*this.addNewPlayListBybutton()*/
-            }
+ //           });
+
+  //          {/*this.addNewPlayListBybutton()*/
+  //          }
           }}>Add new Playlist
           </button>
           <span className="seperating-lien"/>
@@ -122,3 +125,39 @@ export default class Playlist extends React.Component {
     )
   }
 }
+
+
+function mapDispatchToProps(dispatch){
+  return{
+    addPlayList(newId){
+      dispatch({
+        type: 'ADD_PLAYLIST',
+        newId: newId,
+      });
+    },
+    saveListId(newId){
+      dispatch({
+        type: 'NEW_LIST_ID',
+        newListId: newId,
+
+      });
+    },
+    closeAllMenues(e){
+      dispatch({
+        type:'AUTO_CLOSE_ALL_MENUS',
+        state: false,
+        e:e,
+      })
+    }
+  }
+
+
+}
+function mapStateToProps(dataState) {
+  return{
+    playlist: dataState.playLists
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Playlist);

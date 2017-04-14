@@ -23,9 +23,7 @@ export default function oneDropDownMenuOpenReduce(curentId = false, action) {
       action.e.target.className !== "for-global-flag") {
       return action.state;
     }
-    else {
-      return curentId;
-    }
+
   }
 
 

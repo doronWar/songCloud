@@ -7,8 +7,9 @@ import {NavLink} from 'react-router-dom';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 // import Player from './Player'
 import  store from "../../store";
+import { connect } from 'react-redux'
 
-export default class Explore extends React.Component {
+class Explore extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -76,12 +77,8 @@ export default class Explore extends React.Component {
     return (
       <ul className="song-holder"
           onClick={(e) => {
-            {/*store.dispatch({*/}
-              {/*type:'AUTO_CLOSE',*/}
-              {/*e:e,*/}
-              {/*state: false,*/}
-            {/*})*/}
-            this.props.closeAllDropDownMenues(e)
+            this.props.closeAllMenues(e)
+
           }}>
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
@@ -192,3 +189,18 @@ export default class Explore extends React.Component {
     }
   }
 }
+
+function mapDispatchToProps(dispatch) {
+
+  return{
+    closeAllMenues(e){
+      dispatch({
+        type:'AUTO_CLOSE_ALL_MENUS',
+        state: false,
+        e:e,
+      })
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Explore)

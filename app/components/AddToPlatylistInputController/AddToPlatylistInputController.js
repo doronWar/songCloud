@@ -60,3 +60,4 @@ export default class AddToPlatylistInputController extends React.Component {
   }
 
 }
+
