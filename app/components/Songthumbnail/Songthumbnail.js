@@ -18,6 +18,8 @@ class Songthumbnail extends React.Component {
       clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z",
       showDropDownMenu: false,
     }
+    this.MarkingSongAsInPlayList=this.MarkingSongAsInPlayList.bind(this);
+    this.closingDropFownMenu = this.closingDropFownMenu.bind(this)
   }
 
 
@@ -30,33 +32,60 @@ class Songthumbnail extends React.Component {
 
 
   changeHeartState() {
-
+console.info('global flage',this.props.isDropDowmMenuOpen);
+console.info('local flage',this.state.showDropDownMenu);
     if (!this.props.isDropDowmMenuOpen) {
 
       this.props.trueFlageForDropDownMenu();
+      this.setState({showDropDownMenu: !this.state.showDropDownMenu});   //opening dropDownMenu
 
-      this.heartIcon.classList.toggle('fa-heart-o');
-      this.heartIcon.classList.toggle('fa-heart');
-      this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
+     //this.heartIcon.classList.toggle('fa-heart-o');
+      this.heartIcon.classList.toggle('chosen');
+     // this.heartIcon.classList.toggle('fa-heart');
+
     }
     else {
       this.props.falseFlageForDropDownMenu();
 
+
     }
   }
 
+
+  MarkingSongAsInPlayList(){
+    this.props.playLists.forEach((onePlayList)=>{
+      onePlayList.songs.forEach((oneSong)=>{
+        if(oneSong.id=== this.props.song.id){
+          this.heartIcon.classList.toggle('fa-heart-o');
+          // this.heartIcon.classList.toggle('chosen');
+          this.heartIcon.classList.toggle('fa-heart');
+
+        }
+      })
+    });
+  }
+
+  componentDidMount() {
+    this.MarkingSongAsInPlayList();
+
+
+    //this.props.checkIfSongExists(this.props.playLists, this.props.song.id);
+    //console.info('checking here',this.props.playLists);
+  }
 
   //dealing with toggle dropDown menu - globaly!
   componentDidUpdate() {
     if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
+
   }
 
   closingDropFownMenu() {
 
-    this.heartIcon.classList.toggle('fa-heart-o');  //for emptying the heart
-    this.heartIcon.classList.toggle('fa-heart');
+   // this.heartIcon.classList.toggle('fa-heart-o');  //for emptying the heart
+    this.heartIcon.classList.toggle('chosen');
+   //this.heartIcon.classList.toggle('fa-heart');
 
     // store.dispatch({
     //   type: 'SET_DROPDOWN_MENU',
@@ -97,9 +126,10 @@ class Songthumbnail extends React.Component {
           { (this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) &&
           <AddToPlaylist redirect={this.props.redirect}
                          song={this.props.song}
-                         findSong={this.props.findSong}
+       //                  findSong={this.props.findSong}
                          parent={this.props.parent}
-                         closingDropFownMenu={this.closingDropFownMenu}/>}
+                         closingDropFownMenu={this.closingDropFownMenu}
+                         MarkingSongAsInPlayList={this.MarkingSongAsInPlayList}/>}
 
         </div>
 
@@ -118,16 +148,23 @@ function mapDispatchToProps(dispatch) {
         song: song,
       });
     },
-    trueFlageForDropDownMenu(){
-      dispatch({
-        type: 'AUTO_CLOSE',
-        state: true,
-      })
-    },
+      trueFlageForDropDownMenu(){
+        dispatch({
+          type: 'AUTO_CLOSE',
+          state: true,
+        })
+      },
     falseFlageForDropDownMenu(){
       dispatch({
         type: 'AUTO_CLOSE',
         state: false,
+      })
+    },
+    checkIfSongExists(playLists, songId){
+      dispatch({
+        type: 'CHECK_FOR_SONG_IN_ALL_PLAYLINS',
+        playLists: playLists,
+        songId: songId,
       })
     }
   }
@@ -136,7 +173,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(stateData) {
   return {
-    isDropDowmMenuOpen: stateData.oneDropDownMenuOpen
+    isDropDowmMenuOpen: stateData.oneDropDownMenuOpen,
+    playLists: stateData.playLists,
+    doesSongExist: stateData.doesSongExist,
   }
 }
 

@@ -86,7 +86,7 @@ class Explore extends React.Component {
             redirect={this.props.redirect}
             song={song}
 
-            findSong={this.props.findSong}
+   //         findSong={this.props.findSong}
             showDropMenu={this.props.showDropMenu}
             toggleDropDownMenu={this.props.toggleDropDownMenu}
             parent="explore"/>

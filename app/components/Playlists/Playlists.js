@@ -1,6 +1,4 @@
-/**
- * Created by Doron Warzager on 28/03/2017.
- */
+
 import './Playlists.scss'
 import React from 'react';
 import uuid from 'uuid';
@@ -59,7 +57,7 @@ class Playlist extends React.Component {
 
 
                            dropDownMenuClose={this.props.closeDropDownMenu}
-                           findSong={this.props.findSong}
+  //                         findSong={this.props.findSong}
               />
 
 

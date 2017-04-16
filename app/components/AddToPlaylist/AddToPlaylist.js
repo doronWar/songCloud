@@ -18,7 +18,8 @@ class AddToPlaylist extends React.Component {
             <AddToPlatylistInputController
               oneList={oneList}
               song={this.props.song}
-              findSong={this.props.findSong}
+      //        findSong={this.props.findSong}
+              MarkingSongAsInPlayList={this.props.MarkingSongAsInPlayList}
             />
 
           </div>
@@ -37,6 +38,7 @@ class AddToPlaylist extends React.Component {
 
     this.props.redirect();
   }
+
 
   render() {
 
@@ -74,7 +76,13 @@ function mapDispatchToProps(dispatch){
         type: 'NEW_LIST_ID',
         newListId: id,
       });
-    }
+    },
+    trueFlageForDropDownMenu(){
+      dispatch({
+        type: 'AUTO_CLOSE',
+        state: true,
+      })
+    },
   }
 }
 

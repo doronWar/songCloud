@@ -3,8 +3,10 @@
  */
 import React from "react";
 import  store from "../../store";
+import  { connect } from "react-redux";
 
-export default class AddToPlatylistInputController extends React.Component {
+
+class AddToPlatylistInputController extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,12 +16,13 @@ export default class AddToPlatylistInputController extends React.Component {
 
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
-      store.dispatch({
-        type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
-        listId:listId,
-        song:this.props.song,
-        toAdd:this.state.isChosen,
-      })
+      this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen)
+      // store.dispatch({
+      //   type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
+      //   listId:listId,
+      //   song:this.props.song,
+      //   toAdd:this.state.isChosen,
+      // })
       // this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen, listId)
     })
   }
@@ -30,12 +33,25 @@ export default class AddToPlatylistInputController extends React.Component {
 
   componentDidMount() {
 
-    this.props.findSong(this.props.oneList, this.props.song);
-    const doesExists = this.props.findSong(this.props.oneList, this.props.song);
-    if (doesExists) {
-      this.setState({isChosen: !this.state.isChosen})
-    }
+    this.props.playLists.forEach((onePlayList)=>{
+      onePlayList.songs.forEach((oneSong)=>{
+        if(oneSong.id=== this.props.song.id){
+          this.setState({isChosen: !this.state.isChosen})
+        }
+      })
+    });
 
+    // this.props.findSong(this.props.oneList, this.props.song);
+    // const doesExists = this.props.findSong(this.props.oneList, this.props.song);
+    // if (doesExists) {
+    //
+    // }
+
+  }
+  componentDidUpdate(){
+    if(this.state.isChosen) {
+     // this.props.MarkingSongAsInPlayList();
+    }
   }
 
 
@@ -60,4 +76,36 @@ export default class AddToPlatylistInputController extends React.Component {
   }
 
 }
+
+function mapStateToProps(stateData) {
+  return {
+
+    playLists: stateData.playLists,
+
+  }
+}
+function mapDispatchToProps(dispatch) {
+
+  return {
+    addAndRemoveSongFromPlayList(listId, song, toAdd){
+      dispatch({
+        type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
+        listId:listId,
+        song:song,
+        toAdd: toAdd,
+      })
+    }
+  }
+}
+
+
+function mapStateToProps(stateData) {
+  return {
+    isDropDowmMenuOpen: stateData.oneDropDownMenuOpen,
+    playLists: stateData.playLists,
+    doesSongExist: stateData.doesSongExist,
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps )(AddToPlatylistInputController);
 

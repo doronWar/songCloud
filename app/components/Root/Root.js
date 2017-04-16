@@ -137,7 +137,7 @@ export default class Root extends React.Component {
 
               return <Explore
                 redirect={this.redirect}
-                findSong={this.findSong}
+      //          findSong={this.findSong}
                 oneDropMenuOpen={this.state.oneDropMenuOpen}
                 closeAllDropDownMenues={this.closeAllDropDownMenues}
                 showDropMenu={this.state.showDropMenu}
@@ -151,7 +151,7 @@ export default class Root extends React.Component {
               return <Playlist playingNow={this.nowPlaying}
                                redirect={this.redirect}
                                oneDropMenuOpen={this.state.oneDropMenuOpen}
-                               findSong={this.findSong}
+    //                           findSong={this.findSong}
                                showDropMenu={this.state.showDropMenu}
                                toggleDropDownMenu={this.toggleDropDownMenu}
                                closeAllDropDownMenues={this.closeAllDropDownMenues}
