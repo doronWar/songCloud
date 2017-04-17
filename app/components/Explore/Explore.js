@@ -87,7 +87,7 @@ class Explore extends React.Component {
             song={song}
 
    //         findSong={this.props.findSong}
-            showDropMenu={this.props.showDropMenu}
+  //          showDropMenu={this.props.showDropMenu}
             toggleDropDownMenu={this.props.toggleDropDownMenu}
             parent="explore"/>
         </li>)}

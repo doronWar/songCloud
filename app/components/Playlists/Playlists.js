@@ -7,6 +7,9 @@ import OnePlaylist from '../OnePlayList/OnePlayList'
 
 import  store from "../../store";
 import { connect } from 'react-redux'
+require('smoothscroll-polyfill').polyfill();
+
+
 
 class Playlist extends React.Component {
 
@@ -47,11 +50,13 @@ class Playlist extends React.Component {
       return (
         this.props.playlist.map((element, i) => {
           return (
-            <div key={element.id}>
-              <OnePlaylist playlistsExists={playlistsExists}
-                           nowPlaying={this.props.playingNow}
+            <div key={element.id}
+            ref={(onePlaylist)=>this['playlist'+i]=onePlaylist}>
+              <OnePlaylist
+                //playlistsExists={playlistsExists}
+       //                    nowPlaying={this.props.playingNow}
                            element={element}
-                           showDropMenu={this.props.showDropMenu}
+       //                    showDropMenu={this.props.showDropMenu}
                            toggleDropDownMenu={this.props.toggleDropDownMenu}
                            redirect={this.props.redirect}
 
@@ -75,8 +80,14 @@ class Playlist extends React.Component {
 
     return (
 
-      this.props.playlist.map((playList) => {
-        return <input key={uuid()} type="button" value={playList.title} className="playlist-links"/>
+      this.props.playlist.map((playList,i) => {
+        return <input key={uuid()} type="button" value={playList.title} className="playlist-links"
+        onClick={()=>{
+          this['playlist'+i].scrollIntoView({block: "end", behavior: "smooth"});
+          this.props.saveListId(playList.id);
+
+        }
+        }/>
       })
     )
   }

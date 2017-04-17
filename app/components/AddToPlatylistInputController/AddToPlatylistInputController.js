@@ -16,7 +16,15 @@ class AddToPlatylistInputController extends React.Component {
 
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
-      this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen)
+      this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen);
+      this.props.playLists.forEach((onePlayList)=>{
+        onePlayList.songs.forEach((oneSong)=>{
+          if(oneSong.id=== this.props.song.id){
+            this.props.MarkingSongAsInPlayList();
+          }
+        })
+      });
+
       // store.dispatch({
       //   type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
       //   listId:listId,
@@ -48,9 +56,11 @@ class AddToPlatylistInputController extends React.Component {
     // }
 
   }
+
+
   componentDidUpdate(){
     if(this.state.isChosen) {
-     // this.props.MarkingSongAsInPlayList();
+      // this.props.MarkingSongAsInPlayList();
     }
   }
 
@@ -64,7 +74,7 @@ class AddToPlatylistInputController extends React.Component {
                  id={oneList.id} value={oneList.title}
                  checked={this.state.isChosen}
                  onChange={() => {
-                   console.info('oops');
+
                    this.changeInputState(oneList.id);
 
                  }}

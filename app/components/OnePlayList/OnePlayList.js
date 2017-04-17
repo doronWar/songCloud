@@ -21,13 +21,21 @@ class OnePlaylist extends React.Component {
 
 
   //gaing focuse on inpute when it appears
-  componentDidUpdate() {
-    this.inputState.focus()
+  componentDidUpdate(prevProps) {
+
+    this.inputState.focus();
+    if(prevProps.newId!== this.props.newId){
+      this.focusingInputWhenNeeded();
+    }
   }
 
   //if component was just created (compering ID ) then give it focus!
-  componentDidMount() {
+  componentDidMount(){
+    this.focusingInputWhenNeeded()
 
+  }
+
+  focusingInputWhenNeeded(){
     if (this.props.newId === this.props.element.id) {
       this.togglePlaylistTitle();
       this.props.resetId();
@@ -96,11 +104,11 @@ class OnePlaylist extends React.Component {
               <li key={song.id} className="one-song">
 
                 <Songthumbnail
-                  nowPlaying={this.props.nowPlaying}
+//                  nowPlaying={this.props.nowPlaying}
                   song={song}
                   redirect={this.props.redirect}
                   findSong={this.props.findSong}
-                  showDropMenu={this.props.showDropMenu}
+  //                showDropMenu={this.props.showDropMenu}
                   toggleDropDownMenu={this.props.toggleDropDownMenu}
                   closeAllDropDownMenues={this.props.closeAllDropDownMenues}/>
 
