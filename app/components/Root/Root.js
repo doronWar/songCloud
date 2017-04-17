@@ -76,7 +76,7 @@ export default class Root extends React.Component {
 
 
   FindSearchTerm() {
-    console.info("explore", store.getState());
+    // console.info("explore", store.getState());
     this.props.history.push(`/explore/${store.getState().searchForMusic}`)
   }
 
@@ -133,28 +133,30 @@ export default class Root extends React.Component {
             }/>
             <Route exact path="/Explore" component={Explore}/>
 
+
             <Route path="/explore/:genre" render={(props) => {
 
               return <Explore
-                redirect={this.redirect}
+   //             redirect={this.redirect}
       //          findSong={this.findSong}
-                oneDropMenuOpen={this.state.oneDropMenuOpen}
-                closeAllDropDownMenues={this.closeAllDropDownMenues}
-                showDropMenu={this.state.showDropMenu}
-                toggleDropDownMenu={this.toggleDropDownMenu}
+       //         oneDropMenuOpen={this.state.oneDropMenuOpen}
+        //        closeAllDropDownMenues={this.closeAllDropDownMenues}
+   //             showDropMenu={this.state.showDropMenu}
+         //       toggleDropDownMenu={this.toggleDropDownMenu}
  //               autoClose={this.closingTheDrompDownMenu}
                 {...props}/>
 
 
             }}/>
             <Route exact path="/playlist" render={(props) => {
-              return <Playlist playingNow={this.nowPlaying}
-                               redirect={this.redirect}
-                               oneDropMenuOpen={this.state.oneDropMenuOpen}
+              return <Playlist
+                //playingNow={this.nowPlaying}
+      //                         redirect={this.redirect}
+      //                         oneDropMenuOpen={this.state.oneDropMenuOpen}
     //                           findSong={this.findSong}
-                               showDropMenu={this.state.showDropMenu}
-                               toggleDropDownMenu={this.toggleDropDownMenu}
-                               closeAllDropDownMenues={this.closeAllDropDownMenues}
+   //                            showDropMenu={this.state.showDropMenu}
+   //                            toggleDropDownMenu={this.toggleDropDownMenu}
+      //                         closeAllDropDownMenues={this.closeAllDropDownMenues}
                                {...props}/>
 
             }}/>

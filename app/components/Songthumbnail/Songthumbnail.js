@@ -125,12 +125,14 @@ console.info('local flage',this.state.showDropDownMenu);
         <div className="for-global-flag">
 
           { (this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) &&
-          <AddToPlaylist redirect={this.props.redirect}
+          <AddToPlaylist
+            //redirect={this.props.redirect}
                          song={this.props.song}
        //                  findSong={this.props.findSong}
                          parent={this.props.parent}
                          closingDropFownMenu={this.closingDropFownMenu}
-                         MarkingSongAsInPlayList={this.MarkingSongAsInPlayList}/>}
+                         MarkingSongAsInPlayList={this.MarkingSongAsInPlayList}
+                         {...this.props}/>}
 
         </div>
 

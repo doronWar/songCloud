@@ -106,11 +106,12 @@ class OnePlaylist extends React.Component {
                 <Songthumbnail
 //                  nowPlaying={this.props.nowPlaying}
                   song={song}
-                  redirect={this.props.redirect}
-                  findSong={this.props.findSong}
+    //              redirect={this.props.redirect}
+     //             findSong={this.props.findSong}
   //                showDropMenu={this.props.showDropMenu}
-                  toggleDropDownMenu={this.props.toggleDropDownMenu}
-                  closeAllDropDownMenues={this.props.closeAllDropDownMenues}/>
+  //                toggleDropDownMenu={this.props.toggleDropDownMenu}
+       //           closeAllDropDownMenues={this.props.closeAllDropDownMenues}
+                  {...this.props}/>
 
 
               </li>)

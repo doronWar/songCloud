@@ -83,13 +83,14 @@ class Explore extends React.Component {
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail
-            redirect={this.props.redirect}
+  //          redirect={this.props.redirect}
             song={song}
 
    //         findSong={this.props.findSong}
   //          showDropMenu={this.props.showDropMenu}
-            toggleDropDownMenu={this.props.toggleDropDownMenu}
-            parent="explore"/>
+   //         toggleDropDownMenu={this.props.toggleDropDownMenu}
+            parent="explore"
+            {...this.props}/>
         </li>)}
 
       </ul>

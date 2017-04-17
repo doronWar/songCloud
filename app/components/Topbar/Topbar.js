@@ -1,6 +1,4 @@
-/**
- * Created by Doron Warzager on 28/03/2017.
- */
+
 import './Topbar.scss'
 import {NavLink} from 'react-router-dom';
 import React from 'react';
@@ -10,6 +8,8 @@ import { connect } from 'react-redux'
 
 
 class Topbar extends React.Component {
+
+
   render() {
 
     return (
@@ -47,6 +47,11 @@ class Topbar extends React.Component {
 
 
                        }}
+                       onKeyDown={(e)=>{
+                         if(e.keyCode=== 13){
+                           this.props.FindSearchTerm();
+                         }
+                       }}
                        onBlur={() => {
                          this.props.FindSearchTerm()}}/>
 
@@ -83,6 +88,6 @@ function mapDispatchToProps (dispatch) {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Topbar);
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Topbar);
 
 //erased from on change of inpute:  {/*this.props.searchForMusic(e.target.value)*/}

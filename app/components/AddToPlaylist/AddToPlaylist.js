@@ -35,8 +35,8 @@ class AddToPlaylist extends React.Component {
     this.props.setNewId(id);
     this.props.addAPlayList(this.props.song,id);
     this.props.closingDropFownMenu() ; //making sure dropDown menu is restarted
-
-    this.props.redirect();
+    this.props.history.push("/playlist")
+    // this.props.redirect();
   }
 
 

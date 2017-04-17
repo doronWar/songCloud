@@ -57,11 +57,12 @@ class Playlist extends React.Component {
        //                    nowPlaying={this.props.playingNow}
                            element={element}
        //                    showDropMenu={this.props.showDropMenu}
-                           toggleDropDownMenu={this.props.toggleDropDownMenu}
-                           redirect={this.props.redirect}
+    //                       toggleDropDownMenu={this.props.toggleDropDownMenu}
+   //                        redirect={this.props.redirect}
 
 
-                           dropDownMenuClose={this.props.closeDropDownMenu}
+         //                  dropDownMenuClose={this.props.closeDropDownMenu}
+                           {...this.props}
   //                         findSong={this.props.findSong}
               />
 
