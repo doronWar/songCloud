@@ -17,6 +17,8 @@ import {
 // import { Navigation } from 'react-router'
 
 
+
+
 export default class Routes extends React.Component {
 
   constructor() {
@@ -25,6 +27,7 @@ export default class Routes extends React.Component {
     // this.goToSignOut = this.goToSignOut.bind(this);
     this.logIn = this.logIn.bind(this)
   }
+
 
 
   logIn() {
@@ -45,7 +48,9 @@ export default class Routes extends React.Component {
   // }
 
   render() {
+
     return (
+
       <BrowserRouter>
         <Switch>
           <Route exact path="/signup" component={Signup}/>
@@ -59,6 +64,7 @@ export default class Routes extends React.Component {
           }}/>
 
         </Switch>
+
       </BrowserRouter>
     )
   }

@@ -52,8 +52,7 @@ class Topbar extends React.Component {
                            this.props.FindSearchTerm();
                          }
                        }}
-                       onBlur={() => {
-                         this.props.FindSearchTerm()}}/>
+                       />
 
               </div>
               <input type="button" id="log-out-button" value="Log out" className="search-song"

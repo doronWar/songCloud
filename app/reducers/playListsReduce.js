@@ -2,7 +2,14 @@
 import uuid from 'uuid';
 
 
+
+
 export default function currentTrackReducer(currentTerm = [], action) {
+
+  if(action.type === 'LOAD_PLAYLIST'){
+    return action.loadedPlaylist
+
+  }
 
   if(action.type === 'ADD_PLAYLIST'){
 

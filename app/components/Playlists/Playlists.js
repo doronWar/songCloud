@@ -77,6 +77,10 @@ class Playlist extends React.Component {
   }
 
 
+  // scrollToInput(playList, i){
+
+  // }
+
   listOfPlaylist() {
 
     return (
@@ -85,7 +89,9 @@ class Playlist extends React.Component {
         return <input key={uuid()} type="button" value={playList.title} className="playlist-links"
         onClick={()=>{
           this['playlist'+i].scrollIntoView({block: "end", behavior: "smooth"});
-          this.props.saveListId(playList.id);
+         // this.props.saveListId(playList.id);
+
+
 
         }
         }/>

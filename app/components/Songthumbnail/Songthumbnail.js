@@ -98,6 +98,9 @@ console.info('local flage',this.state.showDropDownMenu);
 
   }
 
+
+
+
   render() {
     const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large', 't300x300') : this.props.song.artwork_url;
 

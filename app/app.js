@@ -14,6 +14,29 @@ import store from './store'
 
 // function renderApp() {
 
+
+function testingGettingJasonPlaylist(){
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('GET', `http://localhost:3000/test`);
+
+  xhr.send();
+
+  xhr.addEventListener('load', (e) => {
+
+
+    console.info(JSON.parse(e.target.responseText));
+    // store.dispatch({
+    //   type:'LOAD_PLAYLIST',
+    //   loadedPlaylist:JSON.parse(e.target.responseText)
+    // })
+
+  })
+}
+
+
+testingGettingJasonPlaylist();
+
 ReactDOM.render(
   <Provider store={ store }>
     <Routes/>
