@@ -17,6 +17,7 @@ class Songthumbnail extends React.Component {
     this.state = {
       clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z",
       showDropDownMenu: false,
+
     }
     this.MarkingSongAsInPlayList=this.MarkingSongAsInPlayList.bind(this);
     this.closingDropFownMenu = this.closingDropFownMenu.bind(this)
@@ -32,33 +33,34 @@ class Songthumbnail extends React.Component {
 
 
   changeHeartState() {
-console.info('global flage',this.props.isDropDowmMenuOpen);
-console.info('local flage',this.state.showDropDownMenu);
+
     if (!this.props.isDropDowmMenuOpen) {
 
       this.props.trueFlageForDropDownMenu();
       this.setState({showDropDownMenu: !this.state.showDropDownMenu});   //opening dropDownMenu
-
-     //this.heartIcon.classList.toggle('fa-heart-o');
       this.heartIcon.classList.toggle('chosen');
-     // this.heartIcon.classList.toggle('fa-heart');
-
     }
     else {
       this.props.falseFlageForDropDownMenu();
-
-
     }
   }
 
 
   MarkingSongAsInPlayList(){
+
+    let existsInPlayList = false; //dealling with repetetive mounting becouse of connect
     this.props.playLists.forEach((onePlayList)=>{
       onePlayList.songs.forEach((oneSong)=>{
         if(oneSong.id=== this.props.song.id){
-          this.heartIcon.classList.toggle('fa-heart-o');
-          // this.heartIcon.classList.toggle('chosen');
-          this.heartIcon.classList.toggle('fa-heart');
+          if(!existsInPlayList) {
+
+            this.heartIcon.classList.toggle('fa-heart-o');
+            // this.heartIcon.classList.toggle('chosen');
+            this.heartIcon.classList.toggle('fa-heart');
+            existsInPlayList= true;
+
+            // this.state.existsInPlayList = true;
+          }
 
         }
       })
@@ -69,36 +71,45 @@ console.info('local flage',this.state.showDropDownMenu);
   componentDidMount() {
     this.MarkingSongAsInPlayList();
 
-
-    //this.props.checkIfSongExists(this.props.playLists, this.props.song.id);
-    //console.info('checking here',this.props.playLists);
   }
 
   //dealing with toggle dropDown menu - globaly!
-  componentDidUpdate() {
+  //&& updating heart state
+  componentDidUpdate(preProps) {
     if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
+    let toggle = false;
+    this.props.playLists.forEach((onePlayList)=>{
+      onePlayList.songs.forEach((oneSong)=> {
+        if (oneSong.id === this.props.song.id) {
+          toggle = true;
+        }
+      })
+    });
+      //if song exists in playlist, but heart is black - toggle heart
+    if(toggle && this.heartIcon.classList.toString().includes('fa-heart-o')){
+      this.MarkingSongAsInPlayList();
+    }
+    //if it wasn't found but heart if full - toggle heart
 
+    if(!toggle && !this.heartIcon.classList.toString().includes('fa-heart-o')){
+      this.heartIcon.classList.toggle('fa-heart-o');
+      this.heartIcon.classList.toggle('fa-heart');
+    }
   }
 
   closingDropFownMenu() {
-
-   // this.heartIcon.classList.toggle('fa-heart-o');  //for emptying the heart
     this.heartIcon.classList.toggle('chosen');
-   //this.heartIcon.classList.toggle('fa-heart');
-
-    // store.dispatch({
-    //   type: 'SET_DROPDOWN_MENU',
-    //   menuId: this.props.song.id,
-    // });
-
     this.setState({showDropDownMenu: !this.state.showDropDownMenu}) //closing
-
-
   }
 
 
+
+  curentSongLogic(){
+      this.props.curentSong(this.props.song);
+
+  }
 
 
   render() {
@@ -111,7 +122,7 @@ console.info('local flage',this.state.showDropDownMenu);
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
              onClick={() => {
-               this.props.curentSong(this.props.song);
+               this.curentSongLogic();
              }}/>
         <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
 
@@ -182,52 +193,10 @@ function mapStateToProps(stateData) {
     isDropDowmMenuOpen: stateData.oneDropDownMenuOpen,
     playLists: stateData.playLists,
     doesSongExist: stateData.doesSongExist,
+    curentSongPlaying: stateData.curentSong
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Songthumbnail);
-//duration + gy(ganre)
 
 
-//in the explore
-
-//dealing with toggle dropDown menu
-//
-// changeHeartState() {
-//
-//   if (!store.getState().oneDropDownMenuOpen) {                 //checking if any other menu is open
-//
-//     store.dispatch({
-//       type: 'SET_DROPDOWN_MENU',
-//       menuId: this.props.song.id,
-//     });
-//     store.dispatch({        //this closes all menus
-//       type: 'CHECK_FOR_OPEN_MENU',
-//       menuId: this.props.song.id,
-//     });
-//
-//
-//     //this.props.setDropDownMenuId(this.props.song.id); //changing menu state in expre & saving this songs ID
-//
-//     this.props.toggleDropDownMenu();
-//     this.heartIcon.classList.toggle('fa-heart-o');
-//     this.heartIcon.classList.toggle('fa-heart');
-//     this.setState({showDropDownMenu: !this.state.showDropDownMenu})   //opening dropDownMenu
-//     // this.addSongToPlaylist.classList.toggle('menu-toggle-view');
-//   }
-//   else if (store.getState().dropDownMenuId === this.props.song.id) {    // when reentering and having a menu open
-//     // checking if this menu's Id is the saved one.
-//     store.dispatch({
-//       type: 'SET_DROPDOWN_MENU',
-//       menuId: this.props.song.id,
-//     });
-//     store.dispatch({
-//       type: 'CHECK_FOR_OPEN_MENU',
-//       menuId: this.props.song.id,
-//     });
-//     //   this.props.setDropDownMenuId(this.props.song.id);     //changing through here the drop menu state back to false.
-//     this.heartIcon.classList.toggle('fa-heart-o');
-//     this.heartIcon.classList.toggle('fa-heart');
-//     this.setState({showDropDownMenu: !this.state.showDropDownMenu})
-//   }
-// }

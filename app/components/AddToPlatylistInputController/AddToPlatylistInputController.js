@@ -3,7 +3,7 @@
  */
 import React from "react";
 import  store from "../../store";
-import  { connect } from "react-redux";
+import  {connect} from "react-redux";
 
 
 class AddToPlatylistInputController extends React.Component {
@@ -17,21 +17,6 @@ class AddToPlatylistInputController extends React.Component {
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
       this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen);
-      this.props.playLists.forEach((onePlayList)=>{
-        onePlayList.songs.forEach((oneSong)=>{
-          if(oneSong.id=== this.props.song.id){
-            this.props.MarkingSongAsInPlayList();
-          }
-        })
-      });
-
-      // store.dispatch({
-      //   type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
-      //   listId:listId,
-      //   song:this.props.song,
-      //   toAdd:this.state.isChosen,
-      // })
-      // this.props.addNRemoveSongToPlaylist(this.props.song, this.state.isChosen, listId)
     })
   }
 
@@ -40,28 +25,21 @@ class AddToPlatylistInputController extends React.Component {
   }
 
   componentDidMount() {
+    this.props.playLists.forEach((onePlayList) => {
+      if(this.props.oneList.id===onePlayList.id){
+        onePlayList.songs.forEach((oneSong) => {
+          if (oneSong.id === this.props.song.id) {
+            this.setState({isChosen: !this.state.isChosen});
+          }
+        })
+      }
 
-    this.props.playLists.forEach((onePlayList)=>{
-      onePlayList.songs.forEach((oneSong)=>{
-        if(oneSong.id=== this.props.song.id){
-          this.setState({isChosen: !this.state.isChosen})
-        }
-      })
     });
-
-    // this.props.findSong(this.props.oneList, this.props.song);
-    // const doesExists = this.props.findSong(this.props.oneList, this.props.song);
-    // if (doesExists) {
-    //
-    // }
-
   }
 
 
-  componentDidUpdate(){
-    if(this.state.isChosen) {
-      // this.props.MarkingSongAsInPlayList();
-    }
+  componentDidUpdate() {
+
   }
 
 
@@ -99,9 +77,9 @@ function mapDispatchToProps(dispatch) {
   return {
     addAndRemoveSongFromPlayList(listId, song, toAdd){
       dispatch({
-        type:'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
-        listId:listId,
-        song:song,
+        type: 'ADD_AND_REMOVE_SONG_FROM_PLAYLIST',
+        listId: listId,
+        song: song,
         toAdd: toAdd,
       })
     }
@@ -117,5 +95,5 @@ function mapStateToProps(stateData) {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps )(AddToPlatylistInputController);
+export default connect(mapStateToProps, mapDispatchToProps)(AddToPlatylistInputController);
 
