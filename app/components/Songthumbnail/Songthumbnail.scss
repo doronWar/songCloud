@@ -32,6 +32,17 @@
   // margin-bottom:7px;
 }
 
+.darken-songthumbnail{
+  display: block;
+  width: 200px;
+  height: 85px;
+  background-color: black;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: .5;
+  z-index: 10;
+}
 .song-title {
   margin: 0 0 0 10px;
   font-size: 11px;

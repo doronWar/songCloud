@@ -19,7 +19,7 @@ class Songthumbnail extends React.Component {
       showDropDownMenu: false,
 
     }
-    this.MarkingSongAsInPlayList=this.MarkingSongAsInPlayList.bind(this);
+    this.MarkingSongAsInPlayList = this.MarkingSongAsInPlayList.bind(this);
     this.closingDropFownMenu = this.closingDropFownMenu.bind(this)
   }
 
@@ -46,18 +46,18 @@ class Songthumbnail extends React.Component {
   }
 
 
-  MarkingSongAsInPlayList(){
+  MarkingSongAsInPlayList() {
 
     let existsInPlayList = false; //dealling with repetetive mounting becouse of connect
-    this.props.playLists.forEach((onePlayList)=>{
-      onePlayList.songs.forEach((oneSong)=>{
-        if(oneSong.id=== this.props.song.id){
-          if(!existsInPlayList) {
+    this.props.playLists.forEach((onePlayList) => {
+      onePlayList.songs.forEach((oneSong) => {
+        if (oneSong.id === this.props.song.id) {
+          if (!existsInPlayList) {
 
             this.heartIcon.classList.toggle('fa-heart-o');
             // this.heartIcon.classList.toggle('chosen');
             this.heartIcon.classList.toggle('fa-heart');
-            existsInPlayList= true;
+            existsInPlayList = true;
 
             // this.state.existsInPlayList = true;
           }
@@ -80,20 +80,20 @@ class Songthumbnail extends React.Component {
       this.closingDropFownMenu()
     }
     let toggle = false;
-    this.props.playLists.forEach((onePlayList)=>{
-      onePlayList.songs.forEach((oneSong)=> {
+    this.props.playLists.forEach((onePlayList) => {
+      onePlayList.songs.forEach((oneSong) => {
         if (oneSong.id === this.props.song.id) {
           toggle = true;
         }
       })
     });
-      //if song exists in playlist, but heart is black - toggle heart
-    if(toggle && this.heartIcon.classList.toString().includes('fa-heart-o')){
+    //if song exists in playlist, but heart is black - toggle heart
+    if (toggle && this.heartIcon.classList.toString().includes('fa-heart-o')) {
       this.MarkingSongAsInPlayList();
     }
     //if it wasn't found but heart if full - toggle heart
 
-    if(!toggle && !this.heartIcon.classList.toString().includes('fa-heart-o')){
+    if (!toggle && !this.heartIcon.classList.toString().includes('fa-heart-o')) {
       this.heartIcon.classList.toggle('fa-heart-o');
       this.heartIcon.classList.toggle('fa-heart');
     }
@@ -105,27 +105,38 @@ class Songthumbnail extends React.Component {
   }
 
 
+  curentSongLogic() {
 
-  curentSongLogic(){
-      this.props.curentSong(this.props.song);
+    this.props.curentSong(this.props.song);
 
+    if (this.props.curentSongPlaying) {
+
+      if (this.props.curentSongPlaying.id === this.props.song.id) {
+
+        this.props.playPusetoggle();
+      }
+    }
   }
 
 
   render() {
     const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large', 't300x300') : this.props.song.artwork_url;
+    const showDarkenBakcground = this.props.curentSongPlaying ? (this.props.curentSongPlaying.id === this.props.song.id) : false;
 
     return (
       <div className="song-thumbnail"
-           data-id={this.props.song.uri + this.clientId}
-      >
+           data-id={this.props.song.uri + this.clientId}>
+
         <div className="song-img"
              style={{'backgroundImage': `url( ${imgUrl} )`}}
              onClick={() => {
                this.curentSongLogic();
-             }}/>
-        <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
+             }}>
 
+          {showDarkenBakcground && <div className="darken-songthumbnail"/>}
+        </div>
+
+        <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
 
         <i className="fa fa-clock-o time-logo">
           <p className="song-time">{this.songTime()}</p>
@@ -141,12 +152,12 @@ class Songthumbnail extends React.Component {
           { (this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) &&
           <AddToPlaylist
             //redirect={this.props.redirect}
-                         song={this.props.song}
-       //                  findSong={this.props.findSong}
-                         parent={this.props.parent}
-                         closingDropFownMenu={this.closingDropFownMenu}
-                         MarkingSongAsInPlayList={this.MarkingSongAsInPlayList}
-                         {...this.props}/>}
+            song={this.props.song}
+            //                  findSong={this.props.findSong}
+            parent={this.props.parent}
+            closingDropFownMenu={this.closingDropFownMenu}
+            MarkingSongAsInPlayList={this.MarkingSongAsInPlayList}
+            {...this.props}/>}
 
         </div>
 
@@ -165,12 +176,12 @@ function mapDispatchToProps(dispatch) {
         song: song,
       });
     },
-      trueFlageForDropDownMenu(){
-        dispatch({
-          type: 'AUTO_CLOSE',
-          state: true,
-        })
-      },
+    trueFlageForDropDownMenu(){
+      dispatch({
+        type: 'AUTO_CLOSE',
+        state: true,
+      })
+    },
     falseFlageForDropDownMenu(){
       dispatch({
         type: 'AUTO_CLOSE',
@@ -182,6 +193,11 @@ function mapDispatchToProps(dispatch) {
         type: 'CHECK_FOR_SONG_IN_ALL_PLAYLINS',
         playLists: playLists,
         songId: songId,
+      })
+    },
+    playPusetoggle(){
+      dispatch({
+        type: 'PLAYER_TOGGLE',
       })
     }
   }

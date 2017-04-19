@@ -7,6 +7,7 @@ import newListId from './reducers/newListIdReduce'
 import dropDownMenuId from './reducers/setDropDownMenuIdReduce'
 import oneDropDownMenuOpen from './reducers/oneDropDownMenuOpenReduce'
 import doesSongExist from './reducers/doesSongExistReduce'
+import playPusetoggle from './reducers/playPusetoggleReduce'
 
 
 
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   dropDownMenuId,
   oneDropDownMenuOpen,
   doesSongExist,
+  playPusetoggle,
 });
 
 
