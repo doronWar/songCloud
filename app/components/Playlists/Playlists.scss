@@ -4,6 +4,12 @@
   display: flex;
 }
 
+//div that hold one playlist - for scrolling persoses
+.onePlaylistHolder{
+  padding-top:10px;
+}
+
+
 .playlist-holder {
   width: 200px;
   height: 100vh;
@@ -52,7 +58,13 @@
 }
 
 .temp-ul {
-  margin-top: 77px;
+  position: absolute;
+  top: 77px;
+  left: 220px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  margin-top: 20px;
   padding-left: 0;
 }
 
@@ -76,10 +88,12 @@
   font-size: 15px;
   margin-left: 20px;
   text-align: left;
+  outline: none;
 }
 
 .playlist-links:active{
   outline: none;
+
 }
 //.btn-eff {
 //  border: none;

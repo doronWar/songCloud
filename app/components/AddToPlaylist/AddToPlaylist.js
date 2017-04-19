@@ -19,8 +19,6 @@ class AddToPlaylist extends React.Component {
             <AddToPlatylistInputController
               oneList={oneList}
               song={this.props.song}
-      //        findSong={this.props.findSong}
-              MarkingSongAsInPlayList={this.props.MarkingSongAsInPlayList}
             />
 
           </div>

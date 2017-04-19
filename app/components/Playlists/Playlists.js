@@ -51,7 +51,7 @@ class Playlist extends React.Component {
       return (
         this.props.playlist.map((element, i) => {
           return (
-            <div key={element.id}
+            <div key={element.id} className="onePlaylistHolder"
             ref={(onePlaylist)=>this['playlist'+i]=onePlaylist}>
               <OnePlaylist
                 //playlistsExists={playlistsExists}
