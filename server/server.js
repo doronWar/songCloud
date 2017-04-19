@@ -57,9 +57,10 @@ app.post('/deleteList', function(req, res) {
   playLists.forEach((oneList, index)=>{
     if(oneList.id===req.body.id){
       indexOfPlaylist= index;
+      playLists.splice(indexOfPlaylist, 1);
     }
   });
-  playLists.splice(indexOfPlaylist, 1);
+
 
 
   fs.writeFileSync(__dirname + '/data.json', JSON.stringify(playLists));
@@ -91,7 +92,7 @@ app.post('/addSong', function(req, res) {
 
   for (let onePlaylist of playLists) {
     if(onePlaylist.id===req.body.id){
-      onePlaylist.songs.push(req.body.songs);
+      onePlaylist.songs.push(req.body.songs[0]);
     }
   }
 
@@ -107,7 +108,20 @@ app.post('/removeSong', function(req, res) {
 
   const playLists= JSON.parse(data);
 
-  playLists.push(req.body);
+  for (let onePlaylist of playLists) {
+    if(onePlaylist.id===req.body.id){
+
+      onePlaylist.songs.forEach((song, index)=>{
+        if(song.id===req.body.songs[0].id){
+          const indexOfPlaylist= index;
+
+          onePlaylist.songs.splice(indexOfPlaylist, 1);
+
+        }
+      });
+  }
+  }
+
   fs.writeFileSync(__dirname + '/data.json', JSON.stringify(playLists));
   res.send('song removed');
 });

@@ -77,7 +77,9 @@ export default class Root extends React.Component {
 
   FindSearchTerm() {
     // console.info("explore", store.getState());
-    this.props.history.push(`/explore/${store.getState().searchForMusic}`)
+    // this.props.history.push(`/explore/${store.getState().searchForMusic}`)
+    this.props.history.push(`/explore/${store.getState().searchForMusic}?search=true`);
+
   }
 
   redirect() {

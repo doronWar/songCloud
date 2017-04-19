@@ -17,12 +17,12 @@ class AddToPlatylistInputController extends React.Component {
 
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
-      // if(this.state.isChosen) {
-      //   this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'addSong');
-      // }
-      // else{
-      //   this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'removeSong');
-      // }
+      if(this.state.isChosen) {
+        this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'addSong');
+      }
+      else{
+        this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'removeSong');
+      }
       this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen);
     })
   }

@@ -35,7 +35,10 @@ class Explore extends React.Component {
     const genre = this.props.match.params.genre;
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', `https://api.soundcloud.com/tracks?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z&limit=${this.state.limit}&offset=${this.state.offset}&tags=${genre}`);
+    const searchKind= this.props.history.location.search===""? 'tags': 'q';
+
+
+    xhr.open('GET', `https://api.soundcloud.com/tracks?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z&limit=${this.state.limit}&offset=${this.state.offset}&${searchKind}=${genre}`);
 
     xhr.send();
 
