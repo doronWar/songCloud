@@ -24,6 +24,11 @@
 
 }
 
+.one-song:empty {
+    height: 0;
+    border: none;
+}
+
 .genre-name {
   list-style: none;
   margin-left: 55px;

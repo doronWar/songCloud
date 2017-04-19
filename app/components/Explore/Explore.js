@@ -95,7 +95,10 @@ class Explore extends React.Component {
             parent="explore"
             {...this.props}/>
         </li>)}
-
+        {/*this is only for lining up the songs*/}
+        <li className="one-song"/>
+        <li className="one-song"/>
+        <li className="one-song"/>
       </ul>
     )
   }
