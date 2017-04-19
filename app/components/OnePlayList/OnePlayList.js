@@ -4,6 +4,8 @@ import Songthumbnail from '../Songthumbnail/Songthumbnail';
 
 import  store from "../../store";
 import { connect } from 'react-redux'
+import {xhrControll} from '../../utils/utils'
+
 
 class OnePlaylist extends React.Component {
   constructor() {
@@ -52,6 +54,19 @@ class OnePlaylist extends React.Component {
     return playlist.title
   }
 
+
+  actionsOnSongJasonPlaylist(element,actionToDo){
+    const addedPlayList = {
+      title: element.title,
+      id: element.id,
+      songs: [],
+    };
+
+    xhrControll(addedPlayList, null, 'POST', actionToDo);
+  }
+
+
+
   render() {
 
     const titleState = this.state.isNameHidden ? "hiden" : ""
@@ -82,7 +97,7 @@ class OnePlaylist extends React.Component {
 //                   })
                  }}
                  onBlur={() => {
-
+                    this.actionsOnSongJasonPlaylist(element,'newName')
                    this.togglePlaylistTitle();
 
                  }}
@@ -94,6 +109,7 @@ class OnePlaylist extends React.Component {
                       type:'REMOVE_PLAYLIST',
                       playListId:element.id,
                     });
+                    this.actionsOnSongJasonPlaylist(element, 'deleteList')
                   }}
           >Delete
           </button>

@@ -4,6 +4,7 @@
 import React from "react";
 import  store from "../../store";
 import  { connect } from "react-redux";
+import {xhrControll} from '../../utils/utils'
 
 
 class AddToPlatylistInputController extends React.Component {
@@ -16,6 +17,12 @@ class AddToPlatylistInputController extends React.Component {
 
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
+      // if(this.state.isChosen) {
+      //   this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'addSong');
+      // }
+      // else{
+      //   this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'removeSong');
+      // }
       this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen);
       this.props.playLists.forEach((onePlayList)=>{
         onePlayList.songs.forEach((oneSong)=>{
@@ -35,9 +42,9 @@ class AddToPlatylistInputController extends React.Component {
     })
   }
 
-  changeInputByLabelState(listId) {
-    this.setState({isChosen: !this.state.isChosen})
-  }
+  // changeInputByLabelState(listId) {
+  //   this.setState({isChosen: !this.state.isChosen})
+  // }
 
   componentDidMount() {
 
@@ -62,6 +69,16 @@ class AddToPlatylistInputController extends React.Component {
     if(this.state.isChosen) {
       // this.props.MarkingSongAsInPlayList();
     }
+  }
+
+  addAndRemovSongJasonPlaylist(listId, song ,actionToDo){
+    const addedPlayList = {
+      title: 'holdsTheSong',
+      id: listId,
+      songs: [song],
+    };
+
+     xhrControll(addedPlayList, null, 'POST', actionToDo);
   }
 
 

@@ -107,23 +107,23 @@ class Explore extends React.Component {
     }
   }
 
-
-testingGettingJasonPlaylist(){
-  const xhr = new XMLHttpRequest();
-
-  xhr.open('GET', `http://localhost:3000/test`);
-
-  xhr.send();
-
-  xhr.addEventListener('load', (e) => {
-
-    // console.info(JSON.parse(e.target.responseText));
-    console.info(JSON.parse(e.target.responseText));
-    // console.info(this.state.songs);
-
-    // console.info('rendered');
-  })
-}
+//
+// testingGettingJasonPlaylist(){
+//   const xhr = new XMLHttpRequest();
+//
+//   xhr.open('GET', `http://localhost:3000/test`);
+//
+//   xhr.send();
+//
+//   xhr.addEventListener('load', (e) => {
+//
+//     // console.info(JSON.parse(e.target.responseText));
+//     console.info(JSON.parse(e.target.responseText));
+//     // console.info(this.state.songs);
+//
+//     // console.info('rendered');
+//   })
+// }
 
   render() {
     if (this.state.loadingState === 'loading') {

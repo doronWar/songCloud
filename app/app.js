@@ -24,6 +24,10 @@ function testingGettingJasonPlaylist(){
 
   xhr.addEventListener('load', (e) => {
 
+    store.dispatch({
+      type:'LOAD_APP_LOAD_PLAYLIST',
+      loadedPlaylistFromServer:JSON.parse(e.target.responseText)
+    })
 
     console.info(JSON.parse(e.target.responseText));
     // store.dispatch({

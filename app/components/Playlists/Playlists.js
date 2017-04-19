@@ -4,6 +4,7 @@ import React from 'react';
 import uuid from 'uuid';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 import OnePlaylist from '../OnePlayList/OnePlayList'
+import {xhrControll} from '../../utils/utils'
 
 import  store from "../../store";
 import { connect } from 'react-redux'
@@ -100,6 +101,22 @@ class Playlist extends React.Component {
   }
 
 
+  savingNewSongJasonPlaylist(listId){
+    const addedPlayList = {
+      title: 'New Playlist ',
+      id: listId,
+      songs: [],
+    };
+
+    xhrControll(addedPlayList,null,'POST', 'save');
+    // const xhr = new XMLHttpRequest();
+    // xhr.open('POST', `http://localhost:3000/save`);
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.send(JSON.stringify(addedPlayList));
+
+  }
+
+
   render() {
 
     const playlistsExists = this.props.playlist.length !== 0
@@ -113,6 +130,7 @@ class Playlist extends React.Component {
             const newId = uuid();
             this.props.addPlayList(newId);
             this.props.saveListId(newId);
+            this.savingNewSongJasonPlaylist(newId );
 
 //            store.dispatch({
 //              type: 'ADD_PLAYLIST',

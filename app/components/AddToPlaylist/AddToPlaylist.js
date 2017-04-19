@@ -1,4 +1,5 @@
 import './AddToPlaylist.scss'
+import {xhrControll} from '../../utils/utils'
 import React from 'react';
 import AddToPlatylistInputController from '../AddToPlatylistInputController/AddToPlatylistInputController';
 import { connect } from 'react-redux'
@@ -35,52 +36,34 @@ class AddToPlaylist extends React.Component {
     this.props.setNewId(id);
     this.props.addAPlayList(this.props.song,id);
     this.props.closingDropFownMenu() ; //making sure dropDown menu is restarted
-    // this.savingNewSongJasonPlaylist();
+    this.savingNewSongJasonPlaylist(id,this.props.song);
     this.props.history.push("/playlist")
     // this.props.redirect();
   }
 
 
-  savingNewSongJasonPlaylist(){
-    const xhr = new XMLHttpRequest();
+  savingNewSongJasonPlaylist(listId, song ){
 
-    xhr.open('POST', `http://localhost:3000/save`);
+    const addedPlayList = {
 
-    xhr.send(JSON.stringify(this.props.playLists));
-
-    xhr.addEventListener('load', (e) => {
-
-
-      //console.info(JSON.parse(e.target.responseText));
-
-
-
-
-
-      const xhr = new XMLHttpRequest();
-
-      xhr.open('GET', `http://localhost:3000/test`);
-
-      xhr.send();
-
-      xhr.addEventListener('load', (e) => {
+      title: 'New Playlist ',
+      id: listId,
+      songs: [song],
+    };
+    xhrControll(addedPlayList,null,'POST', 'save');
+    // const xhr = new XMLHttpRequest();
+    //
+    //
+    // xhr.open('POST', `http://localhost:3000/save`);
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+    //
+    // xhr.send(JSON.stringify(addedPlayList));
 
 
-        console.info(JSON.parse(e.target.responseText));
-        // store.dispatch({
-        //   type:'LOAD_PLAYLIST',
-        //   loadedPlaylist:JSON.parse(e.target.responseText)
-        // })
 
-      })
-
-
-      // store.dispatch({
-      //   type:'LOAD_PLAYLIST',
-      //   loadedPlaylist:JSON.parse(e.target.responseText)
-      // })
-
-    })
+ //    xhr.addEventListener('load', (e) => {
+ // console.info(JSON.parse(e.target.responseText));
+ //    })
   }
 
 
