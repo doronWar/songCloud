@@ -34,8 +34,6 @@ class Player extends React.Component {
 
   componentDidUpdate(){
 
-    // autoPlay
-      console.info(this.props.canPlaySong);
     if(this.props.canPlaySong) {
       this.player.play();
     }

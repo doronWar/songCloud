@@ -114,6 +114,8 @@ class Songthumbnail extends React.Component {
       if (this.props.curentSongPlaying.id === this.props.song.id) {
 
         this.props.playPusetoggle();
+        this.iconPlayer.classList.toggle('fa-play')
+        this.iconPlayer.classList.toggle('fa-pause')
       }
     }
   }
@@ -133,7 +135,11 @@ class Songthumbnail extends React.Component {
                this.curentSongLogic();
              }}>
 
-          {showDarkenBakcground && <div className="darken-songthumbnail"/>}
+          {showDarkenBakcground && <div className="darken-songthumbnail">
+            <i className="fa fa-play player-icon"
+            ref={(playerIcon)=>this.iconPlayer= playerIcon}/>
+
+          </div>}
         </div>
 
         <p className="song-title">{this.props.song.title.slice(0, 33)}...</p>
