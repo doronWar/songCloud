@@ -1,50 +1,48 @@
 import './Player.scss'
-// import  store from "../../store";
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import  React from "react";
 
 class Player extends React.Component {
 
-  constructor(){
+  constructor() {
     super();
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
 
-    if(nextProps.curentSong && this.props.curentSong) {
+    if (nextProps.curentSong && this.props.curentSong) {
       if (nextProps.curentSong.id !== this.props.curentSong.id) {
-        if(!this.props.canPlaySong) {
+        if (!this.props.canPlaySong) {
           this.props.playPusetoggle();
         }
-
       }
     }
 
   }
 
-  shouldComponentUpdate(nextProps){
+  shouldComponentUpdate(nextProps) {
 
-    if(!nextProps.curentSong){
+    if (!nextProps.curentSong) {
       return false;
     }
-    else{
+    else {
       return true;
     }
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
 
-    if(this.props.canPlaySong) {
+    if (this.props.canPlaySong) {
       this.player.play();
     }
-    else{
+    else {
       this.player.pause();
     }
   }
 
 
-  render(){
-    const theSong= this.props.curentSong || "none"
+  render() {
+    const theSong = this.props.curentSong || "none"
     const songImg = theSong.artwork_url;
     const songTitle = theSong.title || "song name";
     const clientId = "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z";
@@ -58,8 +56,8 @@ class Player extends React.Component {
           <p className="player-song-name">{songTitle.slice(0, 20)}</p>
           <audio controls
                  ref={(player) => {
-                   this.player=player
-                   }}
+                   this.player = player
+                 }}
                  className="player-controls" src={songApi}>
             <source src="" type="audio/ogg"/>
             <source src="" type="audio/mpeg"/>
@@ -74,7 +72,7 @@ class Player extends React.Component {
 }
 
 function mapStateToProps(stateData) {
-  return{
+  return {
     curentSong: stateData.curentSong,
     canPlaySong: stateData.playPusetoggle,
   }
@@ -92,5 +90,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Player);
-//"http://learn.shayhowe.com.s3-website-us-east-1.amazonaws.com/assets/misc/courses/html-css/adding-media/jazz.ogg"
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure: false})(Player);
+

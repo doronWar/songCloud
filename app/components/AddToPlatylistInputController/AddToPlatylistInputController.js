@@ -1,9 +1,5 @@
-/**
- * Created by Doron Warzager on 06/04/2017.
- */
 import React from "react";
-import  store from "../../store";
-import  { connect } from "react-redux";
+import  {connect} from "react-redux";
 import {xhrControll} from '../../utils/utils'
 
 
@@ -17,23 +13,19 @@ class AddToPlatylistInputController extends React.Component {
 
   changeInputState(listId) {
     this.setState({isChosen: !this.state.isChosen}, () => {
-      if(this.state.isChosen) {
+      if (this.state.isChosen) {
         this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'addSong');
       }
-      else{
+      else {
         this.addAndRemovSongJasonPlaylist(listId, this.props.song, 'removeSong');
       }
       this.props.addAndRemoveSongFromPlayList(listId, this.props.song, this.state.isChosen);
     })
   }
 
-  // changeInputByLabelState(listId) {
-  //   this.setState({isChosen: !this.state.isChosen})
-  // }
-
   componentDidMount() {
     this.props.playLists.forEach((onePlayList) => {
-      if(this.props.oneList.id===onePlayList.id){
+      if (this.props.oneList.id === onePlayList.id) {
         onePlayList.songs.forEach((oneSong) => {
           if (oneSong.id === this.props.song.id) {
             this.setState({isChosen: !this.state.isChosen});
@@ -45,18 +37,14 @@ class AddToPlatylistInputController extends React.Component {
   }
 
 
-  componentDidUpdate() {
-
-  }
-
-  addAndRemovSongJasonPlaylist(listId, song ,actionToDo){
+  addAndRemovSongJasonPlaylist(listId, song, actionToDo) {
     const addedPlayList = {
       title: 'holdsTheSong',
       id: listId,
       songs: [song],
     };
 
-     xhrControll(addedPlayList, null, 'POST', actionToDo);
+    xhrControll(addedPlayList, null, 'POST', actionToDo);
   }
 
 

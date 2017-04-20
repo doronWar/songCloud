@@ -7,7 +7,7 @@ import {NavLink} from 'react-router-dom';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 // import Player from './Player'
 import  store from "../../store";
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 class Explore extends React.Component {
   constructor() {
@@ -34,21 +34,15 @@ class Explore extends React.Component {
     this.setState({loadingState: 'loading'})
     const genre = this.props.match.params.genre;
     const xhr = new XMLHttpRequest();
-
-    const searchKind= this.props.history.location.search===""? 'tags': 'q';
+    const searchKind = this.props.history.location.search === "" ? 'tags' : 'q';
 
 
     xhr.open('GET', `https://api.soundcloud.com/tracks?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z&limit=${this.state.limit}&offset=${this.state.offset}&${searchKind}=${genre}`);
 
     xhr.send();
-
     xhr.addEventListener('load', () => {
-
       this.setState({songs: JSON.parse(xhr.responseText), loadingState: 'loaded'})
-      // console.info(this.state.songs);
-
-      // console.info('rendered');
-    })
+    });
     xhr.addEventListener('error', () => {
       this.setState({loadingState: 'error'})
     })
@@ -56,9 +50,6 @@ class Explore extends React.Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-
-
-
     const prevGenre = prevProps.match.params.genre;
     const targetGenre = this.props.match.params.genre;
     const currentSongs = this.state.offset;
@@ -71,7 +62,6 @@ class Explore extends React.Component {
     if (currentSongs !== preveSongs) {
       this.loadSongs();
     }
-
   }
 
 
@@ -86,12 +76,7 @@ class Explore extends React.Component {
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
           <Songthumbnail
-  //          redirect={this.props.redirect}
             song={song}
-
-   //         findSong={this.props.findSong}
-  //          showDropMenu={this.props.showDropMenu}
-   //         toggleDropDownMenu={this.props.toggleDropDownMenu}
             parent="explore"
             {...this.props}/>
         </li>)}
@@ -113,46 +98,24 @@ class Explore extends React.Component {
     }
   }
 
-//
-// testingGettingJasonPlaylist(){
-//   const xhr = new XMLHttpRequest();
-//
-//   xhr.open('GET', `http://localhost:3000/test`);
-//
-//   xhr.send();
-//
-//   xhr.addEventListener('load', (e) => {
-//
-//     // console.info(JSON.parse(e.target.responseText));
-//     console.info(JSON.parse(e.target.responseText));
-//     // console.info(this.state.songs);
-//
-//     // console.info('rendered');
-//   })
-// }
 
   render() {
     if (this.state.loadingState === 'loading') {
       return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
-
     }
-
 
     if (this.state.loadingState === 'error') {
       return (<div className="error-loading-page">
         <h1>Loading failed please try again</h1>
         <a href="#" onClick={() => this.loadSongs()}>Click Here to Realod</a>
-
       </div>)
     }
-
 
     else if (this.state.loadingState === 'loaded') {
       const isFirstPage = this.state.offset === 0;
       return (
         <div className="explore-component">
 
-          {/*<h1 style={{border: '1px solid black', textAlign: "center"}}>Explore component</h1>*/}
           <ul className="genre-nav-bar">
 
             <li className="genre-name">
@@ -182,7 +145,6 @@ class Explore extends React.Component {
             <li className="genre-name">
               <NavLink to="/explore/reggae" activeClassName="ganere-chosen" className="link">Reggae</NavLink>
             </li>
-
 
           </ul>
 
@@ -216,15 +178,17 @@ class Explore extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 
-  return{
+
+  return {
     closeAllMenues(e){
       dispatch({
-        type:'AUTO_CLOSE_ALL_MENUS',
+        type: 'AUTO_CLOSE_ALL_MENUS',
         state: false,
-        e:e,
+        e: e,
       })
     }
   }
 }
 
 export default connect(null, mapDispatchToProps)(Explore)
+

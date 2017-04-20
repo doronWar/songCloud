@@ -1,10 +1,9 @@
-
 import './Topbar.scss'
 import {NavLink} from 'react-router-dom';
 import React from 'react';
 import Routes from '../Routes/Routes';
 import store from './../../store'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 
 class Topbar extends React.Component {
@@ -44,15 +43,13 @@ class Topbar extends React.Component {
                        value={this.props.inputValue}
                        onChange={(e) => {
                          this.props.changeInputValu(e.target.value)
-
-
                        }}
-                       onKeyDown={(e)=>{
-                         if(e.keyCode=== 13){
+                       onKeyDown={(e) => {
+                         if (e.keyCode === 13) {
                            this.props.FindSearchTerm();
                          }
                        }}
-                       />
+                />
 
               </div>
               <input type="button" id="log-out-button" value="Log out" className="search-song"
@@ -68,14 +65,14 @@ class Topbar extends React.Component {
   }
 }
 
-function mapStateToProps (stateData){
-  return{
+function mapStateToProps(stateData) {
+  return {
     inputValue: stateData.searchForMusic,
   }
 }
 
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     changeInputValu(value){
       dispatch({
@@ -87,6 +84,6 @@ function mapDispatchToProps (dispatch) {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Topbar);
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure: false})(Topbar);
 
-//erased from on change of inpute:  {/*this.props.searchForMusic(e.target.value)*/}
+

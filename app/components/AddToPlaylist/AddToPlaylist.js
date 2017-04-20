@@ -2,8 +2,7 @@ import './AddToPlaylist.scss'
 import {xhrControll} from '../../utils/utils'
 import React from 'react';
 import AddToPlatylistInputController from '../AddToPlatylistInputController/AddToPlatylistInputController';
-import { connect } from 'react-redux'
-import  store from "../../store";
+import {connect} from 'react-redux'
 import uuid from 'uuid'
 
 class AddToPlaylist extends React.Component {
@@ -29,18 +28,18 @@ class AddToPlaylist extends React.Component {
 
   }
 
-  addNewPlayList(id){
+  addNewPlayList(id) {
 
     this.props.setNewId(id);
-    this.props.addAPlayList(this.props.song,id);
-    this.props.closingDropFownMenu() ; //making sure dropDown menu is restarted
-    this.savingNewSongJasonPlaylist(id,this.props.song);
+    this.props.addAPlayList(this.props.song, id);
+    this.props.closingDropFownMenu(); //making sure dropDown menu is restarted
+    this.savingNewSongJasonPlaylist(id, this.props.song);
     this.props.history.push("/playlist")
     // this.props.redirect();
   }
 
 
-  savingNewSongJasonPlaylist(listId, song ){
+  savingNewSongJasonPlaylist(listId, song) {
 
     const addedPlayList = {
 
@@ -48,20 +47,8 @@ class AddToPlaylist extends React.Component {
       id: listId,
       songs: [song],
     };
-    xhrControll(addedPlayList,null,'POST', 'save');
-    // const xhr = new XMLHttpRequest();
-    //
-    //
-    // xhr.open('POST', `http://localhost:3000/save`);
-    // xhr.setRequestHeader('Content-Type', 'application/json');
-    //
-    // xhr.send(JSON.stringify(addedPlayList));
+    xhrControll(addedPlayList, null, 'POST', 'save');
 
-
-
- //    xhr.addEventListener('load', (e) => {
- // console.info(JSON.parse(e.target.responseText));
- //    })
   }
 
 
@@ -87,9 +74,9 @@ class AddToPlaylist extends React.Component {
 
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    addAPlayList(song,id){
+function mapDispatchToProps(dispatch) {
+  return {
+    addAPlayList(song, id){
       dispatch({
         type: 'ADD_PLAYLIST',
         song: song,
@@ -111,27 +98,11 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-function mapStateToProps(dataState){
-  return{
+function mapStateToProps(dataState) {
+  return {
     playlists: dataState.playLists,
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddToPlaylist)
 
-
-//left over from newlist on click:
-// store.dispatch({
-//   type: 'ADD_PLAYLIST',
-//   song: this.props.song,
-//   newId: this.props.song.id,
-// });              //,()=>{this.props.redirect()}
-// store.dispatch({
-//   type: 'SET_DROPDOWN_MENU',
-//   menuId: this.props.song.id,
-// });
-//
-// this.props.redirect();
-// {/*this.creatNewPlyList()*/
-// }
-//this.props.closingDropFownMenu()  //making sure dropDown menu is restarted

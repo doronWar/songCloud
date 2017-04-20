@@ -3,7 +3,7 @@ import React from 'react';
 import Songthumbnail from '../Songthumbnail/Songthumbnail';
 
 import  store from "../../store";
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {xhrControll} from '../../utils/utils'
 
 
@@ -26,36 +26,31 @@ class OnePlaylist extends React.Component {
   componentDidUpdate(prevProps) {
 
     this.inputState.focus();
-    if(prevProps.newId!== this.props.newId){
+    if (prevProps.newId !== this.props.newId) {
       this.focusingInputWhenNeeded();
     }
   }
 
   //if component was just created (compering ID ) then give it focus!
-  componentDidMount(){
+  componentDidMount() {
     this.focusingInputWhenNeeded()
 
   }
 
-  focusingInputWhenNeeded(){
+  focusingInputWhenNeeded() {
     if (this.props.newId === this.props.element.id) {
       this.togglePlaylistTitle();
       this.props.resetId();
-      // store.dispatch({
-      //   type:'RESET_LIST_ID'
-      // })
-
-
     }
   }
 
-  listCurentName(id){
-    const playlist= this.props.playlists.find((onePlaylits)=>onePlaylits.id===id);
+  listCurentName(id) {
+    const playlist = this.props.playlists.find((onePlaylits) => onePlaylits.id === id);
     return playlist.title
   }
 
 
-  actionsOnSongJasonPlaylist(element,actionToDo){
+  actionsOnSongJasonPlaylist(element, actionToDo) {
     const addedPlayList = {
       title: element.title,
       id: element.id,
@@ -64,7 +59,6 @@ class OnePlaylist extends React.Component {
 
     xhrControll(addedPlayList, null, 'POST', actionToDo);
   }
-
 
 
   render() {
@@ -89,15 +83,10 @@ class OnePlaylist extends React.Component {
                    this.inputState = inputState
                  }}
                  onChange={(e) => {
-                   this.props.changeName(e.target.value,element.id);
-//                   store.dispatch({
-//                     type:'CHANGE_NAME',
-//                     name:e.target.value,
-//                     id:element.id,
-//                   })
+                   this.props.changeName(e.target.value, element.id);
                  }}
                  onBlur={() => {
-                    this.actionsOnSongJasonPlaylist(element,'newName')
+                   this.actionsOnSongJasonPlaylist(element, 'newName')
                    this.togglePlaylistTitle();
 
                  }}
@@ -106,8 +95,8 @@ class OnePlaylist extends React.Component {
           <button className="del-btn btn-eff"
                   onClick={() => {
                     store.dispatch({
-                      type:'REMOVE_PLAYLIST',
-                      playListId:element.id,
+                      type: 'REMOVE_PLAYLIST',
+                      playListId: element.id,
                     });
                     this.actionsOnSongJasonPlaylist(element, 'deleteList')
                   }}
@@ -120,23 +109,13 @@ class OnePlaylist extends React.Component {
               <li key={song.id} className="one-song">
 
                 <Songthumbnail
-//                  nowPlaying={this.props.nowPlaying}
                   song={song}
-    //              redirect={this.props.redirect}
-     //             findSong={this.props.findSong}
-  //                showDropMenu={this.props.showDropMenu}
-  //                toggleDropDownMenu={this.props.toggleDropDownMenu}
-       //           closeAllDropDownMenues={this.props.closeAllDropDownMenues}
                   {...this.props}/>
-
 
               </li>)
           })}
         </ul>
       </div>
-
-
-
     )
   }
 
@@ -144,24 +123,24 @@ class OnePlaylist extends React.Component {
 }
 
 function mapStateToProps(dataState) {
-  return{
+  return {
     newId: dataState.newListId,
     playlists: dataState.playLists,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return{
+  return {
     resetId(){
       dispatch({
-        type:'RESET_LIST_ID'
+        type: 'RESET_LIST_ID'
       })
     },
-    changeName(title,id){
+    changeName(title, id){
       dispatch({
-        type:'CHANGE_NAME',
-        name:title,
-        id:id,
+        type: 'CHANGE_NAME',
+        name: title,
+        id: id,
       })
     },
   }

@@ -18,7 +18,7 @@ class Songthumbnail extends React.Component {
       clientId: "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z",
       showDropDownMenu: false,
 
-    }
+    };
     this.MarkingSongAsInPlayList = this.MarkingSongAsInPlayList.bind(this);
     this.closingDropFownMenu = this.closingDropFownMenu.bind(this)
   }
@@ -58,7 +58,6 @@ class Songthumbnail extends React.Component {
             // this.heartIcon.classList.toggle('chosen');
             this.heartIcon.classList.toggle('fa-heart');
             existsInPlayList = true;
-
             // this.state.existsInPlayList = true;
           }
 

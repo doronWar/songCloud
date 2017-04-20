@@ -1,15 +1,13 @@
-
 import './Playlists.scss'
 import React from 'react';
 import uuid from 'uuid';
-import Songthumbnail from '../Songthumbnail/Songthumbnail';
+
 import OnePlaylist from '../OnePlayList/OnePlayList'
 import {xhrControll} from '../../utils/utils'
 
-import  store from "../../store";
-import { connect } from 'react-redux'
-require('smoothscroll-polyfill').polyfill();
 
+import {connect} from 'react-redux'
+require('smoothscroll-polyfill').polyfill();
 
 
 class Playlist extends React.Component {
@@ -25,15 +23,6 @@ class Playlist extends React.Component {
 
   }
 
-  //
-  // componentDidUpdate(prevProps) {
-  //   const haveNewPlayList = this.props.playLists.find((oneList) => oneList.id === this.props.newListId);
-  //   if (haveNewPlayList) {
-  //     this.setState({newListId: this.props.newListId})
-  //   }
-  //
-  // }
-
 
   creatUIPlyalist(playlistsExists) {
 
@@ -46,28 +35,15 @@ class Playlist extends React.Component {
     }
     if (playlistsExists) {
 
-  //    const titleState = this.state.isNameHidden ? "hiden" : ""
-  //    const inputeState = this.state.isInputeHidden ? "ply-input-title hiden" : "ply-input-title"
+
       return (
         this.props.playlist.map((element, i) => {
           return (
             <div key={element.id} className="onePlaylistHolder"
-            ref={(onePlaylist)=>this['playlist'+i]=onePlaylist}>
+                 ref={(onePlaylist) => this['playlist' + i] = onePlaylist}>
               <OnePlaylist
-                //playlistsExists={playlistsExists}
-       //                    nowPlaying={this.props.playingNow}
-                           element={element}
-       //                    showDropMenu={this.props.showDropMenu}
-    //                       toggleDropDownMenu={this.props.toggleDropDownMenu}
-   //                        redirect={this.props.redirect}
-
-
-         //                  dropDownMenuClose={this.props.closeDropDownMenu}
-                           {...this.props}
-  //                         findSong={this.props.findSong}
-              />
-
-
+                element={element}
+                {...this.props}/>
             </div>
           )
         })
@@ -78,42 +54,29 @@ class Playlist extends React.Component {
   }
 
 
-  // scrollToInput(playList, i){
-
-  // }
-
   listOfPlaylist() {
 
     return (
 
-      this.props.playlist.map((playList,i) => {
+      this.props.playlist.map((playList, i) => {
         return <input key={uuid()} type="button" value={playList.title} className="playlist-links"
-        onClick={()=>{
-          this['playlist'+i].scrollIntoView({block: "end", behavior: "smooth"});
-         // this.props.saveListId(playList.id);
-
-
-
-        }
-        }/>
+                      onClick={() => {
+                        this['playlist' + i].scrollIntoView({block: "end", behavior: "smooth"});
+                      }
+                      }/>
       })
     )
   }
 
 
-  savingNewSongJasonPlaylist(listId){
+  savingNewSongJasonPlaylist(listId) {
     const addedPlayList = {
       title: 'New Playlist ',
       id: listId,
       songs: [],
     };
 
-    xhrControll(addedPlayList,null,'POST', 'save');
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('POST', `http://localhost:3000/save`);
-    // xhr.setRequestHeader('Content-Type', 'application/json');
-    // xhr.send(JSON.stringify(addedPlayList));
-
+    xhrControll(addedPlayList, null, 'POST', 'save');
   }
 
 
@@ -130,20 +93,8 @@ class Playlist extends React.Component {
             const newId = uuid();
             this.props.addPlayList(newId);
             this.props.saveListId(newId);
-            this.savingNewSongJasonPlaylist(newId );
+            this.savingNewSongJasonPlaylist(newId);
 
-//            store.dispatch({
-//              type: 'ADD_PLAYLIST',
-//              newId: newId,
-//            });
-//           store.dispatch({
-//              type: 'NEW_LIST_ID',
-//              newListId: newId,
-
- //           });
-
-  //          {/*this.addNewPlayListBybutton()*/
-  //          }
           }}>Add new Playlist
           </button>
           <span className="seperating-lien"/>
@@ -161,8 +112,8 @@ class Playlist extends React.Component {
 }
 
 
-function mapDispatchToProps(dispatch){
-  return{
+function mapDispatchToProps(dispatch) {
+  return {
     addPlayList(newId){
       dispatch({
         type: 'ADD_PLAYLIST',
@@ -178,9 +129,9 @@ function mapDispatchToProps(dispatch){
     },
     closeAllMenues(e){
       dispatch({
-        type:'AUTO_CLOSE_ALL_MENUS',
+        type: 'AUTO_CLOSE_ALL_MENUS',
         state: false,
-        e:e,
+        e: e,
       })
     }
   }
@@ -188,7 +139,7 @@ function mapDispatchToProps(dispatch){
 
 }
 function mapStateToProps(dataState) {
-  return{
+  return {
     playlist: dataState.playLists
   }
 
