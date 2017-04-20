@@ -85,6 +85,9 @@
   background-color: #2196F3;
   color: white;
   border: 1px solid transparent;
+  &:disabled{
+    background-color: #D8D8D8 ;
+  }
 }
 
 .loading-logo {

@@ -72,6 +72,7 @@ class Songthumbnail extends React.Component {
 
   }
 
+
   //dealing with toggle dropDown menu - globaly!
   //&& updating heart state
   componentDidUpdate(preProps) {
@@ -86,16 +87,68 @@ class Songthumbnail extends React.Component {
         }
       })
     });
+    
     //if song exists in playlist, but heart is black - toggle heart
     if (toggle && this.heartIcon.classList.toString().includes('fa-heart-o')) {
       this.MarkingSongAsInPlayList();
     }
+    
     //if it wasn't found but heart if full - toggle heart
-
     if (!toggle && !this.heartIcon.classList.toString().includes('fa-heart-o')) {
       this.heartIcon.classList.toggle('fa-heart-o');
       this.heartIcon.classList.toggle('fa-heart');
     }
+
+    //togglign player icon from player
+
+
+    if(this.iconPlayer){
+      if (!this.props.togglePlayerIconFromAudio && this.props.canPlaySong) {
+// this.props.togglePlayerIcon(); // this is toggled in the player && is the first term in the IF above
+//         this.toggleIconAction();
+        // this.props.togglePlayerIcon();
+        // this.props.playPusetoggle();
+        console.info('change to pause in song');
+      }
+      else if(this.props.togglePlayerIconFromAudio && !this.props.canPlaySong ){
+        // this.props.togglePlayerIcon();
+        console.info('change to play in song');
+        // this.toggleIconAction();
+
+
+        // this.props.playPusetoggle();
+
+
+      }
+    }
+
+
+
+
+//     if(!this.props.curentSongPlaying){
+//       if (this.iconPlayer && this.props.togglePlayerIconFromAudio ) {
+// // this.props.togglePlayerIcon();
+//         // this.toggleIconAction();
+//         // this.props.togglePlayerIcon();
+//         // this.props.playPusetoggle();
+//         console.info('change to pause in song');
+//       }
+//       else if(this.iconPlayer && !this.props.togglePlayerIconFromAudio ){
+//         console.info('change to play in song');
+//         // this.toggleIconAction();
+//
+//
+//         // this.props.playPusetoggle();
+//
+//
+//       }
+//     }
+
+  }
+
+  toggleIconAction(){
+    this.iconPlayer.classList.toggle('fa-play');
+    this.iconPlayer.classList.toggle('fa-pause');
   }
 
   closingDropFownMenu() {
@@ -108,20 +161,32 @@ class Songthumbnail extends React.Component {
 
     this.props.curentSong(this.props.song);
 
+
     if (this.props.curentSongPlaying) {
 
       if (this.props.curentSongPlaying.id === this.props.song.id) {
 
         this.props.playPusetoggle();
-        this.iconPlayer.classList.toggle('fa-play')
-        this.iconPlayer.classList.toggle('fa-pause')
+        this.toggleIconAction();
+        if (!this.props.togglePlayerIconFromAudio) {
+
+          // this.toggleIconAction();
+
+
+
+        }
+
+
+
       }
     }
+
   }
 
 
   render() {
-    const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large', 't300x300') : this.props.song.artwork_url;
+
+    const imgUrl = this.props.song.artwork_url ? this.props.song.artwork_url.replace('large', 't300x300') : this.props.song.user.avatar_url; // priviously written: .artwork_url;
     const showDarkenBakcground = this.props.curentSongPlaying ? (this.props.curentSongPlaying.id === this.props.song.id) : false;
 
     return (
@@ -136,7 +201,7 @@ class Songthumbnail extends React.Component {
 
           {showDarkenBakcground && <div className="darken-songthumbnail">
             <i className="fa fa-play player-icon"
-            ref={(playerIcon)=>this.iconPlayer= playerIcon}/>
+               ref={(playerIcon) => this.iconPlayer = playerIcon}/>
 
           </div>}
         </div>
@@ -204,7 +269,12 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'PLAYER_TOGGLE',
       })
-    }
+    },
+    togglePlayerIcon(){
+      dispatch({
+        type: 'PLAYER_TOGGLE_FROM_AUDIO',
+      })
+    },
   }
 }
 
@@ -214,7 +284,9 @@ function mapStateToProps(stateData) {
     isDropDowmMenuOpen: stateData.oneDropDownMenuOpen,
     playLists: stateData.playLists,
     doesSongExist: stateData.doesSongExist,
-    curentSongPlaying: stateData.curentSong
+    curentSongPlaying: stateData.curentSong,
+    canPlaySong: stateData.playPusetoggle,
+    togglePlayerIconFromAudio: stateData.playerControlImage
   }
 }
 

@@ -38,7 +38,9 @@ class Topbar extends React.Component {
 
               <div className="search-icon-holder">
 
-                <i className="fa fa-search search-icon"/>
+                <i className="fa fa-search search-icon"
+                onClick={()=>this.props.FindSearchTerm()}
+                />
                 <input type="text" id="search-songs" placeholder="Song name"
                        value={this.props.inputValue}
                        onChange={(e) => {

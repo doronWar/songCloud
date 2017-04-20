@@ -8,6 +8,7 @@ import dropDownMenuId from './reducers/setDropDownMenuIdReduce'
 import oneDropDownMenuOpen from './reducers/oneDropDownMenuOpenReduce'
 import doesSongExist from './reducers/doesSongExistReduce'
 import playPusetoggle from './reducers/playPusetoggleReduce'
+import playerControlImage from './reducers/playerControlImageReduce'
 
 
 
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   oneDropDownMenuOpen,
   doesSongExist,
   playPusetoggle,
+  playerControlImage,
 });
 
 

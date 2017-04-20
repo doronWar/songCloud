@@ -14,6 +14,7 @@ class Player extends React.Component {
       if (nextProps.curentSong.id !== this.props.curentSong.id) {
         if (!this.props.canPlaySong) {
           this.props.playPusetoggle();
+
         }
       }
     }
@@ -23,11 +24,18 @@ class Player extends React.Component {
   shouldComponentUpdate(nextProps) {
 
     if (!nextProps.curentSong) {
+
       return false;
     }
     else {
+      if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio && !this.player.paused){
+        return false
+      }
+      else{
       return true;
+      }
     }
+
   }
 
   componentDidUpdate() {
@@ -38,6 +46,7 @@ class Player extends React.Component {
     else {
       this.player.pause();
     }
+
   }
 
 
@@ -58,6 +67,29 @@ class Player extends React.Component {
                  ref={(player) => {
                    this.player = player
                  }}
+                 onPause={() => {
+
+                   if (this.props.canPlaySong) {
+                     {/*this.props.togglePlayerIcon();*/}
+                     {/*this.props.playPusetoggle();*/}
+
+                   }
+                 }}
+                 onPlay={() => {
+
+
+                   if(!this.props.canPlaySong) {
+                      console.info('can not rech me');
+                     {/*this.props.playPusetoggle();*/}
+                     {/*this.props.togglePlayerIcon();*/}
+                   }
+                   if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio ) {
+
+                     {/*this.props.togglePlayerIcon();*/}
+                     {/*this.props.playPusetoggle();*/}
+
+                   }
+                 }}
                  className="player-controls" src={songApi}>
             <source src="" type="audio/ogg"/>
             <source src="" type="audio/mpeg"/>
@@ -75,6 +107,7 @@ function mapStateToProps(stateData) {
   return {
     curentSong: stateData.curentSong,
     canPlaySong: stateData.playPusetoggle,
+    togglePlayerIconFromAudio: stateData.playerControlImage,
   }
 }
 
@@ -86,7 +119,13 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'PLAYER_TOGGLE',
       })
-    }
+    },
+    togglePlayerIcon(){
+      dispatch({
+        type: 'PLAYER_TOGGLE_FROM_AUDIO',
+      })
+    },
+
   }
 }
 
