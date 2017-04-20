@@ -18,7 +18,7 @@ class Topbar extends React.Component {
 
             <div className="nav-parts">
               <NavLink to="/" className="logo-content">
-                < i className="logo fa fa-mixcloud position-logo" aria-hidden="true"/> SougCloud
+                < i className="logo fa fa-mixcloud position-logo" aria-hidden="true"/> SongCloud
               </NavLink>
 
               <ul className="nav-link-holder">
