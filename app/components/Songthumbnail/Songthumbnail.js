@@ -75,7 +75,7 @@ class Songthumbnail extends React.Component {
 
   //dealing with toggle dropDown menu - globaly!
   //&& updating heart state
-  componentDidUpdate(preProps ) {
+  componentDidUpdate(preProps, prevState ) {
     if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
@@ -100,53 +100,10 @@ class Songthumbnail extends React.Component {
     }
 
     //togglign player icon from player
-
-
-    if(this.iconPlayer){
-      if (!this.props.togglePlayerIconFromAudio && this.props.canPlaySong) {
-// this.props.togglePlayerIcon(); // this is toggled in the player && is the first term in the IF above
-//         this.toggleIconAction();
-        // this.props.togglePlayerIcon();
-        // this.props.playPusetoggle();
-        // console.info('change to pause in song');
-      }
-      else if(this.props.togglePlayerIconFromAudio && !this.props.canPlaySong ){
-        // this.props.togglePlayerIcon();
-        // console.info('change to play in song');
-        // this.toggleIconAction();
-
-
-        // this.props.playPusetoggle();
-
-
-      }
-    }
-
-
-
-
-//     if(!this.props.curentSongPlaying){
-//       if (this.iconPlayer && this.props.togglePlayerIconFromAudio ) {
-// // this.props.togglePlayerIcon();
-//         // this.toggleIconAction();
-//         // this.props.togglePlayerIcon();
-//         // this.props.playPusetoggle();
-//         console.info('change to pause in song');
-//       }
-//       else if(this.iconPlayer && !this.props.togglePlayerIconFromAudio ){
-//         console.info('change to play in song');
-//         // this.toggleIconAction();
-//
-//
-//         // this.props.playPusetoggle();
-//
-//
-//       }
-//     }
-
     if(this.iconPlayer) {
-      // console.info('entering here');
-      this.toggleIconAction();
+      if(preProps.togglePlayerIconFromAudio!== this.props.togglePlayerIconFromAudio){
+        this.toggleIconAction();
+      }
     }
 
   }
@@ -166,24 +123,10 @@ class Songthumbnail extends React.Component {
 
     this.props.curentSong(this.props.song);
 
-
     if (this.props.curentSongPlaying) {
-
       if (this.props.curentSongPlaying.id === this.props.song.id) {
-
         this.props.playPusetoggle();
-        this.props.togglePlayerIcon();
-        // this.toggleIconAction();
-        if (!this.props.togglePlayerIconFromAudio) {
-
-          // this.toggleIconAction();
-
-
-
-        }
-
-
-
+        this.toggleIconAction();
       }
     }
 
@@ -281,6 +224,7 @@ function mapDispatchToProps(dispatch) {
         type: 'PLAYER_TOGGLE_FROM_AUDIO',
       })
     },
+
   }
 }
 

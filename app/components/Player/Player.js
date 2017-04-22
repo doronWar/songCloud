@@ -68,34 +68,17 @@ class Player extends React.Component {
                    this.player = player
                  }}
                  onPause={() => {
-                   console.info('pause');
-
-                   if (this.props.canPlaySong) {
-
-                     {/*console.info('can not rech me pause');*/}
+                   if(this.props.canPlaySong){
                      this.props.togglePlayerIcon();
-                     {/*this.props.playPusetoggle();*/
-                     }
-
+                     this.props.playPusetoggle();
                    }
+
                  }}
                  onPlay={() => {
-                   console.info('play');
 
-                   if (!this.props.canPlaySong) {
-
-                     {/*console.info('can not rech me');*/}
-                     {/*this.props.playPusetoggle();*/
-                     }
+                   if(!this.props.canPlaySong){
                      this.props.togglePlayerIcon();
-                   }
-                   if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio) {
-
-                     {/*this.props.togglePlayerIcon();*/
-                     }
-                     {/*this.props.playPusetoggle();*/
-                     }
-
+                     this.props.playPusetoggle();
                    }
                  }}
                  className="player-controls" src={songApi}>
@@ -133,8 +116,6 @@ function mapDispatchToProps(dispatch) {
         type: 'PLAYER_TOGGLE_FROM_AUDIO', //<-- earse this if works
       })
     },
-
-
   }
 }
 
