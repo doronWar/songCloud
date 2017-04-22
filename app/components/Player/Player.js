@@ -28,11 +28,11 @@ class Player extends React.Component {
       return false;
     }
     else {
-      if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio && !this.player.paused){
+      if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio && !this.player.paused) {
         return false
       }
-      else{
-      return true;
+      else {
+        return true;
       }
     }
 
@@ -68,25 +68,33 @@ class Player extends React.Component {
                    this.player = player
                  }}
                  onPause={() => {
+                   console.info('pause');
 
                    if (this.props.canPlaySong) {
-                     {/*this.props.togglePlayerIcon();*/}
-                     {/*this.props.playPusetoggle();*/}
+
+                     {/*console.info('can not rech me pause');*/}
+                     this.props.togglePlayerIcon();
+                     {/*this.props.playPusetoggle();*/
+                     }
 
                    }
                  }}
                  onPlay={() => {
+                   console.info('play');
 
+                   if (!this.props.canPlaySong) {
 
-                   if(!this.props.canPlaySong) {
-                      console.info('can not rech me');
-                     {/*this.props.playPusetoggle();*/}
-                     {/*this.props.togglePlayerIcon();*/}
+                     {/*console.info('can not rech me');*/}
+                     {/*this.props.playPusetoggle();*/
+                     }
+                     this.props.togglePlayerIcon();
                    }
-                   if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio ) {
+                   if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio) {
 
-                     {/*this.props.togglePlayerIcon();*/}
-                     {/*this.props.playPusetoggle();*/}
+                     {/*this.props.togglePlayerIcon();*/
+                     }
+                     {/*this.props.playPusetoggle();*/
+                     }
 
                    }
                  }}
@@ -122,9 +130,10 @@ function mapDispatchToProps(dispatch) {
     },
     togglePlayerIcon(){
       dispatch({
-        type: 'PLAYER_TOGGLE_FROM_AUDIO',
+        type: 'PLAYER_TOGGLE_FROM_AUDIO', //<-- earse this if works
       })
     },
+
 
   }
 }

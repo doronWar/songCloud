@@ -75,7 +75,7 @@ class Songthumbnail extends React.Component {
 
   //dealing with toggle dropDown menu - globaly!
   //&& updating heart state
-  componentDidUpdate(preProps) {
+  componentDidUpdate(preProps ) {
     if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
@@ -108,11 +108,11 @@ class Songthumbnail extends React.Component {
 //         this.toggleIconAction();
         // this.props.togglePlayerIcon();
         // this.props.playPusetoggle();
-        console.info('change to pause in song');
+        // console.info('change to pause in song');
       }
       else if(this.props.togglePlayerIconFromAudio && !this.props.canPlaySong ){
         // this.props.togglePlayerIcon();
-        console.info('change to play in song');
+        // console.info('change to play in song');
         // this.toggleIconAction();
 
 
@@ -144,6 +144,11 @@ class Songthumbnail extends React.Component {
 //       }
 //     }
 
+    if(this.iconPlayer) {
+      // console.info('entering here');
+      this.toggleIconAction();
+    }
+
   }
 
   toggleIconAction(){
@@ -167,7 +172,8 @@ class Songthumbnail extends React.Component {
       if (this.props.curentSongPlaying.id === this.props.song.id) {
 
         this.props.playPusetoggle();
-        this.toggleIconAction();
+        this.props.togglePlayerIcon();
+        // this.toggleIconAction();
         if (!this.props.togglePlayerIconFromAudio) {
 
           // this.toggleIconAction();
