@@ -9,7 +9,7 @@ export default function Enterpageicon(props) {
       <h1 className="title-sign-in">Sound Cloud</h1>
       <div className="inser-info-component">
         <h1>{props.action}</h1>
-        <div className="unser-register">
+        <div className="user-register">
 
 
           <input type="email" id="email" className="login-inputes"/>

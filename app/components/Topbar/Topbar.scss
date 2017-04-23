@@ -41,6 +41,7 @@
   color: white;
   line-height: 56px;
   padding-top: 10px;
+  font-family: Roboto-Regular;
   //margin-right:40px;
   &:hover {
     color: white;
@@ -95,12 +96,23 @@
   align-self: center;
   border-radius: 15px;
   background-color: $darkBlue;
+
   border: 1px solid #D8D8D8;
   padding-left: 25px;
 
   &:hover{
       cursor: pointer
 
+  }
+  //geting placeholder color to be white
+  &:-moz-placeholder{
+    color: #FFFFFF;
+  }
+  &:-ms-input-placeholder{
+    color: #FFFFFF;
+  }
+  &::-webkit-input-placeholder{
+    color: #FFFFFF;
   }
 }
 
@@ -133,6 +145,7 @@
   margin-right: 10px;
   padding-bottom: 10px;
   font-size: 15px;
+  font-family:  Roboto-Light;;
   align-self: center;
   float: right;
   &:hover{
