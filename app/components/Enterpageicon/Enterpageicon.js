@@ -2,7 +2,7 @@ import './Enterpageicon.scss'
 import {Link} from 'react-router-dom'
 
 export default function Enterpageicon(props) {
-  console.info(props);
+
   return (
     <div className="sign-in-modal">
       <i className="logo fa fa-mixcloud big-logo" aria-hidden="true"/>
@@ -20,6 +20,8 @@ export default function Enterpageicon(props) {
           <input type="password" id="password" className="login-inputes"/>
           <label htmlFor="password" className="labels">password<br/></label>
           <span className="animated-underline"/>
+
+
         </div>
 
         {/*<input type="text" required placeholder="Username"/>*/}
@@ -29,7 +31,7 @@ export default function Enterpageicon(props) {
               onClick={()=>{props.history.push("/explore")}}>
         CONTINUE
       </button>
-      {console.info(props.redirectTo)}
+
       <p>{props.lastLine}<Link to={props.redirectTo}>{props.linkTitle}</Link></p>
     </div>
 

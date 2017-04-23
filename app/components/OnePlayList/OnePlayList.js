@@ -69,13 +69,14 @@ class OnePlaylist extends React.Component {
 
     return (
       <div key={element.id}>
-        <li className="play-list-title">
+        <li className="play-list-title" tabIndex="0">
 
           <p className={titleState }
              onClick={() => {
                this.togglePlaylistTitle()
              }}
           >{element.title}
+            <span className="song-counter"><span>{element.songs.length}</span></span>
           </p>
 
           <input className={inputeState} type="text" tabIndex="0" value={this.listCurentName(element.id)}
@@ -86,19 +87,25 @@ class OnePlaylist extends React.Component {
                    this.props.changeName(e.target.value, element.id);
                  }}
                  onBlur={() => {
-                   this.actionsOnSongJasonPlaylist(element, 'newName')
+                   this.actionsOnSongJasonPlaylist(element, 'newName');
                    this.togglePlaylistTitle();
-
+                 }}
+                 onKeyDown={(e) => {
+                   if(e.keyCode === 13) {
+                     this.inputState.blur()
+                   }
                  }}
           />
-          <span>{element.songs.length}</span>
+
           <button className="del-btn btn-eff"
                   onClick={() => {
-                    store.dispatch({
-                      type: 'REMOVE_PLAYLIST',
-                      playListId: element.id,
-                    });
-                    this.actionsOnSongJasonPlaylist(element, 'deleteList')
+                    const deleteCheck = confirm(`Are you sure you want to delete "${this.inputState.value}" playlist?`);
+                    if (deleteCheck) {
+                      this.props.deleteList(element);
+
+                      this.actionsOnSongJasonPlaylist(element, 'deleteList')
+                    }
+
                   }}
           >Delete
           </button>
@@ -143,6 +150,12 @@ function mapDispatchToProps(dispatch) {
         id: id,
       })
     },
+    deleteList(element){
+      dispatch({
+        type: 'REMOVE_PLAYLIST',
+        playListId: element.id,
+      })
+    }
   }
 }
 

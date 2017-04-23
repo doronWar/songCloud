@@ -3,12 +3,23 @@
 
 //the UI of songs
 .song-holder {
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   //justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
+  //flex-basis: auto;
+  //margin-bottom: 100px;
+
+}
+//solving flex row problem in last row.
+//based on css stack overflow with tweeks: http://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid
+.song-holder::after{
+  content: "";
+  width: 292px;
 
 }
 
@@ -21,6 +32,7 @@
   margin: 0;
   padding: 0 20px 0 20px;
   height: 40px;
+  line-height:40px;
 
 }
 
@@ -60,8 +72,14 @@
 }
 
 .explore-component {
-  padding-top: 77px;
-  line-height: 40px;
+  //padding-top: 77px;
+  //line-height: 40px;
+  position: absolute;
+  top: 77px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
 }
 
 //navigation for song list
@@ -91,7 +109,13 @@
 }
 
 .loading-logo {
-  @include positionTopLeft(absolute, 40%, 40%);
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 49%;
+  //@include positionTopLeft(absolute, 40%, 40%);
   font-size: 48px;
   color: $mainBlue;
 }

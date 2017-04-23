@@ -10,6 +10,7 @@
 }
 
 
+
 .playlist-holder {
   width: 200px;
   height: 100vh;
@@ -90,7 +91,9 @@
   text-align: left;
   outline: none;
 }
-
+.playlist-links:hover {
+  cursor: pointer
+}
 .playlist-links:active{
   outline: none;
 

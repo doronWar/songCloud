@@ -7,6 +7,9 @@
   background-color: white;
   border: 1px solid grey;
   position: relative;
+  padding-right:10px;
+  padding-left:10px;
+
   //z-index: 0;
   //margin-right:10px;
 
@@ -51,7 +54,7 @@
   left:40%;
 }
 .song-title {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 0;
   font-size: 11px;
 
   height: 10px;
@@ -70,7 +73,7 @@
 
 .time-logo {
   font-size: 10px;
-  margin-left: 10px;
+  margin-left: 0;
   //float: left;
 }
 
@@ -79,6 +82,7 @@
   font-size: 14px;
   margin-top: 15px;
   margin-right: 2px;
+
 }
 
 .fa-heart {

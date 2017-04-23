@@ -47,6 +47,15 @@ class AddToPlatylistInputController extends React.Component {
     xhrControll(addedPlayList, null, 'POST', actionToDo);
   }
 
+  playlistLengthController(title){
+
+    if(title.length>15){
+      console.info('hey');
+      return title.slice(0,15)+ '...'
+
+    }
+    return title
+  }
 
   render() {
     const oneList = this.props.oneList;
@@ -63,7 +72,7 @@ class AddToPlatylistInputController extends React.Component {
                  }}
           />
 
-          {oneList.title}</label>
+          {this.playlistLengthController(oneList.title)}</label>
       </div>
     )
   }

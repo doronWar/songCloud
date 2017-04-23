@@ -87,12 +87,12 @@ class Songthumbnail extends React.Component {
         }
       })
     });
-    
+
     //if song exists in playlist, but heart is black - toggle heart
     if (toggle && this.heartIcon.classList.toString().includes('fa-heart-o')) {
       this.MarkingSongAsInPlayList();
     }
-    
+
     //if it wasn't found but heart if full - toggle heart
     if (!toggle && !this.heartIcon.classList.toString().includes('fa-heart-o')) {
       this.heartIcon.classList.toggle('fa-heart-o');

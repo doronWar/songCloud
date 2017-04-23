@@ -71,7 +71,6 @@ class Explore extends React.Component {
       <ul className="song-holder"
           onClick={(e) => {
             this.props.closeAllMenues(e)
-
           }}>
         {this.state.songs.map((song) => <li key={song.id} className="one-song">
 
@@ -81,9 +80,7 @@ class Explore extends React.Component {
             {...this.props}/>
         </li>)}
         {/*this is only for lining up the songs*/}
-        <li className="one-song"/>
-        <li className="one-song"/>
-        <li className="one-song"/>
+
       </ul>
     )
   }
@@ -100,6 +97,7 @@ class Explore extends React.Component {
 
 
   render() {
+
     if (this.state.loadingState === 'loading') {
       return <i className="fa fa-spinner fa-pulse fa-3x fa-fw loading-logo"/>
     }

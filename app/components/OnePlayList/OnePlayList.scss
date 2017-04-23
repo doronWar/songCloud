@@ -2,8 +2,8 @@
 @import 'assets/styles/helpers';
 
 .play-list-title {
-  @include widthHight(784px, 64px);
-
+  //@include widthHight(784px, 64px);
+  width: calc(100% - 20px);
   background-color: white;
   list-style: none;
   display: block;
@@ -18,6 +18,10 @@
     line-height: 64px;
     font-size: 22px;
     margin-left: 20px;
+    &:hover{
+      cursor: pointer
+
+    }
   }
 
 
@@ -59,31 +63,40 @@
   line-height: 60px;
   font-size: toRem(22);
   margin-left: 20px;
+
+  //position: relative;
   //margin-top: 10px;
   //border: 1px solid transparent;
 
 }
 
 //end of helper
-.play-list-title span {
+.song-counter {
 
   border-radius: 50px;
-  //display: inline-block;
+  display: inline-block;
   @include widthHight(18px,18px);
   //width: 18px;
   //height: 18px;
-  color: #FFFFFF;
+
   background-color: $mainBlue;
-  font-size: toRem(12);
-  padding-left: 6px;
-  padding-top: 2px;
-  //padding-right:4px;
-  @include positionTopLeft(absolute, 0, 36%);
-  //position: absolute;
-  //top: 0;
-  //left: 36%;
-  //vertical-align: super
-  //margin-bottom:4px;
+  color: #FFFFFF;
+  font-size: toRem(22);
+  //padding: 4px 4px 0 6px;
+  vertical-align: top;
+  margin-top:10px;
+
+}
+
+.song-counter span{
+
+  color: #FFFFFF;
+  font-size: toRem(16);
+  vertical-align: top;
+  position: relative;
+  top:-23px;
+  left:4px;
+
 }
 
 .playlist-song-holder {
@@ -94,7 +107,7 @@
   margin-left: 50px;
   padding-left: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   min-height: 160px;
 

@@ -3,7 +3,13 @@
 
 .sign-in-modal {
   @include widthHight(100%, 100%);
-  @include positionTopLeft(absolute, 0, 0);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  //@include positionTopLeft(absolute, 0, 0);
   z-index: 10;
   background-color: #fff;
 }
@@ -11,6 +17,12 @@
 .big-logo {
   font-size: toRem(100);
   color: $mainBlue;
+  //position: absolute;
+  //margin-left: auto;
+  //margin-right: auto;
+  //left: 0;
+  //right: 0;
+  //top: 5%;
   @include positionTopLeft(absolute, 5%, 43.8%);
 }
 
@@ -96,8 +108,7 @@
     transition: .3s ease-in-out;
   }
 
-  & input:focus + .labels,
-  & input:hover + .labels {
+  & input:focus + .labels{
     transform: translate(0, -20px);
   }
   //aminating line to grow under:
@@ -116,7 +127,9 @@
     animation: lineEffect .3s forwards;
   }
 
+
 }
+
 
 @keyframes lineEffect {
   0% {

@@ -54,10 +54,10 @@ class Topbar extends React.Component {
                 />
 
               </div>
-              <input type="button" id="log-out-button" value="Log out" className="search-song"
+              <button id="log-out-button" value="Log out" className="search-song"
                      onClick={() => {
                        this.props.goToSignIn()
-                     }}/>
+                     }}>Log out</button>
             </div>
 
           </nav>
