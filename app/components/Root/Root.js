@@ -1,9 +1,4 @@
-/**
- * Created by Doron Warzager on 28/03/2017.
- */
-import Greeting from '../Greeting/Greeting'
-import Signin from '../Signin/Signin'
-import Signup from '../Signup/Signup'
+
 import Topbar from '../Topbar/Topbar'
 import Explore from '../Explore/Explore'
 import Playlist from '../Playlists/Playlists'
@@ -15,7 +10,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import React from 'react';
-import uuid from 'uuid';
+
 
 import store from './../../store'
 
@@ -85,9 +80,6 @@ export default class Root extends React.Component {
             <Route path="/explore/:genre" component={Explore}/>
 
             <Route exact path="/playlist" component={Playlist}/>
-
-            {/*<Route path="/explore/:genre" component={Explore}/>*/}
-            {/*<Route exact path="/playlist" component={Playlist}/>*/}
 
 
           </Switch>

@@ -75,7 +75,7 @@ class Songthumbnail extends React.Component {
 
   //dealing with toggle dropDown menu - globaly!
   //&& updating heart state
-  componentDidUpdate(preProps, prevState ) {
+  componentDidUpdate(preProps, prevState) {
     if (!this.props.isDropDowmMenuOpen && this.state.showDropDownMenu) {
       this.closingDropFownMenu()
     }
@@ -100,15 +100,15 @@ class Songthumbnail extends React.Component {
     }
 
     //togglign player icon from player
-    if(this.iconPlayer) {
-      if(preProps.togglePlayerIconFromAudio!== this.props.togglePlayerIconFromAudio){
+    if (this.iconPlayer) {
+      if (preProps.togglePlayerIconFromAudio !== this.props.togglePlayerIconFromAudio) {
         this.toggleIconAction();
       }
     }
 
   }
 
-  toggleIconAction(){
+  toggleIconAction() {
     this.iconPlayer.classList.toggle('fa-play');
     this.iconPlayer.classList.toggle('fa-pause');
   }

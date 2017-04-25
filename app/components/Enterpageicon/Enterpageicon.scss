@@ -110,7 +110,7 @@
     transition: .3s ease-in-out;
   }
 
-  & input:focus + .labels{
+  & input:focus + .labels {
     transform: translate(0, -20px);
   }
   //aminating line to grow under:
@@ -129,9 +129,7 @@
     animation: lineEffect .3s forwards;
   }
 
-
 }
-
 
 @keyframes lineEffect {
   0% {

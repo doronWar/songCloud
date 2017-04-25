@@ -91,7 +91,7 @@ class OnePlaylist extends React.Component {
                    this.togglePlaylistTitle();
                  }}
                  onKeyDown={(e) => {
-                   if(e.keyCode === 13) {
+                   if (e.keyCode === 13) {
                      this.inputState.blur()
                    }
                  }}

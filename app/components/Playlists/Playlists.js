@@ -53,19 +53,20 @@ class Playlist extends React.Component {
 
   }
 
-playlistLengthController(title){
-    if(title.length>20){
-      return title.slice(0,17)+ '...'
+  playlistLengthController(title) {
+    if (title.length > 20) {
+      return title.slice(0, 17) + '...'
     }
     return title
-}
+  }
 
   listOfPlaylist() {
 
     return (
 
       this.props.playlist.map((playList, i) => {
-        return <input key={uuid()} type="button" value={this.playlistLengthController(playList.title)} className="playlist-links"
+        return <input key={uuid()} type="button" value={this.playlistLengthController(playList.title)}
+                      className="playlist-links"
                       onClick={() => {
                         this['playlist' + i].scrollIntoView({block: "end", behavior: "smooth"});
                       }

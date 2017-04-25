@@ -28,7 +28,9 @@ export default function Enterpageicon(props) {
         {/*<input type="password" required placeholder="Password"/>*/}
       </div>
       <button className="btn-sign-in btn-eff"
-              onClick={()=>{props.history.push("/explore")}}>
+              onClick={() => {
+                props.history.push("/explore")
+              }}>
         CONTINUE
       </button>
 

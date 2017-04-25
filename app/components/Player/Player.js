@@ -29,7 +29,7 @@ class Player extends React.Component {
     }
     else {
       if (!this.props.canPlaySong && !this.props.togglePlayerIconFromAudio && !this.player.paused) {
-        return false
+        return false;
       }
       else {
         return true;
@@ -51,7 +51,7 @@ class Player extends React.Component {
 
 
   render() {
-    const theSong = this.props.curentSong || "none"
+    const theSong = this.props.curentSong || "none";
     const songImg = theSong.artwork_url;
     const songTitle = theSong.title || "song name";
     const clientId = "?client_id=2t9loNQH90kzJcsFCODdigxfp325aq4z";
@@ -68,7 +68,7 @@ class Player extends React.Component {
                    this.player = player
                  }}
                  onPause={() => {
-                   if(this.props.canPlaySong){
+                   if (this.props.canPlaySong) {
                      this.props.togglePlayerIcon();
                      this.props.playPusetoggle();
                    }
@@ -76,7 +76,7 @@ class Player extends React.Component {
                  }}
                  onPlay={() => {
 
-                   if(!this.props.canPlaySong){
+                   if (!this.props.canPlaySong) {
                      this.props.togglePlayerIcon();
                      this.props.playPusetoggle();
                    }

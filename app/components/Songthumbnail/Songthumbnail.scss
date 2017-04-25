@@ -32,6 +32,10 @@
   margin-top: 10px;
   background-repeat: no-repeat;
   background-size: cover;
+  &:hover{
+    cursor: pointer;
+
+  }
   // margin-bottom:7px;
 }
 
@@ -82,7 +86,10 @@
   font-size: 14px;
   margin-top: 15px;
   margin-right: 2px;
+  &:hover{
+    cursor: pointer
 
+  }
 }
 
 .fa-heart {

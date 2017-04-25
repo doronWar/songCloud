@@ -39,7 +39,7 @@ class Topbar extends React.Component {
               <div className="search-icon-holder">
 
                 <i className="fa fa-search search-icon"
-                onClick={()=>this.props.FindSearchTerm()}
+                   onClick={() => this.props.FindSearchTerm()}
                 />
                 <input type="text" id="search-songs" placeholder="SEARCH"
                        value={this.props.inputValue}
@@ -55,9 +55,10 @@ class Topbar extends React.Component {
 
               </div>
               <button id="log-out-button" value="Log out" className="search-song"
-                     onClick={() => {
-                       this.props.goToSignIn()
-                     }}>Log out</button>
+                      onClick={() => {
+                        this.props.goToSignIn()
+                      }}>Log out
+              </button>
             </div>
 
           </nav>

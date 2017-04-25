@@ -1,9 +1,12 @@
 //'use strict';
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const fs = require('fs');
-const cors = require('cors')
+const cors = require('cors');
 
 const express = require('express');
+const path       = require('path');
+const logger     = require('morgan');
+
 const app     = express();
 const port    =   process.env.PORT || 3000;
 
@@ -13,17 +16,17 @@ app.use(cors({
     callback(null, true)
   },
   credentials: true
-}))
+}));
 
 app.use(bodyParser.json());
 
 
-app.get('/sample', function(req, res) {
-  res.send('this is a sample!');
-});
+// app.get('/sample', function(req, res) {
+//   res.send('this is a sample!');
+// });
 
 
-app.get('/test', function(req, res) {
+app.get('/load', function(req, res) {
    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080')
   //
   const data = fs.readFileSync(__dirname + '/data.json');
@@ -134,6 +137,7 @@ app.post('/removeSong', function(req, res) {
 //app.listen(port);
 console.log('Magic happens on port ' + port);
 
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.listen(port, function () {
   console.log('Listening...')
