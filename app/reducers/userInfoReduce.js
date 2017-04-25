@@ -1,23 +1,26 @@
-
-const basicInfo={
-  email:"",
-  password:"",
-  canAccess:false
+const basicInfo = {
+  email: "",
+  password: "",
+  canAccess: false
 }
 
-export default function userInfoReduce(curentInfo=basicInfo, action) {
+export default function userInfoReduce(curentInfo = basicInfo, action) {
 
-  if(action.type==='SET_USER_MAIL'){
 
-    return Object.assign({}, curentInfo, {email: action.email});
+  switch (action.type) {
+    case 'SET_USER_MAIL':
+      return Object.assign({}, curentInfo, {email: action.email});
+      break;
+    case 'SET_USER_PASSWORD':
+      return Object.assign({}, curentInfo, {password: action.password});
+      break;
+    case 'ACCESS_GRANTED':
+      return Object.assign({}, curentInfo, {canAccess: true});
+      break;
+    case 'ACCESS_DENIED':
+      return Object.assign({}, curentInfo, {canAccess: false});
+      break;
   }
-  if(action.type==='SET_USER_PASSWORD'){
-    return Object.assign({}, curentInfo, {password: action.password});
-  }
-  if(action.type==='ACCESS_GRANTED'){
-    return Object.assign({}, curentInfo, {canAccess: true});
-  }
-
 
 
   return curentInfo;

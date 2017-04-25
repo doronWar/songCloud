@@ -110,7 +110,7 @@
     transition: .3s ease-in-out;
   }
 
-  & input:focus + .labels {
+  & .input-empty:focus + .labels {
     transform: translate(0, -20px);
   }
   //aminating line to grow under:
@@ -125,7 +125,13 @@
 
   }
 
-  & input:focus + .labels + .animated-underline {
+  & .input-full + .labels{
+    position: relative;
+    z-index: 10;
+    top: -40px;
+  }
+
+  & .input-empty:focus + .labels + .animated-underline {
     animation: lineEffect .3s forwards;
   }
 
@@ -151,4 +157,11 @@
   height: 30px;
   color: $redError;
   font-size: .7rem;
+}
+
+.enter-info{
+  font-size: 12px;
+  position: absolute;
+  top: 61%;
+  right:-40%;
 }

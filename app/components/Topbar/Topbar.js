@@ -56,6 +56,7 @@ class Topbar extends React.Component {
               </div>
               <button id="log-out-button" value="Log out" className="search-song"
                       onClick={() => {
+                        this.props.accessDenied()
                         this.props.goToSignIn()
                       }}>Log out
               </button>
@@ -81,6 +82,11 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: 'TERM_FOR_SEARCH',
         value: value,
+      })
+    },
+    accessDenied(){
+      dispatch({
+        type: 'ACCESS_DENIED',
       })
     }
   }

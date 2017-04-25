@@ -1,24 +1,18 @@
-
-import uuid from 'uuid';
-
-
-
-
 export default function currentTrackReducer(currentTerm = [], action) {
 
-  if(action.type === 'LOAD_APP_LOAD_PLAYLIST'){
+
+  if (action.type === 'LOAD_APP_LOAD_PLAYLIST') {
     return action.loadedPlaylistFromServer;
 
   }
 
 
-
-  if(action.type === 'LOAD_PLAYLIST'){
+  if (action.type === 'LOAD_PLAYLIST') {
     return action.loadedPlaylist
 
   }
 
-  if(action.type === 'ADD_PLAYLIST'){
+  if (action.type === 'ADD_PLAYLIST') {
 
     const playlists = currentTerm.map((playlist) => playlist);
 
@@ -26,20 +20,20 @@ export default function currentTrackReducer(currentTerm = [], action) {
 
       title: 'New Playlist ',
       id: action.newId,
-      songs: action.song? [action.song]: [],
+      songs: action.song ? [action.song] : [],
     };
 
     playlists.push(addedPlayList);
 
     return playlists;
 
-    }
+  }
 
 
-  if(action.type === 'REMOVE_PLAYLIST'){
+  if (action.type === 'REMOVE_PLAYLIST') {
 
     const playlists = [...currentTerm];
-    const indexToRemove = playlists.findIndex((onePlayList)=>onePlayList.id===action.playListId)
+    const indexToRemove = playlists.findIndex((onePlayList) => onePlayList.id === action.playListId)
     playlists.splice(indexToRemove, 1);
 
     return playlists;
@@ -47,7 +41,7 @@ export default function currentTrackReducer(currentTerm = [], action) {
   }
 
 
-  if(action.type === 'CHANGE_NAME'){
+  if (action.type === 'CHANGE_NAME') {
     const playlists = [...currentTerm];
     const onePlayList = playlists.find((aPlayList) => aPlayList.id === action.id);
     onePlayList.title = action.name;
@@ -57,8 +51,7 @@ export default function currentTrackReducer(currentTerm = [], action) {
   }
 
 
-
-  if(action.type === 'FIND_SONG_IN_PLAYLIST'){
+  if (action.type === 'FIND_SONG_IN_PLAYLIST') {
     const playlists = [...currentTerm];
     const savedPlayList = playlists.find((thePlayList) => thePlayList.id === action.platyListId);
     return savedPlayList.songs.find((savedSong) => {
@@ -75,7 +68,7 @@ export default function currentTrackReducer(currentTerm = [], action) {
   }
 
 
-  if(action.type === 'ADD_AND_REMOVE_SONG_FROM_PLAYLIST'){
+  if (action.type === 'ADD_AND_REMOVE_SONG_FROM_PLAYLIST') {
 
     const playlists = [...currentTerm];
     const onePlayList = playlists.find((playList) => playList.id === action.listId);
@@ -97,7 +90,6 @@ export default function currentTrackReducer(currentTerm = [], action) {
 
 
   }
-
 
 
   return currentTerm;

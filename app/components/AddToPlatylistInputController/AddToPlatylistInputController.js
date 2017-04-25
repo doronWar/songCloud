@@ -50,7 +50,6 @@ class AddToPlatylistInputController extends React.Component {
   playlistLengthController(title) {
 
     if (title.length > 15) {
-      console.info('hey');
       return title.slice(0, 15) + '...'
 
     }
