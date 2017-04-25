@@ -53,13 +53,13 @@ class Explore extends React.Component {
     const prevGenre = prevProps.match.params.genre;
     const targetGenre = this.props.match.params.genre;
     const currentSongs = this.state.offset;
-    const preveSongs = prevState.offset;
+    const prevSongs = prevState.offset;
 
     if (prevGenre !== targetGenre) {
       this.setState({offset: 0});
       this.loadSongs();
     }
-    if (currentSongs !== preveSongs) {
+    if (currentSongs !== prevSongs) {
       this.loadSongs();
     }
   }
@@ -79,7 +79,6 @@ class Explore extends React.Component {
             parent="explore"
             {...this.props}/>
         </li>)}
-        {/*this is only for lining up the songs*/}
 
       </ul>
     )

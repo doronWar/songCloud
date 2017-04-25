@@ -5,60 +5,63 @@ import {connect} from 'react-redux'
 
 class Enterpageicon extends React.Component {
 
-  autorization() {
+  authorization() {
 
-    if (!this.props.userInfo.email.includes('@')) {
-      alert('please enter a valid Email')
-    }
-    else {
-      const infoData = {
-        email: this.props.userInfo.email,
-        password: this.props.userInfo.password
+    if(this.props.redirectTo==='SignUp'){
+      if (!this.props.userInfo.email.includes('@')) {
+        alert('please enter a valid Email')
       }
+      else {
+        const infoData = {
+          email: this.props.userInfo.email,
+          password: this.props.userInfo.password
+        };
 
-      const xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
 
-      xhr.open('POST', `http://localhost:3000/login`);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify(infoData));
+        xhr.open('POST', `http://localhost:3000/login`);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(infoData));
 
-      xhr.addEventListener('load', (e) => {
-        const temp = JSON.parse(e.target.responseText);
-        if (temp) {
-          this.props.grantAccess();
-          this.props.history.push("/explore");
-          this.props.userInfo.email = "";
-          this.props.userInfo.password = "";
+        xhr.addEventListener('load', (e) => {
+          const temp = JSON.parse(e.target.responseText);
+          if (temp) {
+            this.props.grantAccess();
+            this.props.history.push("/explore");
+          }
+          else {
+            alert('Password or Email are incorrect')
 
-        }
-        else {
-          alert('Password or Email are incorrect')
-
-        }
+          }
 
 
-      })
+        })
+      }
     }
+    else{
+      alert('Sorry, this page is only a demo, plaese return to sign in page')
+    }
+
 
   }
 
   componentDidUpdate() {
     if (this.props.userInfo.email !== "") {
-      this.emailInput.classList.add('input-full')
-      this.emailInput.classList.remove('input-empty')
+      this.emailInput.classList.add('input-full');
+      this.emailInput.classList.remove('input-empty');
     }
     if (this.props.userInfo.email === "") {
-      this.emailInput.classList.remove('input-full')
-      this.emailInput.classList.add('input-empty')
+      this.emailInput.classList.remove('input-full');
+      this.emailInput.classList.add('input-empty');
 
     }
     if (this.props.userInfo.password !== "") {
-      this.passwordInput.classList.add('input-full')
-      this.passwordInput.classList.remove('input-empty')
+      this.passwordInput.classList.add('input-full');
+      this.passwordInput.classList.remove('input-empty');
     }
     if (this.props.userInfo.password === "") {
-      this.passwordInput.classList.remove('input-full')
-      this.passwordInput.classList.add('input-empty')
+      this.passwordInput.classList.remove('input-full');
+      this.passwordInput.classList.add('input-empty');
 
     }
 
@@ -74,11 +77,17 @@ class Enterpageicon extends React.Component {
     }
   }
 
+  componentDidMount(){
+    console.info('right');
+    this.props.resetInfo();
+
+  }
+
   render() {
 
     return (
       <div className="sign-in-modal">
-        <i className="logo fa fa-mixcloud big-logo" aria-hidden="true"/>
+        <i className="logo fa fa-mixcloud big-logo" />
         <h1 className="title-sign-in">Sound Cloud</h1>
         <div className="inser-info-component">
           <h1>{this.props.action}</h1>
@@ -109,7 +118,7 @@ class Enterpageicon extends React.Component {
                    ref={(passwordInput) => this.passwordInput = passwordInput}
                    onKeyDown={(e) => {
                      if (e.keyCode === 13) {
-                       this.autorization();
+                       this.authorization();
                      }
                    }}
             />
@@ -124,7 +133,7 @@ class Enterpageicon extends React.Component {
         </div>
         <button className="btn-sign-in btn-eff"
                 onClick={() => {
-                  this.autorization();
+                  this.authorization();
 
 
                 }}>
@@ -164,6 +173,11 @@ function mapDispatchToProps(dispatch) {
     grantAccess(){
       dispatch({
         type: 'ACCESS_GRANTED',
+      })
+    },
+    resetInfo(){
+      dispatch({
+        type: 'RESET_INFO',
       })
     }
 

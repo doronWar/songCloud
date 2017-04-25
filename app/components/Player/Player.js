@@ -113,7 +113,7 @@ function mapDispatchToProps(dispatch) {
     },
     togglePlayerIcon(){
       dispatch({
-        type: 'PLAYER_TOGGLE_FROM_AUDIO', //<-- earse this if works
+        type: 'PLAYER_TOGGLE_FROM_AUDIO',
       })
     },
   }

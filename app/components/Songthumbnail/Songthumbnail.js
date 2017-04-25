@@ -25,9 +25,12 @@ class Songthumbnail extends React.Component {
 
 
   songTime() {
-    let ms = this.props.song.duration;
-    const min = Math.floor(ms / 60000);
-    const sec = ((ms % 60000) / 1000).toFixed(0);
+    const ms = this.props.song.duration;
+    let min = Math.floor(ms / 60000);
+    let sec = ((ms % 60000) / 1000).toFixed(0);
+    if(sec.length<=1){
+      sec = sec +'0';
+    }
     return min + ':' + sec
   }
 

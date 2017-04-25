@@ -21,9 +21,6 @@ class Routes extends React.Component {
     this.grantAccess = this.grantAccess.bind(this)
   }
 
-
-// //"node server/server.js",
-
   grantAccess() {
     this.setState({loged: e.target.responseText});
   }

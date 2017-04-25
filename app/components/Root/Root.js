@@ -51,14 +51,7 @@ export default class Root extends React.Component {
 
 
   render() {
-    // return (
-    // <BrowserRouter>
-    //   <div>
-    {/*<Route exact path="/signup" component={Signup}/>*/
-    }
-    {/*<Route exact path="/signin" component={Signin}/>*/
-    }
-    // <Route path="/" component={()=>{
+
     return (
       <div>
         <Topbar
@@ -87,11 +80,5 @@ export default class Root extends React.Component {
         <Player/>
       </div>)
 
-    // }}/>
-
-
-    // </div>
-    // </BrowserRouter>
-    // );
   };
 }

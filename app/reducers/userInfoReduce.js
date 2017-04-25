@@ -20,6 +20,9 @@ export default function userInfoReduce(curentInfo = basicInfo, action) {
     case 'ACCESS_DENIED':
       return Object.assign({}, curentInfo, {canAccess: false});
       break;
+    case 'RESET_INFO':
+      return Object.assign({}, curentInfo, {canAccess: false, password: "", email: ""});
+      break;
   }
 
 
