@@ -26,6 +26,17 @@ app.use(bodyParser.json());
 // });
 
 
+
+app.post('/login', function(req, res) {
+
+  if(req.body.email==='example@gmail.com' && req.body.password==='1234'){
+    res.send('true');
+  }
+
+  res.send('false');
+});
+
+
 app.get('/load', function(req, res) {
    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080')
   //
@@ -137,7 +148,7 @@ app.post('/removeSong', function(req, res) {
 //app.listen(port);
 console.log('Magic happens on port ' + port);
 
-app.use(express.static(path.resolve(__dirname, '../dist')));
+// app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.listen(port, function () {
   console.log('Listening...')

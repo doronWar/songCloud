@@ -3,6 +3,8 @@ import Signin from '../Signin/Signin'
 import Signup from '../Signup/Signup'
 import Root from '../Root/Root'
 
+
+import {connect} from 'react-redux'
 import React from 'react';
 import {
   BrowserRouter,
@@ -15,31 +17,71 @@ import {
 
 
 
-export default class Routes extends React.Component {
+class Routes extends React.Component {
 
   constructor() {
     super();
 
+    this.grantAccess=this.grantAccess.bind(this)
   }
+
+
+
+// //"node server/server.js",
+
+grantAccess(){
+  this.setState({loged:e.target.responseText});
+}
 
 
   render() {
 
-    return (
 
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/signup" component={Signup}/>
-          <Route exact path="/signin" component={Signin}/>
+if(this.props.accessGranted.canAccess){
+  return (
 
-          <Route path="/" component={(props) => {
-            return <Root goToSignIn={this.goToSignIn}
-                         {...props}/>
-          }}/>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/signup" component={Signup}/>
+        <Route exact path="/signin" component={Signin}/>
 
-        </Switch>
 
-      </BrowserRouter>
-    )
+        <Route path="/" component={(props) => {
+          return <Root goToSignIn={this.goToSignIn}
+                       {...props}/>
+        }}/>
+
+      </Switch>
+
+    </BrowserRouter>
+  )
+}
+else{
+  return (
+
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/signup" component={Signup}/>
+        <Route exact path="/signin" component={Signin}/>
+
+        <Route path="/" component={() => {
+          return <Redirect to="/signup"/>
+        }}/>
+
+      </Switch>
+
+    </BrowserRouter>
+  )
+}
+
   }
 }
+
+
+function mapStateToProps(dataState) {
+  return {
+    accessGranted: dataState.userInfo,
+  }
+}
+
+export default  connect(mapStateToProps)(Routes);
