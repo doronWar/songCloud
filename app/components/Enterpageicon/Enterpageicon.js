@@ -2,6 +2,7 @@ import './Enterpageicon.scss'
 import '../../assets/styles/_helpers.scss'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import { serverLocation } from '../../utils/utils'
 
 class Enterpageicon extends React.Component {
 
@@ -19,7 +20,7 @@ class Enterpageicon extends React.Component {
 
         const xhr = new XMLHttpRequest();
 
-        xhr.open('POST', `http://localhost:3000/login`);
+        xhr.open('POST', `${serverLocation}/login`);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(infoData));
 

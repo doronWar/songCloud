@@ -148,7 +148,7 @@ app.post('/removeSong', function(req, res) {
 //app.listen(port);
 console.log('Magic happens on port ' + port);
 
-// app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.listen(port, function () {
   console.log('Listening...')

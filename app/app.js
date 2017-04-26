@@ -2,7 +2,7 @@ import 'normalize.css/normalize.css';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import 'font-awesome/css/font-awesome.css';
 import './assets/styles/main.scss';
-
+import { serverLocation } from './utils/utils'
 
 import ReactDOM from 'react-dom';
 import React from 'react';
@@ -17,7 +17,7 @@ import store from './store'
 function testingGettingJasonPlaylist() {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('GET', `http://localhost:3000/load`);
+  xhr.open('GET', `${serverLocation}/load`);
 
   xhr.send();
 
