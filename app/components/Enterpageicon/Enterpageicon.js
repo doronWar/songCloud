@@ -89,7 +89,7 @@ class Enterpageicon extends React.Component {
     return (
       <div className="sign-in-modal">
         <i className="logo fa fa-mixcloud big-logo" />
-        <h1 className="title-sign-in">Sound Cloud</h1>
+        <h1 className="title-sign-in">Song Cloud</h1>
         <div className="inser-info-component">
           <h1>{this.props.action}</h1>
           <div className="user-register">
