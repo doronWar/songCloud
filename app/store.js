@@ -1,5 +1,6 @@
 
-import { createStore, combineReducers } from 'redux'
+import { compose, createStore, combineReducers } from 'redux'
+import persistState from 'redux-localstorage'
 import curentSong from './reducers/curentSongReduce'
 import searchForMusic from './reducers/searchForMusicReduce'
 import playLists from './reducers/playListsReduce'
@@ -11,6 +12,13 @@ import playPusetoggle from './reducers/playPusetoggleReduce'
 import playerControlImage from './reducers/playerControlImageReduce'
 import userInfo from './reducers/userInfoReduce'
 
+
+const config = {
+  key: 'SONGCLOUDINFO',
+  slicer: () => (state) => ({userInfo: state.userInfo }),
+  deserialize: (state) => JSON.parse(state),
+};
+const storeEnhancers = compose(persistState(null, config));
 
 
 const reducer = combineReducers({
@@ -28,6 +36,6 @@ const reducer = combineReducers({
 
 
 
-const store = createStore(reducer);
+const store = createStore(reducer,{},storeEnhancers);
 
 export default store;

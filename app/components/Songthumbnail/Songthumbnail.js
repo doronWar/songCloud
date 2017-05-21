@@ -152,7 +152,7 @@ class Songthumbnail extends React.Component {
              }}>
 
           {showDarkenBakcground && <div className="darken-songthumbnail">
-            <i className="fa fa-play player-icon"
+            <i className="fa fa-pause player-icon"
                ref={(playerIcon) => this.iconPlayer = playerIcon}/>
 
           </div>}

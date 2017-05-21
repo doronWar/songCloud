@@ -94,7 +94,6 @@ class Playlist extends React.Component {
     return (
       <div className="plalist-page"
            onClick={(e) => this.props.closeAllMenues(e)}>
-
         <aside className="playlist-holder">
           <button className="btn-add-playlist btn-eff" onClick={() => {
             const newId = uuid();
@@ -106,6 +105,7 @@ class Playlist extends React.Component {
           </button>
           <span className="seperating-lien"/>
           {this.listOfPlaylist()}
+
         </aside>
         <section className="play-list-background">
           <ul className="temp-ul">

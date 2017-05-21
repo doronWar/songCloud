@@ -28,7 +28,7 @@ class Topbar extends React.Component {
                 </li>
 
                 <li className="nav-link">
-                  <NavLink to="/playlist" activeClassName="selected" className="link">Playlist</NavLink>
+                  <NavLink to="/playlist" activeClassName="selected" className="link">Playlists</NavLink>
                 </li>
 
               </ul>

@@ -151,7 +151,7 @@ class Explore extends React.Component {
             <div className="navigation-song-btn">
 
               <button className="nav-btn" onClick={ this.changePage.bind(this, 'next')}>
-                Next Page
+                Next
               </button>
 
               <span>  page {this.state.offset / this.state.limit + 1}   </span>
