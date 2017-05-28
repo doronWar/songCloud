@@ -24,7 +24,7 @@
     "redux-localstorage": "0.4.1",
     "roboto-fontface": "0.7.0",
     "smoothscroll": "0.3.0",
-    "surface": "github:mildrenben/surface",
+    "smoothscroll-polyfill": "0.3.5",
     "uuid": "3.0.1"
   },
   "devDependencies": {
@@ -50,6 +50,6 @@
     "webpack-dev-server": "2.4.2"
   },
   "now": {
-    "alias": "songcloud-doron"
+    "alias": "songcloud-doronwr"
   }
 }
